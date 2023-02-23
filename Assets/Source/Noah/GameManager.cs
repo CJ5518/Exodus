@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
  
         up = new Vector3(0,10,0);
         enemy = GameObject.Find("BaseEnemy");
-        InvokeRepeating("SpawnEntity", 10.0f, 20);
+        if (enemy != null){
+            InvokeRepeating("SpawnEntity", 10.0f, 20);
+        } else Debug.Log("Unable to find instantiable game object.");
 
     }
 
