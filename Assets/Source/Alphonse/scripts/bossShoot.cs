@@ -28,13 +28,11 @@ public class bossShoot : MonoBehaviour
             hail();
         }
 
-        if(timer > 20)
+        if(timer > 5)
         {
             EventManager em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
             Instantiate(em);
             em.startEvent(1); //1 corresponds to hailtype event
-
-            count += Time.deltaTime;
         }
 
     }
