@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
         GiveItem("Health Potion");
         GiveItem("Gold Coin");
         GiveItem("Mana Potion");
+        inventoryUI.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -29,7 +30,7 @@ public class Inventory : MonoBehaviour
         Debug.Log("Added item: " + itemToAdd.title);
     }
 
-    //Helper function for remove item to check if said item is in inventory
+    //Helper function for remove item to check if said item is in inventory otherwise don't remove
     public Item CheckforItem(int id)
     {
         return characterItems.Find(item => item.id == id);

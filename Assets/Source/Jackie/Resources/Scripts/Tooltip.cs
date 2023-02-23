@@ -12,7 +12,7 @@ public class Tooltip : MonoBehaviour
     {
         tooltipText = GetComponentInChildren<Text>();
         gameObject.SetActive(false);
-        tooltipText.gameObject.SetActive(true);
+        tooltipText.gameObject.SetActive(false);
     }
 
     //Generate string and display text box
