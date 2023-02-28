@@ -1,0 +1,9 @@
+{
+    "name": "Carson",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

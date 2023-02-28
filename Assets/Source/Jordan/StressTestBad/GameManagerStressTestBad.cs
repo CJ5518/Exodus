@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManagerStressTest1 : MonoBehaviour
+public class GameManagerStressTestBad : MonoBehaviour
 {
     public GameObject goBasicEnemy;
     public int iEnemyCount;
