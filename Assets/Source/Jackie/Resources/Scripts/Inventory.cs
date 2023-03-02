@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
         GiveItem("Mana Potion");
         GiveItem("Regular Key");
         GiveItem("Health Pendant");
+        RemoveItemStr("Health Potion");
         inventoryUI.gameObject.SetActive(false);
     }
 
@@ -38,10 +39,26 @@ public class Inventory : MonoBehaviour
         return characterItems.Find(item => item.id == id);
     }
 
+    public Item CheckforItemStr(string title)
+    {
+        return characterItems.Find(item => item.title == title);
+    }
+
     //Function to remove an item in the character's inventory
     public void RemoveItem(int id)
     {
         Item itemToRemove = CheckforItem(id);
+        if (itemToRemove != null)
+        {
+            characterItems.Remove(itemToRemove);
+            inventoryUI.RemoveItem(itemToRemove);
+            Debug.Log("Item removed: " + itemToRemove.title);
+        }
+    }
+
+    public void RemoveItemStr(string itemName)
+    {
+        Item itemToRemove = CheckforItemStr(itemName);
         if (itemToRemove != null)
         {
             characterItems.Remove(itemToRemove);
