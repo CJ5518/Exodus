@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
         GiveItem("Health Potion");
         GiveItem("Gold Coin");
         GiveItem("Mana Potion");
+        GiveItem("Regular Key");
+        GiveItem("Health Pendant");
         inventoryUI.gameObject.SetActive(false);
     }
 
