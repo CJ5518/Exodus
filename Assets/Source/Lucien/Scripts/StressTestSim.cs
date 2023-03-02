@@ -5,12 +5,10 @@ using UnityEngine;
 public class StressTestSim : MonoBehaviour
 {
 
-    public ObjectPool pool;
-
     // Start is called before the first frame update
     private void Start()
     {
-        GameObject obj = pool.GetObject();
+        GameObject obj = ObjectPool.Instance.GetObject();
 
         //get the position of the object
         obj.transform.position = new Vector3(0, 0, 0);
@@ -27,11 +25,9 @@ public class StressTestSim : MonoBehaviour
     private void SpawnPoolObject()
     {   
         //get the object from the availible pool
-        GameObject obj = pool.GetObject();
+        GameObject obj = ObjectPool.Instance.GetObject();
 
-        //get the position of the object
         obj.transform.position = new Vector3(0, 0, 0);
         obj.transform.rotation = Quaternion.identity;
-        
     }
 }
