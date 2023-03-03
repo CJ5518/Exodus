@@ -8,14 +8,8 @@ public class StressTestSim : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        GameObject obj = ObjectPool.Instance.GetObject();
-
-        //get the position of the object
-        obj.transform.position = new Vector3(0, 0, 0);
-        obj.transform.rotation = Quaternion.identity;
-
         //call the new memeber every 2 seconds
-        InvokeRepeating("SpawnPoolObject", 2, 2);
+        InvokeRepeating("SpawnPoolObject", 0.5f, 0.5f);
 
         //this will release the object when we are done...
         //pool.ReleaseObject(obj);

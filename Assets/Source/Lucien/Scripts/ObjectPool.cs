@@ -46,9 +46,10 @@ public class ObjectPool : MonoBehaviour
         //allow for more objects to be created in the pool if needed
         if(willGrow)
         {
-            GameObject obj = CreateObject();
-            obj.SetActive(true);
-            return obj;
+            for(int i = 0; i < poolSize; i++)
+            {
+                CreateObject();
+            }
         }
 
         //if there are no availible objectsa nd willgrow is false then return null
