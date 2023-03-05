@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AI_Chase : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
 
     [SerializeField]
     private float speed;
@@ -19,6 +19,7 @@ public class AI_Chase : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

@@ -8,13 +8,14 @@ public class bossShoot : MonoBehaviour
     public GameObject snowBall;
     public Transform snowBallPos;
 
-    private float timer, count;
+    private float timer, count, hailCount;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        
+       count =  0;
+       hailCount = 5;
     }
 
     // Update is called once per frame
@@ -22,17 +23,20 @@ public class bossShoot : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >2)
+        while( timer > count)
         {
-            timer = 0;
+            //timer = 0;
             hail();
+            count += 2f;
         }
 
-        if(timer > 5)
+        if(timer == hailCount)
         {
             EventManager em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
             Instantiate(em);
-            em.startEvent(1); //1 corresponds to hailtype event
+            em.startEvent(1);
+            
+            hailCount += 15;
         }
 
     }

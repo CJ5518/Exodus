@@ -1,0 +1,9 @@
+{
+    "name": "Alphonse",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

@@ -51,7 +51,17 @@ public class ItemDatabase : MonoBehaviour
             new Dictionary<string, int>
             {
                 {"Sell Value", 50 }
-            })
+            }),
+            new Item(4, "Health Pendant", "An accessory that will slightly increase your max hp.",
+            new Dictionary<string, int>
+            {
+                {"HP increase", 10 }
+            }),
+            new Item(5, "Regular Key", "A regular key, may be used to open a locked door.",
+            new Dictionary<string, int>
+            {
+                {"Sell Value", 5 }
+            }),
         };
     }
     
