@@ -7,6 +7,7 @@ TagManager:
   - boundary
   - HailStone
   - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX
