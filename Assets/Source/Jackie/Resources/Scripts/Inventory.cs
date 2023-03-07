@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
         GiveItem("Regular Key");
         GiveItem("Health Pendant");
         RemoveItemStr("Health Potion");
+        Debug.Log("empty slot: " + characterItems[0]);
         inventoryUI.gameObject.SetActive(false);
     }
 
