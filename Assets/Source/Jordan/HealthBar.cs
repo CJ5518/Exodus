@@ -15,8 +15,8 @@ public class HealthBar : MonoBehaviour
         fMaxHealth = 100;
 /*        tmpHealthText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
         sHealthSlider = GetComponent<Slider>();*/
-        sHealthSlider.maxValue = fMaxHealth;
-        sHealthSlider.minValue = 0;
+/*        sHealthSlider.maxValue = fMaxHealth;
+        sHealthSlider.minValue = 0;*/
         SetHealth(fMaxHealth);
     }
 
