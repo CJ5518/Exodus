@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
         GiveItem("Health Pendant");
         RemoveItemStr("Health Potion");
         Debug.Log("empty slot: " + characterItems[0]);
-        inventoryUI.gameObject.SetActive(false);
+        inventoryUI.gameObject.SetActive(true);
     }
 
     private void Update()
