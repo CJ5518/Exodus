@@ -33,6 +33,9 @@ public class GameManagerStressTest1 : MonoBehaviour
                 vPos.x = 0;
             }
         }
+        if (vPos.y >= Screen.height)
+            Time.timeScale = 0;
+
     }
 
 
