@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     
-    private GameObject currentEvent;
+    public GameObject currentEvent;
     private GameObject hailevent;
 
     // Start is called before the first frame update
