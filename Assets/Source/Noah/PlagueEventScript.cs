@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlagueEvent : MonoBehaviour
 {
     
-    public int framesLeft;   
+    public float timeLeft;   
 
 
     public void EndEvent()
@@ -17,14 +17,14 @@ public class PlagueEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //timeLeft = 10000;        
+        timeLeft = 10000;        
     }
 
     // Update is called once per frame
     void Update()
     {
-        framesLeft--;
+        timeLeft--;
         //Debug.Log(timeLeft);
-        if(framesLeft <= 0) EndEvent();
+        if(timeLeft <= 0) EndEvent();
     }
 }

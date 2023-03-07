@@ -20,7 +20,7 @@ public class EventManager : MonoBehaviour
         
     }
 
-    public void startEvent(int type, int difficulty, int time)
+    public void startEvent(int type)
     {  
         hailevent = Resources.Load<GameObject>("prefabs/Noah/myHailEvent");
         Debug.Log("called eventManager startEvent()");
@@ -29,12 +29,11 @@ public class EventManager : MonoBehaviour
             switch(type){
             case 1: 
                  currentEvent = Instantiate(hailevent);
-                 currentEvent.GetComponent<HailEvent>().ReceiveParameters(difficulty, time);
                  break;
             default: Debug.Log("Other Event Case"); break;
             } 
         }
-        else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().framesLeft);
+        else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().timeLeft);
         }
     }
 

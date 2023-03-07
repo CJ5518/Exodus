@@ -2,12 +2,6 @@
 
 I am responsible for creating the player character
 
-# On Tests
-
-There are a couple boundary tests.
-
-There is a stress test as well.
-
 # Migrating From the Temp Player
 
 Get the new player from PlayerSingleton.Player, returns a Player object.

@@ -13,8 +13,7 @@ public static class PlayerSingleton {
 				return m_Player;
 			} else {
 				try {
-					m_Player = GameObject.FindWithTag("Player").GetComponent<Player>();
-
+					m_Player = GameObject.Find("NewPlayer").GetComponent<Player>();
 				} catch (Exception e) {
 					throw new Exception("Got an exception while finding the player: " + e.Message);
 				}
