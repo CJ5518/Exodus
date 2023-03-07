@@ -27,7 +27,7 @@ public class ItemDatabase : MonoBehaviour
     //Creates the Database that will hold the information of all items in the game
     //Item (id, title, description)
     //Dictionary of item (stat, value)
-    public void BuildDatabase() //Remove public if needed
+    void BuildDatabase()
     {
         items = new List<Item>
         {
