@@ -6,25 +6,28 @@ using cj;
 public class Player : MonoBehaviour {
 	//Temp Movement implementation
 	private Rigidbody2D rigidbody;
-	private float horizontal = 0.0f;
+	PlayerController m_controller;
+
+	public PlayerController controller {
+		get {
+			return m_controller;
+		}
+		set {
+			m_controller = value;
+		}
+	}
+
 	void Start() {
 		rigidbody = GetComponent<Rigidbody2D>();
+		controller = new PlayerKeyboard();
+		var x = PlayerSingleton.Player;
 	}
 
 	void Update() {
-		horizontal = 0.0f;
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-			horizontal = -1.0f;
-		}
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-			horizontal = 1.0f;
-		}
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-			rigidbody.velocity = new Vector2(rigidbody.velocity.x, 5.0f);
-		}
+		controller.handleInput();
 	}
 
 	void FixedUpdate() {
-		rigidbody.velocity = new Vector2(horizontal * 8, rigidbody.velocity.y);
+		rigidbody.velocity = new Vector2(controller.horizontal * 8, !controller.vertical ? rigidbody.velocity.y : 5.0f);
 	}
 }
