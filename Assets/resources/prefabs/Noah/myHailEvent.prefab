@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7846494917839388439}
   m_Layer: 0
   m_Name: myHailEvent
-  m_TagString: Untagged
+  m_TagString: HailEvent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ee97fd3c5586f459cb74a7954d3bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 0
+  framesLeft: 0
