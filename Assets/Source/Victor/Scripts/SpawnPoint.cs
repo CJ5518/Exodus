@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour 
 {
     [SerializeField]
-    private int doorDirection;
+    private int doorDirection = 2;
     // Top     : 1
     // Right   : 2
     // Bottom  : 3
@@ -24,6 +24,11 @@ public class SpawnPoint : MonoBehaviour
         rooms = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
 
         Invoke("Spawn", .001f);
+    }
+
+    public int CountRooms()
+    {
+        return rooms.TotalRooms();
     }
 
     private void Spawn() 

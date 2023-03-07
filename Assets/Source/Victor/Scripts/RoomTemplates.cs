@@ -23,21 +23,8 @@ public class RoomTemplates : MonoBehaviour
         numRooms++;
     }
 
-    private void Update()
+    public int TotalRooms()
     {
-        if (displayed)
-        {
-            return;
-        }
-
-        if (waitTime > 0)
-        {
-            waitTime -= Time.deltaTime;
-        }
-        else
-        {
-            Debug.Log(numRooms);
-            displayed = true;
-        }
+        return numRooms;
     }
 }
