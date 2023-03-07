@@ -12,7 +12,7 @@ public class BoundaryTest
     public List<Item> characterItems = new List<Item>();
     [Test]
     //Current Inventory system avoids removing items that it does not have
-    public void TestifItemListGoesNegative()
+    public void PreventNegativeInventoryTest()
     {
         List<Item> characterItemsBefore = new List<Item>(); //For comparison
         characterItemsBefore = characterItems; //Set them equal 
