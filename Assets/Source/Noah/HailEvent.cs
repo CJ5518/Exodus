@@ -7,7 +7,7 @@ public class HailEvent : PlagueEvent
 {
     private GameObject hailstone;
     private int framecount;
-    private int spawninterval;
+    public int spawninterval;
 
     private GameObject cam;
 
