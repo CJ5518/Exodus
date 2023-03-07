@@ -20,6 +20,14 @@ public class hailThrowScrip : MonoBehaviour
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "boundary")
+        {
+        
+        }
+    }
     
 
     // Update is called once per frame

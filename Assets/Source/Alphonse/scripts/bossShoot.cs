@@ -10,12 +10,17 @@ public class bossShoot : MonoBehaviour
 
     private float timer, count, hailCount;
 
+    public EventManager em;
+    
     
     // Start is called before the first frame update
     void Start()
     {
        count =  0;
        hailCount = 5;
+       
+       em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
+       Instantiate(em);
     }
 
     // Update is called once per frame
@@ -32,8 +37,7 @@ public class bossShoot : MonoBehaviour
 
         if(timer == hailCount)
         {
-            EventManager em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
-            Instantiate(em);
+            
             em.startEvent(1);
             
             hailCount += 15;
