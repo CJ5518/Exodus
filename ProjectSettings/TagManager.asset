@@ -8,7 +8,6 @@ TagManager:
   - HailStone
   - Boss
   - Enemy
-  - HailEvent
   layers:
   - Default
   - TransparentFX
