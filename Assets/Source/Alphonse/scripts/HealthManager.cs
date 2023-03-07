@@ -9,30 +9,41 @@ public class HealthManager : MonoBehaviour
     public static bool isOver = false;
     //public GameObject GameOverCanvas;
     public Image healthBar;
+    
+    [SerializeField]
     public float healthAmt = 100f;
-    public float damage = 33.5f;
+
+    [SerializeField]
+    public float damage = 34f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
             takeDamage(damage);
+            healthBar.fillAmount = healthAmt / 100f;
         }
     }
 
     public void takeDamage(float damage)
     {
-        healthAmt -= damage;
-        healthBar.fillAmount = healthAmt / 100f;
+        healthAmt = healthAmt - damage;
+        
 
         if (healthAmt <= 0)
         {
             healthAmt = 0;
-            healthBar.fillAmount = healthAmt / 100f;
+            //healthBar.fillAmount = healthAmt / 100f;
             Debug.Log("YOU'RE DEAD!");
 
             isOver = true;
+
+            //int healthReturn = (int)healthAmt;
+            //return healthReturn;
         }
+        
+
+        //return 0;
     }
 }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 //using UnityEngine.EventManager;
 
 public class bossShoot : MonoBehaviour
@@ -9,8 +10,11 @@ public class bossShoot : MonoBehaviour
     public Transform snowBallPos;
 
     private float timer, count, hailCount;
+    private int snowballTracker;
+    public Text sbCountText;
+    
 
-    public EventManager em;
+    //public EventManager em;
     
     
     // Start is called before the first frame update
@@ -19,8 +23,8 @@ public class bossShoot : MonoBehaviour
        count =  0;
        hailCount = 5;
        
-       em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
-       Instantiate(em);
+       //em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
+       //Instantiate(em);
     }
 
     // Update is called once per frame
@@ -32,13 +36,13 @@ public class bossShoot : MonoBehaviour
         {
             //timer = 0;
             hail();
-            count += 2f;
+            count += .1f;
         }
 
         if(timer == hailCount)
         {
             
-            em.startEvent(1);
+            //em.startEvent(1);
             
             hailCount += 15;
         }
@@ -48,5 +52,9 @@ public class bossShoot : MonoBehaviour
     void hail()
     {
         Instantiate(snowBall, snowBallPos.position, Quaternion.identity);
+        snowballTracker += 1;
+
+        sbCountText.text = snowballTracker.ToString();
     }
+    
 }
