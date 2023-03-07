@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     
-    private GameObject currentEvent;
+    public GameObject currentEvent;
     private GameObject hailevent;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class EventManager : MonoBehaviour
         
     }
 
-    public void startEvent(int type)
+    public void startEvent(int type, int difficulty, int time)
     {  
         hailevent = Resources.Load<GameObject>("prefabs/Noah/myHailEvent");
         Debug.Log("called eventManager startEvent()");
@@ -29,11 +29,12 @@ public class EventManager : MonoBehaviour
             switch(type){
             case 1: 
                  currentEvent = Instantiate(hailevent);
+                 currentEvent.GetComponent<HailEvent>().ReceiveParameters(difficulty, time);
                  break;
             default: Debug.Log("Other Event Case"); break;
             } 
         }
-        else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().timeLeft);
+        else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().framesLeft);
         }
     }
 

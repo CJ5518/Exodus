@@ -7,6 +7,7 @@ public class HailEvent : PlagueEvent
 {
     private GameObject hailstone;
     private int framecount;
+    public int spawninterval;
 
     private GameObject cam;
 
@@ -17,21 +18,33 @@ public class HailEvent : PlagueEvent
     {
       hailstone = Resources.Load<GameObject>("prefabs/Noah/hail");
       framecount = 0;
-      timeLeft = 5000;
 
       cam = GameObject.FindWithTag("MainCamera");
+    }
+
+    public void ReceiveParameters(int difficulty, float time)
+    {
+        int i = 10-difficulty;
+        spawninterval = 1;
+        while(i>0) {
+           spawninterval = 2*spawninterval;
+           i--;
+        }
+        Debug.Log("spawn interval: "+ spawninterval);
+        framesLeft = (int )(time / Time.deltaTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-       int rand = rnd.Next(-6,6);
+       int rand = rnd.Next(-10,10);
        //Debug.Log("framnum: "+framecount+ " timeleft: " +timeLeft);
-       if(timeLeft>0 && framecount%100 == 0 && (rand+8)%2 == 0) {
-          Instantiate(hailstone, new Vector2(rand + cam.transform.position.x, 5+ cam.transform.position.y), Quaternion.identity, transform);
+       if(framesLeft>0 && framecount%(spawninterval) == 0 && (rand+8)%2 == 0) {
+          GameObject obj = Instantiate(hailstone, new Vector2(rand + cam.transform.position.x, 6+ cam.transform.position.y), Quaternion.identity, transform);
+          obj.transform.SetParent(transform.parent);
        }
        framecount++;
-       timeLeft--;
-       if(timeLeft <= 0){ EndEvent(); }
+       framesLeft--;
+       if(framesLeft <= 0){ EndEvent(); }
     }
 }

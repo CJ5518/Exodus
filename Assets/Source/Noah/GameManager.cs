@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(Input.GetKey("h"))
-            em.startEvent(1);
+            em.startEvent(1, 4, 20);
     }
 
 

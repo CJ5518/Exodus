@@ -15,17 +15,33 @@ public class StressGM : MonoBehaviour
         em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
         Instantiate(em);
  
-        up = new Vector3(0,10,0);
-        enemy = GameObject.Find("BaseEnemy");
-        InvokeRepeating("SpawnEntity", 1.0f, 2);
+        Debug.Log("press numbers 1-6 to run different boundary and stress tests");
+        //up = new Vector3(0,10,0);
+        //enemy = GameObject.Find("BaseEnemy");
+        //InvokeRepeating("SpawnEntity", 1.0f, 2);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey("h"))
-            em.startEvent(1);
+        if(Input.GetKey("0")){
+            Debug.Log("normal run, difficulty=5, time=10 seconds");
+            em.startEvent(1, 5, 10);
+        }
+        if(Input.GetKey("1")){
+            Debug.Log("difficulty boundary test, max difficulty=300, time=10 seconds");
+            em.startEvent(1, 300, 10);
+        }
+        if(Input.GetKey("2")){
+            Debug.Log("difficulty boundary test, difficulty=301, time=10 seconds");
+            em.startEvent(1, 301, 10);
+        }
+        if(Input.GetKey("3")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(2, 5, 5);
+        }
+
     }
 
 
