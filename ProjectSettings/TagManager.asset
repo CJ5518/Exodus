@@ -9,6 +9,8 @@ TagManager:
   - Boss
   - Enemy
   - HailEvent
+  - Rooms
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
