@@ -6,20 +6,35 @@ using UnityEngine.TestTools;
 
 public class BoundaryTest
 {
-    // A Test behaves as an ordinary method
+    Inventory inventory = new GameObject().AddComponent<Inventory>();
+    ItemDatabase itemDatabase = new GameObject().AddComponent<ItemDatabase>();
+
+    public List<Item> characterItems = new List<Item>();
     [Test]
-    public void BoundaryTestSimplePasses()
+    //Current Inventory system avoids removing items that it does not have
+    public void TestifItemListGoesNegative()
     {
-        // Use the Assert class to test conditions
+        List<Item> characterItemsBefore = new List<Item>(); //For comparison
+        characterItemsBefore = characterItems; //Set them equal 
+        itemDatabase.BuildDatabase(); //Must be built before item can be added
+        inventory.RemoveItemStr("Health Potion"); //Attempt to remove an item from an empty inventory
+        Assert.AreEqual(characterItemsBefore , characterItems); //Empty inventory, should expect to remain empty compare the two
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator BoundaryTestWithEnumeratorPasses()
+    [Test]
+    //Current Inventory does not check for max cap, hence resulting in successfully overfilling the inventory
+    public void CanOverFlow()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        itemDatabase.BuildDatabase(); //Must be built before item can be added
+        int i = 0;
+        while(i <= 17)
+        {
+            Item itemToAdd = itemDatabase.GetItem("Health Potion"); //Get item info from database
+            characterItems.Add(itemToAdd); //Add to characters inventory
+            i++;
+        }
+        //Assert.AreEqual(characterItems[16], itemDatabase.GetItem("Health Potion"));
+        Assert.AreEqual(itemDatabase.GetItem("Health Potion") ,characterItems[16]);
     }
+
 }
