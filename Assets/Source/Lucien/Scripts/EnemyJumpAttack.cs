@@ -41,6 +41,7 @@ public class EnemyJumpAttack : MonoBehaviour
     //other aspects of the base enemy
     private Rigidbody2D enemyRigid;
     private Animator enemyAnim;
+    private int health = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -118,5 +119,12 @@ public class EnemyJumpAttack : MonoBehaviour
     {
         enemyAnim.SetBool("canSeePlayer", canSeePalyer);
         enemyAnim.SetBool("Grounded", touchingGround);
+    }
+
+    public int lightBanditTakeDamage(int y, int x)
+    {
+        y = y - x;
+        health = y;
+        return health;
     }
 }
