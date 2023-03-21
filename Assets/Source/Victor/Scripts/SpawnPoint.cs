@@ -23,7 +23,7 @@ public class SpawnPoint : MonoBehaviour
         //Destroy(gameObject, waitTime);
         rooms = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
 
-        Invoke("Spawn", .001f);
+        Invoke("Spawn", rooms.spawnTime);
     }
 
     public int CountRooms()
