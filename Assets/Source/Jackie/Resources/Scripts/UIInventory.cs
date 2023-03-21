@@ -8,7 +8,7 @@ public class UIInventory : MonoBehaviour
     public GameObject slotPrefab;
     public Transform slotPanel;
     private Vector2 vPos; //Stress Test Parameter
-    public int numberOfSlots = 84; //Needed 
+    public int numberOfSlots = 1000; //Needed 
 
     //Create slots in the panel and save it to the uIItems list to be modified
     /*
