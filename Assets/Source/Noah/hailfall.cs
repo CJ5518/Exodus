@@ -30,7 +30,7 @@ public class hailfall : MonoBehaviour
      
         move = Time.deltaTime * rand; 
         
-        Destroy(gameObject, 4.5f);  
+        Destroy(gameObject, 8f);  
     }
 
     // Update is called once per frame
@@ -41,7 +41,10 @@ public class hailfall : MonoBehaviour
         //else transform.Translate(move * fallleft, Space.World);
     }
     void OnCollisionEnter2D(Collision2D coll){
-        isGrounded = true;
-        rigidBody2D.freezeRotation = true;
+        if(coll.gameObject.tag != "HailStone"){
+          isGrounded = true;
+          rigidBody2D.freezeRotation = true;
+          Destroy(gameObject, 1f);
+        }
     }
 }
