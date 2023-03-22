@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7280104968550197047}
   - component: {fileID: 1658182926927939393}
   - component: {fileID: -594932966762048901}
+  - component: {fileID: 2661089496406835746}
   m_Layer: 0
   m_Name: hail
   m_TagString: HailStone
@@ -136,3 +137,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &2661089496406835746
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927666705574072005}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5.09
