@@ -12,6 +12,8 @@ public class hailfall : MonoBehaviour
   
     private Vector2 fallleft = new Vector2(-.8f, -1);
     private Vector2 fallright = new Vector2(.8f, -1);
+    
+    private bool isGrounded = false;
 
     System.Random rnd = new System.Random();
     
@@ -34,8 +36,12 @@ public class hailfall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidBody2D.rotation += 1.0f;
+        if(!isGrounded) rigidBody2D.rotation += 2.0f;
         //if(rand%2 == 0) transform.Translate(move * fallright, Space.World); 
         //else transform.Translate(move * fallleft, Space.World);
+    }
+    void OnCollisionEnter2D(Collision2D coll){
+        isGrounded = true;
+        rigidBody2D.freezeRotation = true;
     }
 }
