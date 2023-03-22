@@ -8,8 +8,10 @@ public class TestLevelScene : MonoBehaviour
     {
         GameObject obj = ObjectPool.Instance.GetObject();
 
-        obj.transform.position = new Vector3(8, -2, 0);
+        obj.transform.position = new Vector3(8, -3, 0);
         obj.transform.rotation = Quaternion.identity;
+
+        ObjectPool.Instance.ReleaseObject(obj);
     }
 
 }

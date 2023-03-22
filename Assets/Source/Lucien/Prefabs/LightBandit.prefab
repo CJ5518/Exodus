@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 48560560878105210}
   - component: {fileID: 55851227281821320}
   - component: {fileID: 7086201358667202832}
+  - component: {fileID: 2901271292224971469}
   m_Layer: 0
   m_Name: LightBandit
   m_TagString: Enemy
@@ -216,6 +217,22 @@ MonoBehaviour:
   playerSee:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &2901271292224971469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301011109614270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b0416e1a4eb364fb54dbba585c1886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  iFrames: 2
+  numberOfFrames: 10
+  components: []
 --- !u!1 &217056884555678287
 GameObject:
   m_ObjectHideFlags: 0

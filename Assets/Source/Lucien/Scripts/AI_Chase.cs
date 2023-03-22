@@ -12,7 +12,7 @@ public class AI_Chase : MonoBehaviour
     [SerializeField]
     private float MAXDISTANCE;
 
-    public Rigidbody2D rigidbody;
+    private Rigidbody2D rigidbody;
 
     private float distance;
     // Start is called before the first frame update

@@ -41,10 +41,9 @@ public class EnemyJumpAttack : MonoBehaviour
     //other aspects of the base enemy
     private Rigidbody2D enemyRigid;
     private Animator enemyAnim;
-    private int health = 100;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         enemyRigid = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
@@ -52,7 +51,7 @@ public class EnemyJumpAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         checkGround = Physics2D.OverlapCircle(GroundCheckPoint.position, circleRadius, groundLayer);
         checkWall = Physics2D.OverlapCircle(WallCheckPoint.position, circleRadius, groundLayer);
@@ -69,7 +68,7 @@ public class EnemyJumpAttack : MonoBehaviour
         }
     }
 
-    void patrol()
+    private void patrol()
     {
         if(!checkGround || checkWall)
         {
@@ -85,7 +84,7 @@ public class EnemyJumpAttack : MonoBehaviour
         enemyRigid.velocity = new Vector2(moveSpeed * direction, enemyRigid.velocity.y);
     }
 
-    void jumpAttack()
+    private void jumpAttack()
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
 
@@ -95,7 +94,7 @@ public class EnemyJumpAttack : MonoBehaviour
         }
     }
 
-    void flipToPlayer()
+    private void flipToPlayer()
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
         if (distanceFromPlayer < 0 && facingLeft)
@@ -108,23 +107,17 @@ public class EnemyJumpAttack : MonoBehaviour
         }
     }
 
-    void flip()
+    private void flip()
     {
         direction *= -1;
         facingLeft = !facingLeft;
         transform.Rotate(0, 180, 0);
     }
 
-    void AnimationControl()
+    private void AnimationControl()
     {
         enemyAnim.SetBool("canSeePlayer", canSeePalyer);
         enemyAnim.SetBool("Grounded", touchingGround);
     }
 
-    public int lightBanditTakeDamage(int y, int x)
-    {
-        y = y - x;
-        health = y;
-        return health;
-    }
 }
