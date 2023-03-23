@@ -12,6 +12,7 @@ TagManager:
   - Rooms
   - SpawnPoint
   - snowball
+  - Slot
   layers:
   - Default
   - TransparentFX

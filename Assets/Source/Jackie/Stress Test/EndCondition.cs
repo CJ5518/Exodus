@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EndCondition : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Pause the game if the Slot Object reaches outside of the walls
+        if (collision.collider.tag == "Slot")
+        {
+            Time.timeScale = 0; 
+        }
     }
 }

@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class StressEventManager : MonoBehaviour
 {
+    private int numberOfObjects = 0;
+    public GameObject slot;
+    private Vector2 vPos;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Number of Objects " + numberOfObjects );
+        //Set initial Position
+        vPos = new Vector2(0,0); 
+        //Create a Object every .2 seconds
+        InvokeRepeating("CreateSlot", 0.5f, 0.2f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    // Repeatility Called by InvokeRepeating
+    private void CreateSlot()
+    {   
+
+        GameObject obj = Instantiate(slot); //Create new slot
+        obj.transform.position = new Vector3(2, 2, 0);
+        //obj.transform.rotation = Quaternion.identity;
+        numberOfObjects++;
+        Debug.Log("Number of Objects " + numberOfObjects );
     }
 }
