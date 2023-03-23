@@ -25,7 +25,7 @@ public class StressTestSim : MonoBehaviour
     private void SpawnPoolObject()
     {   
         //get the object from the availible pool
-        GameObject obj = ObjectPool.Instance.GetObject();
+        GameObject obj = LightBanditPool.Instance.GetObject();
 
         obj.transform.position = new Vector3(0, 4, 0);
         obj.transform.rotation = Quaternion.identity;
