@@ -6,37 +6,92 @@ using UnityEngine.TestTools;
 
 public class BoundaryTestScript
 {
-    EnemyJumpAttack enemyJumpAttack = new GameObject().AddComponent<EnemyJumpAttack>();
-    // A Test behaves as an ordinary method
     [Test]
     public void BoundaryTestScriptSimplePasses()
     {
-        // Use the Assert class to test conditions
+        //Use the Assert class to test conditions
+    }   
+
+    [Test]
+    public void InstanceShouldNotBeNullAfterAwakeIsCalled()
+    {
+        //check to see if the pool is actually created when it is called in the code
+        ObjectPool objectPool = new GameObject().AddComponent<ObjectPool>();
+        objectPool.Awake();
+        Assert.IsNotNull(ObjectPool.Instance);
     }
 
     [Test]
-    public void CheckEnemyTake10Damage()
+    public void GetObjectReturnNoObjectsAreAvailableGrowIsFalse()
     {
-        //check to see if the enemy will take 10 damage
-        //int health = enemyJumpAttack.lightBanditTakeDamage(100, 10);
-        //Assert.AreEqual(90, health);
+        //this will check to see if the grow function is workinpg properly and all the objects are used
+        //this one the grow function is set to off and the assets are all used
+        ObjectPool objectPool = new GameObject().AddComponent<ObjectPool>();
+        objectPool.prefab = new GameObject();
+        objectPool.poolSize = 1;
+        objectPool.willGrow = false;
+        objectPool.Awake();
+
+        GameObject obj = objectPool.GetObject();
+        Assert.IsNotNull(obj);
+
+        obj = objectPool.GetObject();
+        Assert.IsNull(obj);
     }
 
     [Test]
-    public void CheckEnemyTakeNegativeDamage()
+    public void GetObjectReturnNoObjectsAreAvailableGrowIsTrue()
     {
-        //this will check to see if the enemy gains health when they take negative damage or not
-        //int health = enemyJumpAttack.lightBanditTakeDamage(100, -10);
-        //Assert.AreEqual(100, health);
+        //this will check to see if the grow function works when grow in enabled and all objects
+        //are currently in use and the pool needs to create more for use in the game
+        //this will check to see if the grow function is workinpg properly and all the objects are used
+        //this one the grow function is set to off and the assets are all used
+        ObjectPool objectPool = new GameObject().AddComponent<ObjectPool>();
+        objectPool.prefab = new GameObject();
+        objectPool.poolSize = 1;
+        objectPool.willGrow = true;
+        objectPool.Awake();
+
+        GameObject obj = objectPool.GetObject();
+        Assert.IsNotNull(obj);
+
+        obj = objectPool.GetObject();
+        //have to call it twice?
+        obj = objectPool.GetObject();
+        Assert.IsNotNull(obj);
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator BoundaryTestScriptWithEnumeratorPasses()
+    [Test]
+    public void GetObjectReturnsGameObject()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        //this checks to make sure that we can get objects from the object pool correctly
+        //and the pool make sobjectys that can be used later in the scene
+        ObjectPool objectPool = new GameObject().AddComponent<ObjectPool>();
+        objectPool.prefab = new GameObject();
+        objectPool.poolSize = 5;
+        objectPool.willGrow = false;
+        objectPool.Awake();
+        GameObject obj = objectPool.GetObject();
+
+        Assert.NotNull(obj);
+    }
+
+    [Test]
+    public void ReleaseObjectSetsGameObjectInactive()
+    {
+        //this checks to make sure that thje object pool object is able to be set back
+        //to inactive after the object has already been initialized in the scene
+        ObjectPool objectPool = new GameObject().AddComponent<ObjectPool>();
+        objectPool.prefab = new GameObject();
+        objectPool.poolSize = 5;
+        objectPool.willGrow = false;
+        objectPool.Awake();
+        GameObject obj = objectPool.GetObject();
+
+        objectPool.ReleaseObject(obj);
+
+        Assert.IsFalse(obj.activeInHierarchy);
     }
 }
+
+

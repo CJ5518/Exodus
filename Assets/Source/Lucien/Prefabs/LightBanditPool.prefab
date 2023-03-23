@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8186155474673300286}
-  - component: {fileID: 4952291109702546493}
+  - component: {fileID: -2028918705013301123}
   m_Layer: 0
-  m_Name: ObjectPool
+  m_Name: LightBanditPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4952291109702546493
+--- !u!114 &-2028918705013301123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2786405585468428155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9113002481763114694d9a088eb94511, type: 3}
+  m_Script: {fileID: 11500000, guid: 639c272a6704483479af1544d0e937ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7301011109614270, guid: d7bd5e753552aa4458269e819d533d66, type: 3}

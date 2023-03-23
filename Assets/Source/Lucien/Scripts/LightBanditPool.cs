@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading;
 
-public class ObjectPool : MonoBehaviour 
+public class LightBanditPool : MonoBehaviour
 {
-    public static ObjectPool Instance { get; private set; }
+    public static LightBanditPool Instance { get; private set; }
 
-    public GameObject prefab;
-    public int poolSize;
-    public bool willGrow;
+    [SerializeField]
+    private GameObject prefab;
+    [SerializeField]
+    private int poolSize;
+    [SerializeField]
+    private bool willGrow;
 
     private List<GameObject> objects;
 
