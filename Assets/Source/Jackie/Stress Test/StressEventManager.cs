@@ -21,10 +21,10 @@ public class StressEventManager : MonoBehaviour
     // Repeatility Called by InvokeRepeating
     private void CreateSlot()
     {   
-
-        GameObject obj = Instantiate(slot); //Create new slot
+        //Create new object at position(2,2,0) and increase count
+        GameObject obj = Instantiate(slot); 
         obj.transform.position = new Vector3(2, 2, 0);
-        //obj.transform.rotation = Quaternion.identity;
+        obj.transform.rotation = Quaternion.identity;
         numberOfObjects++;
         Debug.Log("Number of Objects " + numberOfObjects );
     }
