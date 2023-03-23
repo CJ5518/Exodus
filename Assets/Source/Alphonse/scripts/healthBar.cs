@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class healthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     public Image health;
     public GameObject boss;
@@ -13,13 +13,13 @@ public class healthBar : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            healthAmt -= 50f;
-            health.fillAmount = healthAmt / 100f;
+           healthAmt -= 50f;
+           health.fillAmount = healthAmt / 100f;
         }
 
         if(healthAmt == 0)
         {
-            Destroy(boss);
+           Destroy(boss);
         }
     }
 }

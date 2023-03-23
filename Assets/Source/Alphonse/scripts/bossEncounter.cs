@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bossEncounter : MonoBehaviour
+public class BossEncounter : MonoBehaviour
 {
     protected float count;
     protected float interval;

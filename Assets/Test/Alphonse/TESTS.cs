@@ -28,9 +28,9 @@ public class TESTS
     public void testOverloadHealth()
     {
         //this will check to see if the enemy gains health when they take negative damage or not
-        //float health = 100f;
+        HM.healthAmt = 100f;
         HM.takeDamage(-20f);
-        Assert.That(HM.healthAmt, Is.EqualTo(100f));
+        Assert.That(HM.healthAmt, Is.GreaterThan(100f));
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

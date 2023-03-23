@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class hailThrowScrip : MonoBehaviour
+public class HailThrowScrip : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;

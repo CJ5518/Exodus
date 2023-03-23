@@ -16,15 +16,17 @@ public class HealthManager : MonoBehaviour
     [SerializeField]
     public float damage = 34f;
 
+    // If the Boss collides with the Player, The boss will take damage to its health.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
-            takeDamage(damage);
-            healthBar.fillAmount = healthAmt / 100f;
+           takeDamage(damage);
+           healthBar.fillAmount = healthAmt / 100f;
         }
     }
 
+    // Function to decrement the health of the boss(s)
     public void takeDamage(float damage)
     {
         healthAmt = healthAmt - damage;
@@ -40,6 +42,11 @@ public class HealthManager : MonoBehaviour
 
             //int healthReturn = (int)healthAmt;
             //return healthReturn;
+        }
+
+        if (healthAmt > 100)
+        {
+            healthAmt = 100;
         }
         
 

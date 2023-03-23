@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.EventManager;
 
-public class bossShoot : MonoBehaviour
+public class BossShoot : MonoBehaviour
 {
     public GameObject snowBall;
     public Transform snowBallPos;

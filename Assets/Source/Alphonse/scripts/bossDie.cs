@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bossDie : MonoBehaviour
+public class BossDie : MonoBehaviour
 {
     public Image health;
     public GameObject boss;
