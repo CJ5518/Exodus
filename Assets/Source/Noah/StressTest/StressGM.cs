@@ -27,20 +27,49 @@ public class StressGM : MonoBehaviour
     {
         if(Input.GetKey("0")){
             Debug.Log("normal run, difficulty=5, time=10 seconds");
-            em.startEvent(1, 5, 10);
+            em.startEvent(1, 0, 10);
         }
         if(Input.GetKey("1")){
             Debug.Log("difficulty boundary test, max difficulty=300, time=10 seconds");
-            em.startEvent(1, 300, 10);
+            em.startEvent(1, 1, 10);
         }
         if(Input.GetKey("2")){
             Debug.Log("difficulty boundary test, difficulty=301, time=10 seconds");
-            em.startEvent(1, 301, 10);
+            em.startEvent(1, 2, 10);
         }
         if(Input.GetKey("3")){
             Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
-            em.startEvent(2, 5, 5);
+            em.startEvent(1, 3, 10);
         }
+        if(Input.GetKey("4")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(1, 4, 10);
+        }
+        if(Input.GetKey("5")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(1, 5, 10);
+        }
+        if(Input.GetKey("6")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(1, 6, 10);
+        }
+        if(Input.GetKey("7")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(1, 7, 10);
+        }
+        if(Input.GetKey("8")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(1, 8, 10);
+        }
+        if(Input.GetKey("9")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(1, 9, 10);
+        }
+        if(Input.GetKey("-")){
+            Debug.Log("event type boundary test, calling event type 2 which doesn't exist (yet)");
+            em.startEvent(1, 10, 10);
+        }
+
 
     }
 

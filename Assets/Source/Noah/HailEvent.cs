@@ -31,6 +31,7 @@ public class HailEvent : PlagueEvent
            i--;
         }
         Debug.Log("spawn interval: "+ spawninterval);
+        //if(time < 0) time = 0;
         framesLeft = (int )(time / Time.deltaTime);
     }
 

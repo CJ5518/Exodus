@@ -24,7 +24,7 @@ public class EventManager : MonoBehaviour
     {  
         hailevent = Resources.Load<GameObject>("prefabs/Noah/myHailEvent");
         Debug.Log("called eventManager startEvent()");
-        if(currentEvent == null){
+        if(currentEvent == null && time > 0){
             
             switch(type){
             case 1: 
@@ -36,6 +36,10 @@ public class EventManager : MonoBehaviour
         }
         else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().framesLeft);
         }
+    }
+    public void endEvent(){
+        DestroyImmediate(currentEvent);
+        currentEvent = null;
     }
 
 }

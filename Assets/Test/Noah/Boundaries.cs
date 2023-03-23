@@ -17,7 +17,9 @@ public class Boundaries
     [Test]
     public void CheckNotStartedYet()
     {
+        em.endEvent();
         //check to see that event has not yet started
+        //int? currentEvent = em.currentEvent;
         Assert.IsNull(em.currentEvent);
     }
 
@@ -27,6 +29,7 @@ public class Boundaries
         //this will check to see that an event has infact started
         em.startEvent(1, 5, 5);
         Assert.IsNotNull(em.currentEvent);
+        em.endEvent();
     }
 
     [Test]
@@ -36,6 +39,7 @@ public class Boundaries
         em.startEvent(1, 5, 5);
         HailEvent he =  GameObject.FindWithTag("HailEvent").GetComponent<HailEvent>();
         Assert.AreEqual(he.spawninterval, 32);
+        em.endEvent();
     }
 
     [Test]
@@ -45,6 +49,7 @@ public class Boundaries
         em.startEvent(1, 10, 5);
         HailEvent he =  GameObject.FindWithTag("HailEvent").GetComponent<HailEvent>();
         Assert.AreEqual(he.spawninterval, 1);
+        em.endEvent();
     }
 
     [Test]
@@ -54,6 +59,7 @@ public class Boundaries
         em.startEvent(1, 11, 5);
         HailEvent he =  GameObject.FindWithTag("HailEvent").GetComponent<HailEvent>();
         Assert.AreEqual(he.spawninterval, 1);
+        em.endEvent();
     }
 
     [Test]
@@ -63,15 +69,16 @@ public class Boundaries
         //the event should be null
         em.startEvent(1, 5, -5);
         Assert.IsNull(em.currentEvent);
+        em.endEvent();
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
     // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator BoundaryTestScriptWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
-    }
+//    [UnityTest]
+//    public IEnumerator BoundaryTestScriptWithEnumeratorPasses()
+//    {
+//        // Use the Assert class to test conditions.
+//        // Use yield to skip a frame.
+//        yield return null;
+//    }
 }
