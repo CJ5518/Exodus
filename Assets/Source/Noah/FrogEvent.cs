@@ -37,7 +37,7 @@ public class FrogEvent : PlagueEvent
 
        if(spawnTimer >= 3 && count < spawncount){
            GameObject obj1 = Instantiate(frog, new Vector2(cam.transform.position.x - 4, 0),Quaternion.identity, transform);
-           GameObject obj2 = Instantiate(frog, new Vector2(cam.transform.position.x - 4, 0),Quaternion.identity, transform);
+           GameObject obj2 = Instantiate(frog, new Vector2(cam.transform.position.x + 4, 0),Quaternion.identity, transform);
            obj1.transform.SetParent(transform.parent);
            obj2.transform.SetParent(transform.parent);
            count++;
