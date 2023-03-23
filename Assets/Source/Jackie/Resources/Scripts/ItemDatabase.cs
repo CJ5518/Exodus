@@ -24,6 +24,7 @@ public class ItemDatabase : MonoBehaviour
     {
         return items.Find(item => item.title == itemName);
     }
+    
     //Creates the Database that will hold the information of all items in the game
     //Item (id, title, description)
     //Dictionary of item (stat, value)

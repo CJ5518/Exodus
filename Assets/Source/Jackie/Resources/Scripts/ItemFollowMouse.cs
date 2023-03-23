@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ItemFollowMouse : MonoBehaviour
 {
-
-
-    // Update is called once per frame
+    // Update position of tooltip based on mousePosition
     void LateUpdate()
     {
         transform.position = Input.mousePosition;

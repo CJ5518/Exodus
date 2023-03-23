@@ -7,11 +7,9 @@ public class UIInventory : MonoBehaviour
     public List<UIItem> uIItems = new List<UIItem>();
     public GameObject slotPrefab;
     public Transform slotPanel;
-    private Vector2 vPos; //Stress Test Parameter
-    public int numberOfSlots = 1000; //Needed 
+    public int numberOfSlots = 20; //Needed 
 
     //Create slots in the panel and save it to the uIItems list to be modified
-    /*
     private void Awake()
     {
         for(int i = 0; i < numberOfSlots; i++)
@@ -22,20 +20,6 @@ public class UIInventory : MonoBehaviour
             uIItems.Add(instance.GetComponentInChildren<UIItem>());
         }
     }    
-    */ 
-    //Stress Test Version
-    private void Awake() 
-    {
-
-        for(int i = 0; i < numberOfSlots; i++)
-        {
-            GameObject instance = Instantiate(slotPrefab);
-            instance.transform.SetParent(slotPanel);
-            uIItems.Add(instance.GetComponentInChildren<UIItem>());
-            Debug.Log("numberOfSlots " + i );
-        }
-        
-    }
 
     //Show or Remove specific item in slot
     public void UpdateSlot(int slot, Item item)
