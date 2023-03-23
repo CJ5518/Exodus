@@ -7,6 +7,7 @@ public class EventManager : MonoBehaviour
     
     public GameObject currentEvent;
     private GameObject hailevent;
+    private GameObject frogevent;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class EventManager : MonoBehaviour
     public void startEvent(int type, int difficulty, int time)
     {  
         hailevent = Resources.Load<GameObject>("prefabs/Noah/myHailEvent");
+        frogevent = Resources.Load<GameObject>("prefabs/Noah/myFrogEvent");
         Debug.Log("called eventManager startEvent()");
         if(currentEvent == null && time > 0){
             
@@ -30,6 +32,10 @@ public class EventManager : MonoBehaviour
             case 1: 
                  currentEvent = Instantiate(hailevent);
                  currentEvent.GetComponent<HailEvent>().ReceiveParameters(difficulty, time);
+                 break;
+            case 2: 
+                 currentEvent = Instantiate(frogevent);
+                 currentEvent.GetComponent<FrogEvent>().ReceiveParameters(difficulty, time);
                  break;
             default: Debug.Log("Other Event Case"); break;
             } 
