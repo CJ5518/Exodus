@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4464888403937351577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4464888403937351579}
+  - component: {fileID: 4464888403937351578}
+  m_Layer: 0
+  m_Name: Map Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4464888403937351579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464888403937351577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4464888403937351578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464888403937351577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98813ad8a79b5ab45b0b48493d49546f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfU:
+  - {fileID: 2350460997341352953, guid: 96425c67267c88c4b873735e30c1dfd4, type: 3}
+  pfD:
+  - {fileID: 2350460997341352953, guid: 64c6bfc346fa58c43832769c3f02a6c2, type: 3}
+  pfR:
+  - {fileID: 2350460997341352953, guid: 60ab68ab4b803e04bb5941adfe07732a, type: 3}
+  pfL:
+  - {fileID: 2350460997341352953, guid: 1fbc336b8075800409ae968fff45c1f8, type: 3}
+  pfUD:
+  - {fileID: 2350460997341352953, guid: 0f39b4cf0f5d48d42b105b3fe3db5c5a, type: 3}
+  pfRL:
+  - {fileID: 2350460997341352953, guid: 14703fa368eefa7429626865b7557ecd, type: 3}
+  pfUR:
+  - {fileID: 2350460997341352953, guid: 02359ee64585a684a9f58528bc7d13e8, type: 3}
+  pfUL:
+  - {fileID: 2350460997341352953, guid: 25bf12e8c65264b4c8584335966a9659, type: 3}
+  pfDR:
+  - {fileID: 2350460997341352953, guid: 3f833b5117da49d419190510e262313c, type: 3}
+  pfDL:
+  - {fileID: 2350460997341352953, guid: 0aada1cb012563245a5f759a11e23adf, type: 3}
+  pfUDR:
+  - {fileID: 2350460997341352953, guid: 6ceae13218914324ca83cf665fa57198, type: 3}
+  pfUDL:
+  - {fileID: 2350460997341352953, guid: 1f68e02ee8571b847bd7bd1631b8f90e, type: 3}
+  pfURL:
+  - {fileID: 2350460997341352953, guid: 6ecd718c78a39474b879c477dd947260, type: 3}
+  pfDRL:
+  - {fileID: 2350460997341352953, guid: 572c26eb0b030314b88fe96b5fcdf970, type: 3}
+  pfUDRL:
+  - {fileID: 2350460997341352953, guid: c9bbe012b8e408b41bfdee1846e8ac94, type: 3}
