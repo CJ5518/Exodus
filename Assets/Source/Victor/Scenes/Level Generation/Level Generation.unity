@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c5f37c45d80da40bd844650508274b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generator: {fileID: 4464888403937351578, guid: 141e33caff9a0ba41bbee0c04fb2409c, type: 3}
+  generator: {fileID: 4464888403937351578, guid: 47bd0f8d75715fc4cbfaa2124b574b07, type: 3}
   numberOfRooms: 35
   worldSize: {x: 6, y: 6}
 --- !u!4 &2102414785
