@@ -63,6 +63,11 @@ public class ItemDatabase : MonoBehaviour
             {
                 {"Sell Value", 5 }
             }),
+            new Item(6, "Speed Pendant", "An accessory that will slightly increase your movement speed",
+            new Dictionary<string, int>
+            {
+                {"Sell Value", 10 }
+            })
         };
     }
     
