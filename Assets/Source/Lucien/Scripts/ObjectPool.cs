@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
-using System.Diagnostics; 
 
 //Bug with the CPU usage being monitored in unity... Otherwise it would work...
 // https://forum.unity.com/threads/100-cpu-usage-on-all-cores-when-in-play-mode-editor-is-out-of-focus-or-minimized-2020-1-1.948604/
@@ -14,11 +13,12 @@ public class ObjectPool : MonoBehaviour
     public GameObject prefab;
     public int poolSize;
     public bool willGrow;
-    private float cpuThreshHold = 25; //CPU threshhold that will be used to trigger the prefab generation based on current usage
+    private float cpuThreshHold = 65; //CPU threshhold that will be used to trigger the prefab generation based on current usage
+    private float holdCurrentCpuUsage = 0; //this will hold the current amount of cpu usage that we are using...
 
     private List<GameObject> objects;
 
-    private PerformanceCounter cpuCounter;
+    private ProcessorUsage processorUsage;
     
     public void Awake()
     {
@@ -37,17 +37,16 @@ public class ObjectPool : MonoBehaviour
             CreateObject();
         }
 
-        cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        cpuCounter.NextValue();
+        processorUsage = new ProcessorUsage();
     }
 
     //returns an availible object from the pool
     public GameObject GetObject()
     {
-        //check the CPU usage
-        float cpuUsage = GetCPUUsage();
-        UnityEngine.Debug.Log("CPU usage: " + cpuUsage);
-        if(cpuUsage < cpuThreshHold)
+        //check the CPU usage    
+        holdCurrentCpuUsage = processorUsage.GetCurrentValue();
+        UnityEngine.Debug.Log(holdCurrentCpuUsage);    
+        if(holdCurrentCpuUsage < cpuThreshHold)
         {
             //create 10 new prefabs in down time...
             for(int i = 0; i < 10; i++)
@@ -82,14 +81,5 @@ public class ObjectPool : MonoBehaviour
         obj.SetActive(false);
         objects.Add(obj);
         return obj;
-    }
-
-    //this function will retrueve the current cpu usage of the program
-    private float GetCPUUsage()
-    {
-        float cpuUsage = cpuCounter.NextValue();
-        Thread.Sleep(10);         //wait 10 milliseconds to allow the CPU to update...
-        cpuUsage = cpuCounter.NextValue();
-        return cpuUsage;
     }
 }

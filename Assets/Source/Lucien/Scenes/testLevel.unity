@@ -526,8 +526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b0b77c26c22fe40b6a7afe96a23dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  horizontal: 0
 --- !u!61 &791077640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -925,6 +923,10 @@ PrefabInstance:
     - target: {fileID: 2497077400141987474, guid: 14aa9e3a47645874d9655cf0e1d80b84, type: 3}
       propertyPath: m_Name
       value: RangedEnemyPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037665728435515869, guid: 14aa9e3a47645874d9655cf0e1d80b84, type: 3}
+      propertyPath: poolSize
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14aa9e3a47645874d9655cf0e1d80b84, type: 3}
