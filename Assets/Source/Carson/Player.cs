@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	private Rigidbody2D m_rigidBody;
 	private PlayerController m_controller;
 	private PlayerState m_playerState;
+	private Collider2D m_collider;
 
 	// The max horizontal and vertical velocity
 	private float maxHorizontalSpeed = 10.0f;
@@ -38,9 +39,22 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	// Is the player grounded or no?
+	public bool isGrounded() {
+		Vector2 lowerPoint = new Vector2(transform.position.x, transform.position.y - (transform.localScale.y / 2.0f) - 0.1f);
+		Vector2 xDelta = new Vector2((transform.localScale.x / 2.0f) - 0.1f, 0);
+		//Debug.DrawLine(lowerPoint + xDelta, lowerPoint - xDelta, Color.red, 0.1f);
+		return Physics2D.OverlapArea(lowerPoint + xDelta, lowerPoint - xDelta);
+	}
+	// Is the player falling?
+	public bool isFalling() {
+		return rigidBody.velocity.y < 0;
+	}
+
 	void Start() {
 		Application.targetFrameRate = 40;
 		m_rigidBody = GetComponent<Rigidbody2D>();
+		m_collider = GetComponent<Collider2D>();
 		controller = new PlayerKeyboard();
 		playerState = new PlayerStateAirborne(this);
 	}

@@ -10,17 +10,24 @@ namespace cj {
 		}
 
 		public override void onEnter(PlayerState oldState) {
-			Debug.Log("CJ: onEnter: Entered Airborne");
+			
 		}
 		public override void onExit(PlayerState nextState) {
-			Debug.Log("CJ: onExit: Entered Airborne");
+			
 		}
 
 		public override void update(float dt) {
-
+			moveHorizontal(1.0f);
+			Debug.Log("AIR");
 		}
 		public override void fixedUpdate() {
-			moveHorizontal(1.0f);
+			if (player.isFalling()) {
+				player.rigidBody.AddForce(new Vector2(0, -20.0f));
+			}
+
+			if (player.isGrounded()) {
+				changeStateTo(new PlayerStateStanding(player));
+			}
 		}
 	}
 }

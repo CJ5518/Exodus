@@ -17,7 +17,6 @@ namespace cj {
 		protected void moveHorizontal(float amount) {
 			Vector2 newForce = new Vector2();
 			newForce.x = player.controller.horizontal;
-			newForce.y = player.controller.jumpNew ? 10.0f : 0;
 			player.rigidBody.AddForce(newForce * 200 * amount);
 		}
 
@@ -28,8 +27,8 @@ namespace cj {
 		// Function to change the player state
 		public void changeStateTo(PlayerState newState) {
 			this.onExit(newState);
+			player.playerState = newState;
 			newState.onEnter(this);
-			
 		}
 
 		// Functions called in the Player version of the Unity callbacks
