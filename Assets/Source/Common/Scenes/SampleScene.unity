@@ -535,25 +535,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &557909348 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4396720831996637651, guid: f7f03f8709100ee43abd308662d1384b, type: 3}
-  m_PrefabInstance: {fileID: 4396720831306519592}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &557909354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557909348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2bd15d7e61de741b715e1ad282920c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDatabase: {fileID: 7097174238326516851}
-  inventoryUI: {fileID: 6162237840622659198}
 --- !u!1 &903496615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1381,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 557909354, guid: f7f03f8709100ee43abd308662d1384b, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 6162237840622659198}
+    - target: {fileID: 557909354, guid: f7f03f8709100ee43abd308662d1384b, type: 3}
+      propertyPath: itemDatabase
+      value: 
+      objectReference: {fileID: 7097174238326516851}
     - target: {fileID: 4396720831996637651, guid: f7f03f8709100ee43abd308662d1384b, type: 3}
       propertyPath: m_Name
       value: Player

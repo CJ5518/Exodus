@@ -4,17 +4,41 @@ using UnityEngine;
 
 namespace cj {
 	public class PlayerKeyboard : PlayerController {
-		public override void handleInput() {
-			m_horizontal = 0.0f;
-			m_vertical = false;
+		public override void gatherInput() {
+			resetAllButtons();
+
+			// Button holds
 			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-				m_horizontal = -1.0f;
+				m_horizontal = -1;
 			}
 			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-				m_horizontal = 1.0f;
+				m_horizontal = 1;
 			}
 			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-				m_vertical = true;
+				m_vertical = 1;
+			}
+			if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+				m_vertical = -1;
+			}
+			if (Input.GetKey(KeyCode.Space)) {
+				m_jump = true;
+			}
+
+			// Button news
+			if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+				m_horizontalNew = true;
+			}
+			if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
+				m_horizontalNew = true;
+			}
+			if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
+				m_verticalNew = true;
+			}
+			if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
+				m_verticalNew = true;
+			}
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				m_jumpNew = true;
 			}
 		}
 	}

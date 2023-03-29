@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4396720831996637654}
   - component: {fileID: 4396720831996637653}
   - component: {fileID: 4396720831996637652}
+  - component: {fileID: 557909354}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -185,10 +186,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 3
+  m_Material: {fileID: 6200000, guid: 157f09d3a8e84324c93df055390d435f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -231,5 +232,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2f527747ee4394c8674cecc6f34c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  horizontal: 0
+--- !u!114 &557909354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396720831996637651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2bd15d7e61de741b715e1ad282920c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatabase: {fileID: 0}
+  inventoryUI: {fileID: 0}

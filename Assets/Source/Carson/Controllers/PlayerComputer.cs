@@ -1,29 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace cj {
 	public class PlayerComputer : PlayerController {
+		private UnityEvent m_gatherInputEvent;
 
-		public new float horizontal {
+		// This event will be invoked when we want to gather input
+		public UnityEvent gatherInputEvent {
 			get {
-				return m_horizontal;
-			}
-			set {
-				m_horizontal = value;
+				return m_gatherInputEvent;
 			}
 		}
-
-		public new bool vertical {
-			get {
-				return m_vertical;
-			}
-			set {
-				m_vertical = value;
-			}
-		}
-
-		public override void handleInput() {
+		
+		// Called by the player
+		public override void gatherInput() {
+			resetNews();
+			m_gatherInputEvent.Invoke();
 		}
 	}
 }

@@ -32,7 +32,7 @@ public class CarsonBoundaryTests {
 		player.controller = controller;
 
 		//Act
-		controller.horizontal = 1.0f;
+		controller.pressHorizontal(1);
 
 		float oldX = player.transform.position.x;
 		//Wait a few frames
@@ -45,7 +45,7 @@ public class CarsonBoundaryTests {
 		Assert.IsTrue(player.transform.position.x > oldX);
 
 		//Act (Again)
-		controller.horizontal = -1.0f;
+		controller.pressHorizontal(-1);
 
 		oldX = player.transform.position.x;
 		//Wait a few frames
