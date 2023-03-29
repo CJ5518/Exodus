@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace cj {
 	public class PlayerComputer : PlayerController {
-		private UnityEvent m_gatherInputEvent;
+		private UnityEvent m_gatherInputEvent = new UnityEvent();
 
 		// This event will be invoked when we want to gather input
 		public UnityEvent gatherInputEvent {

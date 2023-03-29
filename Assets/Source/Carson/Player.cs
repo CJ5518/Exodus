@@ -55,7 +55,9 @@ public class Player : MonoBehaviour {
 		Application.targetFrameRate = 40;
 		m_rigidBody = GetComponent<Rigidbody2D>();
 		m_collider = GetComponent<Collider2D>();
-		controller = new PlayerKeyboard();
+		// Set the controll iff it hasn't already been set externally
+		if (controller == null)
+			controller = new PlayerKeyboard();
 		playerState = new PlayerStateAirborne(this);
 	}
 

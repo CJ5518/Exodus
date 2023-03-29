@@ -36,12 +36,12 @@ public class CarsonBoundaryTests {
 
 		float oldX = player.transform.position.x;
 		//Wait a few frames
-		yield return null;
-		yield return null;
-		yield return null;
-		yield return null;
-		yield return null;
-		yield return null;
+		yield return null;yield return null;
+		yield return null;yield return null;
+		yield return null;yield return null;
+		yield return null;yield return null;
+		yield return null;yield return null;
+		yield return null;yield return null;
 		Assert.IsTrue(player.transform.position.x > oldX);
 
 		//Act (Again)

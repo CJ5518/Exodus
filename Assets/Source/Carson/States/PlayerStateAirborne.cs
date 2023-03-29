@@ -18,7 +18,6 @@ namespace cj {
 
 		public override void update(float dt) {
 			moveHorizontal(1.0f);
-			Debug.Log("AIR");
 		}
 		public override void fixedUpdate() {
 			if (player.isFalling()) {

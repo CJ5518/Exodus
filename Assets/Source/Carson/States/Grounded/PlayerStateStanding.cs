@@ -17,7 +17,6 @@ namespace cj {
 		}
 
 		public override void update(float dt) {
-            Debug.Log("GROUND");
 			moveHorizontal(1.0f);
 			if (player.isGrounded()) {
 				if (player.controller.jumpNew) {
