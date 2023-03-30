@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class LevelGeneration : MonoBehaviour
 {
-    [SerializeField]
-    private MapRoomSelector generator;
-    [SerializeField]
-    private int numberOfRooms = 20;
-    [SerializeField]
-    private Vector2 worldSize = new Vector2(4, 4);
+    [Header("Level Generation")]
+    [SerializeField] private MapRoomSelector generator;
+    [SerializeField] private int numberOfRooms = 20;
+    [SerializeField] private Vector2 worldSize = new Vector2(4, 4);
+
+    [Header("Navmesh Config")]
+    [SerializeField] private AstarPath aStarPath;
+    [SerializeField] private GameObject target;
+
 
 
     private StandardRoom[,] rooms;
@@ -32,6 +36,8 @@ public class LevelGeneration : MonoBehaviour
         SetRoomDoors();
 
         DrawMap();
+
+        aStarPath.Scan();
     }
 
     void DrawMap()
@@ -46,6 +52,8 @@ public class LevelGeneration : MonoBehaviour
             Vector2 drawPos = room.gridPos;
             drawPos.x *= 48;
             drawPos.y *= 27;
+
+            target.transform.position = new Vector3(drawPos.x, drawPos.y, target.transform.position.z);
 
             generator.GenerateRoom(drawPos, room.type, room.top, room.bottom, room.right, room.left);
         }

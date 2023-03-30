@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 124691804526663301}
   - component: {fileID: 124691804526663300}
   - component: {fileID: 124691804526663303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 124691804752855963}
   - component: {fileID: 124691804752855962}
   - component: {fileID: 124691804752855965}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Wall Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 124691804774505881}
   - component: {fileID: 124691804774505880}
   - component: {fileID: 124691804774505883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 124691804877663441}
   - component: {fileID: 124691804877663440}
   - component: {fileID: 124691804877663443}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spawning Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 124691805034547452}
   - component: {fileID: 124691805034547455}
   - component: {fileID: 124691805034547454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 124691805109714223}
   - component: {fileID: 124691805109714222}
   - component: {fileID: 124691805109714225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Exiting Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 124691805677240780}
   - component: {fileID: 124691805677240783}
   - component: {fileID: 124691805677240782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 124691805806959611}
   - component: {fileID: 124691805806959610}
   - component: {fileID: 124691805806959613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floating Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,7 +1103,7 @@ GameObject:
   - component: {fileID: 72801996452602730}
   - component: {fileID: 2574219464653800619}
   - component: {fileID: 5199591187832682175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

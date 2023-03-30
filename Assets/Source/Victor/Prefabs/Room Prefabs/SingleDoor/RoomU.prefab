@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 103699158715541607}
   - component: {fileID: 8834422553409317960}
   - component: {fileID: 7572132250893840252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 8305812243783086892}
   - component: {fileID: 5754297908979230810}
   - component: {fileID: 4471278466383607405}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 5238466146003960645}
   - component: {fileID: 5102396643565333680}
   - component: {fileID: 7826839137532182919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 5877649287852062666}
   - component: {fileID: 5675141016155454658}
   - component: {fileID: 4875748494964985204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 2623245446741044215}
   - component: {fileID: 5971483139978949013}
   - component: {fileID: 1535026938251441427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 1113885288361095754}
   - component: {fileID: 5542435548359720539}
   - component: {fileID: 553091324103852733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1004,7 @@ GameObject:
   - component: {fileID: 58966287796750191}
   - component: {fileID: 403643331836622563}
   - component: {fileID: 5306892283817232910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1115,7 +1115,7 @@ GameObject:
   - component: {fileID: 6020945608478601764}
   - component: {fileID: 2704256729420781092}
   - component: {fileID: 5488884012795901150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}

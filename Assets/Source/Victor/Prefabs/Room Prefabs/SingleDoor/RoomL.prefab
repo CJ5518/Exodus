@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8998782743269099325}
   - component: {fileID: 3632588042373127708}
   - component: {fileID: 7222856741179379685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2064405533980161608}
   - component: {fileID: 2375363468722734863}
   - component: {fileID: 8704562298286040749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 4234326602802757095}
   - component: {fileID: 4426963504877689609}
   - component: {fileID: 7347030805456439435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 4377645560121780404}
   - component: {fileID: 7136695498095059956}
   - component: {fileID: 6504897476415225982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 8585103748480062565}
   - component: {fileID: 8896771356923866331}
   - component: {fileID: 3275180416947264139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 3665489145043442238}
   - component: {fileID: 4283997817591865439}
   - component: {fileID: 717425178432301516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 3166414264555163916}
   - component: {fileID: 3990085728905585057}
   - component: {fileID: 6877660885392323825}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Object (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 4343742041707808084}
   - component: {fileID: 1927923036223764547}
   - component: {fileID: 922893755114267667}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
