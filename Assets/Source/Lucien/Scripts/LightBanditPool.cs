@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class LightBanditPool : MonoBehaviour
 {
-    public static LightBanditPool Instance { get; private set; }
-
     [SerializeField]
     private GameObject prefab;
     [SerializeField]
@@ -15,27 +14,38 @@ public class LightBanditPool : MonoBehaviour
 
     private List<GameObject> objects;
 
-    public void Awake()
-    {
-        //this impliments the singleton pattern
-        if(Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+    private float cpuThreshHold = 65; //CPU threshhold that will be used to trigger the prefab generation based on current usage
+    private float holdCurrentCpuUsage = 0; //this will hold the current amount of cpu usage that we are using...
 
+    private ProcessorUsage processorUsage;
+
+    void Start()
+    {
         objects = new List<GameObject>();
 
         for(int i = 0; i < poolSize; i++)
         {
             CreateObject();
         }
+
+        processorUsage = new ProcessorUsage();
     }
 
     //returns an availible object from the pool
     public GameObject GetObject()
     {
+        //check the CPU usage    
+        holdCurrentCpuUsage = processorUsage.GetCurrentValue();
+        UnityEngine.Debug.Log(holdCurrentCpuUsage);    
+        if(holdCurrentCpuUsage < cpuThreshHold)
+        {
+            //create 10 new prefabs in down time...
+            for(int i = 0; i < 10; i++)
+            {
+                CreateObject();
+            }
+        }
+
         for(int i = 0; i < objects.Count; i++)
         {
             if(!objects[i].activeInHierarchy)
@@ -52,6 +62,14 @@ public class LightBanditPool : MonoBehaviour
             {
                 CreateObject();
             }
+            for(int i = 0; i < objects.Count; i++)
+            {
+                if(!objects[i].activeInHierarchy)
+                {
+                    objects[i].SetActive(true);
+                    return objects[i];
+                }
+            }
         }
 
         //if there are no availible objectsa nd willgrow is false then return null
@@ -59,7 +77,7 @@ public class LightBanditPool : MonoBehaviour
     }
 
     //this puts the object back into the pool
-    public void ReleaseObject(GameObject obj)
+    private void ReleaseObject(GameObject obj)
     {
         obj.SetActive(false);
     }

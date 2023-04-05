@@ -208,7 +208,7 @@ MonoBehaviour:
   circleRadius: 0.2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   jumpHeight: 10
   JumpCheck: {fileID: 4743754038816962}
   player: {fileID: 0}

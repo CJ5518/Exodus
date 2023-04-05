@@ -34,11 +34,14 @@ public class RangedEnemy : MonoBehaviour
     private Transform player;
     private Animator enemyAnim;
 
+    private ObjectPool objectPool;
+
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         player = GameObject.Find("Player").transform;
         enemyAnim = GetComponent<Animator>();
+        objectPool = FindObjectOfType<ObjectPool>();
     }
 
     private void Update()
@@ -62,12 +65,12 @@ public class RangedEnemy : MonoBehaviour
     private void RangedAttack()
     {
         cooldownTimer = 0;
-        GameObject obj = ObjectPool.Instance.GetObject();
+        GameObject obj = objectPool.GetObject();
         obj.transform.position = firepoint.position;
         obj.transform.rotation = Quaternion.identity;
         //obj.transform.Rotate(0f, 0f, 90f);
         //trouble with the rotation of the arrows here
-        obj.GetComponent<EnemyProjectiles>().ActivateProjectile();
+        obj.GetComponent<EnemyProjectiles>().ActivateProjectile(ReturnEnemyArcherDirection());
     }
 
     private IEnumerator WaitForAnimation()
@@ -81,7 +84,7 @@ public class RangedEnemy : MonoBehaviour
         }
         //RangedAttack();
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(4f);
     }
 
     private bool PlayerInSight()

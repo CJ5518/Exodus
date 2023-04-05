@@ -13,10 +13,9 @@ public class EnemyProjectiles : EnemyDamage
 
     private float lifetime;
 
-    private Transform enemy;
 
     private BoxCollider2D colliders;
-    private RangedEnemy rangedEnemy;
+    //private RangedEnemy rangedEnemy;
 
     private bool hit;
     private bool direction;
@@ -24,16 +23,14 @@ public class EnemyProjectiles : EnemyDamage
     private void Awake()
     {
         colliders = GetComponent<BoxCollider2D>();
-        enemy = GameObject.Find("Archer").transform;
-        rangedEnemy = GameObject.Find("Archer").AddComponent<RangedEnemy>();
+        //rangedEnemy = GameObject.Find("Archer").FindObjectOfType<RangedEnemy>();
     }
 
-    public void ActivateProjectile()
+    public void ActivateProjectile( bool direction)
     {
         hit = false;
         lifetime = 0;
         colliders.enabled = true;
-        direction = rangedEnemy.ReturnEnemyArcherDirection();
         if(!direction)
         {
             transform.Rotate(0, 0, 90);

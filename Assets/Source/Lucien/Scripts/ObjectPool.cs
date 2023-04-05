@@ -8,8 +8,6 @@ using System.Threading;
 
 public class ObjectPool : MonoBehaviour 
 {
-    public static ObjectPool Instance { get; private set; }
-
     public GameObject prefab;
     public int poolSize;
     public bool willGrow;
@@ -22,14 +20,6 @@ public class ObjectPool : MonoBehaviour
     
     public void Awake()
     {
-        //this impliments the singleton pattern
-        if(Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-
         objects = new List<GameObject>();
 
         for(int i = 0; i < poolSize; i++)

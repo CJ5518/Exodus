@@ -101,10 +101,10 @@ MonoBehaviour:
   damage: 10
   firepoint: {fileID: 147626093532382976}
   distance: -0.24
-  boxCollider: {fileID: -1944285414246238692}
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  objectPool: {fileID: 0}
 --- !u!114 &5859816822128299905
 MonoBehaviour:
   m_ObjectHideFlags: 0

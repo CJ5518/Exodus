@@ -13,15 +13,6 @@ public class BoundaryTestScript
     }   
 
     [Test]
-    public void InstanceShouldNotBeNullAfterAwakeIsCalled()
-    {
-        //check to see if the pool is actually created when it is called in the code
-        ObjectPool objectPool = new GameObject().AddComponent<ObjectPool>();
-        objectPool.Awake();
-        Assert.IsNotNull(ObjectPool.Instance);
-    }
-
-    [Test]
     public void GetObjectReturnNoObjectsAreAvailableGrowIsFalse()
     {
         //this will check to see if the grow function is workinpg properly and all the objects are used
