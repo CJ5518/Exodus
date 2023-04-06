@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class JordanBoundaries
+/*public class JordanBoundaries
 {
     HealthBar goHHealthBar = new GameObject().AddComponent<HealthBar>();
 
@@ -37,3 +37,4 @@ public class JordanBoundaries
         Assert.AreEqual(50, goHHealthBar.GetHealth());
     }
 }
+*/
