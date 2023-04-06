@@ -9,32 +9,31 @@ public class DarkEvent : MonoBehaviour
     private int framesLeft;
 
     private GameObject player;
-
+    private Light2D pLight;
+    private int lightRadius;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        globalLight = GameObject.FindGameObjectWithTag("GlobalLight");
-
         //give light around the player
         player = GameObject.FindGameObjectWithTag("Player");
 //
-        Light2D light = player.AddComponent<Light2D>();
-        light.color = Color.white;
-        light.intensity = 1f;
-
+         pLight = player.AddComponent<Light2D>();
+        pLight.color = Color.white;
+        pLight.intensity = 1f;
+    Debug.Log("we have given the player a light.");
     }
 
     public void ReceiveParameters(int difficulty, float time)
     {
-        //the frogs event does not depend on time at the moment
-        //spawncount = difficulty;
+        lightRadius = difficulty;
 
        //make it dark
+        globalLight = GameObject.FindGameObjectWithTag("GlobalLight");
         Light2D gLight = globalLight.GetComponent<Light2D>();
-        gLight.intensity = 1f - (1/10 * (float)difficulty);
-
+        gLight.intensity = 1/10;
+   Debug.Log("glight intensity:  " + gLight.intensity);
         framesLeft = (int )(time / Time.deltaTime);
     }
 
@@ -45,8 +44,9 @@ public class DarkEvent : MonoBehaviour
 
        framesLeft--;
 
-       float newRadius = 2 + 2* Mathf.Sin(Time.time);
-
+       float newRadius = lightRadius + 2* Mathf.Sin(Time.time);
+       pLight.pointLightOuterRadius = newRadius;
+       pLight.pointLightInnerRadius = newRadius/4;
 
        if(framesLeft <= 0) DarkEndEvent();
     }

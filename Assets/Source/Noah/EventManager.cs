@@ -8,11 +8,18 @@ public class EventManager : MonoBehaviour
     public GameObject currentEvent;
     private GameObject hailevent;
     private GameObject frogevent;
+    private GameObject darkevent;
+
+    private GameObject globalLight;
 
     // Start is called before the first frame update
     void Start()
     {     
-        currentEvent = null;        
+        currentEvent = null;
+
+        globalLight = Resources.Load<GameObject>("prefabs/Noah/GlobalLight2D");
+        globalLight = Instantiate(globalLight);
+
     }
 
     // Update is called once per frame
@@ -23,25 +30,32 @@ public class EventManager : MonoBehaviour
 
     public void startEvent(int type, int difficulty, int time)
     {  
-        hailevent = Resources.Load<GameObject>("prefabs/Noah/myHailEvent");
-        frogevent = Resources.Load<GameObject>("prefabs/Noah/myFrogEvent");
+
         Debug.Log("called eventManager startEvent()");
         if(currentEvent == null && time > 0){
             
             switch(type){
             case 1: 
+                 Debug.Log("error hail");
+                 hailevent = Resources.Load<GameObject>("prefabs/Noah/myHailEvent");
                  currentEvent = Instantiate(hailevent);
                  currentEvent.GetComponent<HailEvent>().ReceiveParameters(difficulty, time);
                  break;
             case 2: 
+                 frogevent = Resources.Load<GameObject>("prefabs/Noah/myFrogEvent");     
                  currentEvent = Instantiate(frogevent);
                  currentEvent.GetComponent<FrogEvent>().ReceiveParameters(difficulty, time);
                  break;
-            default: Debug.Log("Other Event Case"); break;
+            case 3:      
+                 darkevent = Resources.Load<GameObject>("prefabs/Noah/myDarkEvent");
+                 Debug.Log("error dark");
+                 currentEvent = Instantiate(darkevent);
+                 currentEvent.GetComponent<DarkEvent>().ReceiveParameters(difficulty, time);
+                 break;
+            default: Debug.Log("Other Event Case"); break; //gay
             } 
         }
-        else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().framesLeft);
-        }
+        //else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().framesLeft);}
     }
     public void endEvent(){
         DestroyImmediate(currentEvent);
