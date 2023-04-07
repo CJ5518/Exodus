@@ -31,6 +31,11 @@ public class DemoModeAI : MonoBehaviour
 
     private void Start()
     {
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("NavMeshTarget").transform;
+        }
+
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -66,9 +71,32 @@ public class DemoModeAI : MonoBehaviour
         }
 
 
-        isGrounded = Physics2D.Raycast(transform.position + (Vector3.down * (GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset)), Vector3.down, jumpCheckOffset);
-        isOnLeftWall = Physics2D.Raycast(transform.position + (Vector3.down * (GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset)), Vector3.left, GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset);
-        isOnRightWall = Physics2D.Raycast(transform.position + (Vector3.down * (GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset)), Vector3.right, GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset);
+        isGrounded = 
+            Physics2D.Raycast(
+                transform.position + (Vector3.down * (GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset)), 
+                Vector3.down, 
+                jumpCheckOffset);
+
+        isOnLeftWall = 
+            Physics2D.Raycast(
+                transform.position + (Vector3.down * (GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset)), 
+                Vector3.left, 
+                GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset) 
+            ||
+            Physics2D.Raycast(
+                transform.position + (Vector3.left * (GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset)),
+                Vector3.left,
+                GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset);
+        isOnRightWall = 
+            Physics2D.Raycast(
+                transform.position + (Vector3.down * (GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset)), 
+                Vector3.right, 
+                GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset)
+            ||
+            Physics2D.Raycast(
+                transform.position + (Vector3.right * (GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset)),
+                Vector3.right,
+                GetComponent<Collider2D>().bounds.extents.x + jumpCheckOffset);
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
@@ -81,15 +109,19 @@ public class DemoModeAI : MonoBehaviour
 
         if (jumpEnabled && isGrounded)
         {
-            if (!(direction.y < 0f))
+            if (!(direction.y < 0.2f))
             {
                 rb.AddForce(Vector2.up * speed * jumpModifier);
+            }
+            if (direction.y > .9f)
+            {
+                rb.AddForce(Vector2.right * (Random.value - .5f) * (speed / 2));
             }
         }
 
         if(jumpEnabled && !isGrounded && isOnLeftWall)
         {
-            if (!(direction.y < 0f))
+            if (direction.y > 0.5f)
             {
                 rb.AddForce(((6 * Vector2.up) + Vector2.right).normalized * speed * jumpModifier);
             }
@@ -97,7 +129,7 @@ public class DemoModeAI : MonoBehaviour
 
         if (jumpEnabled && !isGrounded && isOnRightWall)
         {
-            if (!(direction.y < 0f))
+            if (direction.y > 0.5f)
             {
                 rb.AddForce((6 * Vector2.up + Vector2.left).normalized * speed * jumpModifier);
             }

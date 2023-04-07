@@ -9,10 +9,12 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private MapRoomSelector generator;
     [SerializeField] private int numberOfRooms = 20;
     [SerializeField] private Vector2 worldSize = new Vector2(4, 4);
+    [SerializeField] private GameObject playerSpawn;
+    [SerializeField] private GameObject exitDoor;
 
     [Header("Navmesh Config")]
+    [SerializeField] private bool demoMode;
     [SerializeField] private AstarPath aStarPath;
-    [SerializeField] private GameObject target;
 
 
 
@@ -37,11 +39,19 @@ public class LevelGeneration : MonoBehaviour
 
         DrawMap();
 
-        aStarPath.Scan();
+        if (demoMode)
+        {
+            aStarPath.Scan();
+        }
     }
 
     void DrawMap()
     {
+        StandardRoom startingRoom;
+        StandardRoom endingRoom;
+        Vector2 startingPos = new Vector2( (48 * worldSize.x), (-27 * worldSize.y) );
+        Vector2 endingPos = new Vector2( (-48 * worldSize.x), (27 * worldSize.y) );
+
         foreach (StandardRoom room in rooms)
         {
             if (room == null)
@@ -53,10 +63,52 @@ public class LevelGeneration : MonoBehaviour
             drawPos.x *= 48;
             drawPos.y *= 27;
 
-            target.transform.position = new Vector3(drawPos.x, drawPos.y, target.transform.position.z);
+
+            if (startingPos.x > drawPos.x) 
+            {
+                startingPos.x = drawPos.x;
+            }
+            if (endingPos.x < drawPos.x)
+            {
+                endingPos.x = drawPos.x;
+            }
 
             generator.GenerateRoom(drawPos, room.type, room.top, room.bottom, room.right, room.left);
         }
+
+        foreach (StandardRoom room in rooms)
+        {
+            if (room == null)
+            {
+                continue;
+            }
+
+            Vector2 drawPos = room.gridPos;
+            drawPos.x *= 48;
+            drawPos.y *= 27;
+
+            if (drawPos.x == startingPos.x)
+            {
+                if (startingPos.y <= drawPos.y)
+                {
+                    startingPos.y = drawPos.y;
+                    startingRoom = room;
+                }
+            }
+
+            if (drawPos.x == endingPos.x)
+            {
+                if (endingPos.y >= drawPos.y)
+                {
+                    endingPos.y = drawPos.y;
+                    endingRoom = room;
+                }
+            }
+        }
+
+        Instantiate(exitDoor, new Vector3(endingPos.x, endingPos.y, exitDoor.transform.position.z), Quaternion.identity);
+
+        Instantiate(playerSpawn, new Vector3(startingPos.x, startingPos.y, playerSpawn.transform.position.z), Quaternion.identity);
     }
 
     void CreateRooms()
