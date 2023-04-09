@@ -14,6 +14,7 @@ public class EnemySpawnPointM : MonoBehaviour
     private Transform spawnPointTransform;
 
     private Transform playerTransform;
+    private EnemyJumpAttack enemyJumpAttack;
 
     private bool hasRun;
 
@@ -21,6 +22,7 @@ public class EnemySpawnPointM : MonoBehaviour
     {
         lightBanditPool = FindObjectOfType<LightBanditPool>();
         playerTransform = GameObject.Find("Player").transform;       //this will get the position of the player
+        enemyJumpAttack = GetComponent<EnemyJumpAttack>();
         hasRun = false;
     }
 

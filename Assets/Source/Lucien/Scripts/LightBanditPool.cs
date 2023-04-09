@@ -77,7 +77,7 @@ public class LightBanditPool : MonoBehaviour
     }
 
     //this puts the object back into the pool
-    private void ReleaseObject(GameObject obj)
+    public void ReleaseMeleeObject(GameObject obj)
     {
         obj.SetActive(false);
     }

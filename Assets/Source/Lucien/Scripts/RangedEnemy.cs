@@ -34,6 +34,8 @@ public class RangedEnemy : MonoBehaviour
     private Transform player;
     private Animator enemyAnim;
 
+    private float health = 100;
+
     private ObjectPool objectPool;
 
     private void Awake()
@@ -128,6 +130,22 @@ public class RangedEnemy : MonoBehaviour
             return !facingLeft;
         }
         return facingLeft;
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.collider.tag == "Player")
+        {
+            health = health - 10;
+            if(health > 0){
+                Debug.Log("Health is currently: " + health);
+            }
+            else
+            {
+                Debug.Log("The ranged enemy is dead...");
+                Destroy(gameObject, 1);
+            }
+        }
     }
 
     private void AnimationControl()

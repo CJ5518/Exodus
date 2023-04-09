@@ -26,10 +26,11 @@ public class Health : MonoBehaviour
    private void Awake()
    {
     currentHealth = startingHealth;
+    dead = false;
     sprite = GetComponent<SpriteRenderer>();
    }
 
-   public void TakeDamage(float damageTaken)
+   public void EnemyTakeDamage(float damageTaken)
    {
     if(invulnerable) return;
     currentHealth = Mathf.Clamp(currentHealth - damageTaken, 0, startingHealth);
@@ -50,6 +51,17 @@ public class Health : MonoBehaviour
             dead = true;
         }
     }
+   }
+
+   public bool CheckIfDead()
+   {
+        if(dead == false)
+        {
+            return false;
+        }else 
+        {
+            return true;
+        }
    }
 
    private IEnumerator Invunerability()

@@ -38,6 +38,11 @@ public class EnemyJumpAttack : MonoBehaviour
     LayerMask playerSee;
     private bool canSeePalyer;
 
+    private float health = 100;
+    private bool isDead;
+
+    private LightBanditPool lightBanditPool;
+
     //other aspects of the base enemy
     private Rigidbody2D enemyRigid;
     private Animator enemyAnim;
@@ -48,6 +53,8 @@ public class EnemyJumpAttack : MonoBehaviour
         enemyRigid = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
         enemyAnim = GetComponent<Animator>();
+        lightBanditPool = FindObjectOfType<LightBanditPool>();
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -58,13 +65,26 @@ public class EnemyJumpAttack : MonoBehaviour
         touchingGround = Physics2D.OverlapBox(JumpCheck.position, boxSize, 0, groundLayer);
         canSeePalyer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerSee);
         AnimationControl();
-        if(!canSeePalyer && touchingGround)
+        if(health > 0)
         {
-            patrol();
+            if(!canSeePalyer && touchingGround)
+            {
+                patrol();
+            }
+            else if(canSeePalyer && touchingGround)
+            {
+                jumpAttack();
+            }
         }
-        else if(canSeePalyer && touchingGround)
+        else
         {
-            jumpAttack();
+            if(CheckIfMeleeEnemyIsDead())
+            {
+                isDead = true;
+                enemyAnim.SetBool("isDead", isDead);
+                DeathWait();
+                lightBanditPool.ReleaseMeleeObject(gameObject);
+            }
         }
     }
 
@@ -114,10 +134,47 @@ public class EnemyJumpAttack : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
+    public bool CheckIfMeleeEnemyIsDead()
+    {
+        if(health > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.collider.tag == "Player")
+        {
+            health = health - 10;
+            if(health > 0){
+                Debug.Log("Health is currently: " + health);
+            }
+            else
+            {
+                Debug.Log("The melee enemy is dead...");
+                DeathWait();
+            }
+        }
+    }
+    
+    private IEnumerator DeathWait()
+    {
+        yield return new WaitForSeconds(5);
+        enemyAnim.SetBool("isDead", isDead);
+        lightBanditPool.ReleaseMeleeObject(gameObject);
+        yield return new WaitForSeconds(5);
+    }
+
     private void AnimationControl()
     {
         enemyAnim.SetBool("canSeePlayer", canSeePalyer);
         enemyAnim.SetBool("Grounded", touchingGround);
+        enemyAnim.SetBool("isDead", isDead);
     }
 
 }
