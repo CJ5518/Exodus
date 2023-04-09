@@ -108,7 +108,8 @@ public class LevelGeneration : MonoBehaviour
 
         Instantiate(exitDoor, new Vector3(endingPos.x, endingPos.y, exitDoor.transform.position.z), Quaternion.identity);
 
-        Instantiate(playerSpawn, new Vector3(startingPos.x, startingPos.y, playerSpawn.transform.position.z), Quaternion.identity);
+        GameObject player = (GameObject)Instantiate(playerSpawn, new Vector3(startingPos.x, startingPos.y, playerSpawn.transform.position.z), Quaternion.identity);
+        player.name = playerSpawn.name;
     }
 
     void CreateRooms()
