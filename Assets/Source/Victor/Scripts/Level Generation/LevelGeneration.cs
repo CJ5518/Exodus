@@ -11,6 +11,7 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private Vector2 worldSize = new Vector2(4, 4);
     [SerializeField] private GameObject playerSpawn;
     [SerializeField] private GameObject exitDoor;
+    [SerializeField] private CameraMove camera;
 
     [Header("Navmesh Config")]
     [SerializeField] private bool demoMode;
@@ -110,6 +111,8 @@ public class LevelGeneration : MonoBehaviour
 
         GameObject player = (GameObject)Instantiate(playerSpawn, new Vector3(startingPos.x, startingPos.y, playerSpawn.transform.position.z), Quaternion.identity);
         player.name = playerSpawn.name;
+
+        camera.FindPlayer();
     }
 
     void CreateRooms()

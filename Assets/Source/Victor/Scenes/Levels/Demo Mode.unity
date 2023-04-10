@@ -135,13 +135,14 @@ GameObject:
   - component: {fileID: 340996103}
   - component: {fileID: 340996102}
   - component: {fileID: 340996105}
+  - component: {fileID: 340996106}
   m_Layer: 0
   m_Name: Level Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &340996102
 AudioListener:
   m_ObjectHideFlags: 0
@@ -177,7 +178,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 202.5
+  orthographic size: 13.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -241,6 +242,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &340996106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340996101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b302ed1031e18447acc7adf6b0c0573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &820210732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +443,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4865925542775089542, guid: 37f95a786b72e0847bfd3a9898de2292, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 340996106}
     - target: {fileID: 4865925542775089542, guid: 37f95a786b72e0847bfd3a9898de2292, type: 3}
       propertyPath: target
       value: 
