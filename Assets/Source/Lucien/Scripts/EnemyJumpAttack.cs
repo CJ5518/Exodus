@@ -43,6 +43,8 @@ public class EnemyJumpAttack : MonoBehaviour
 
     private LightBanditPool lightBanditPool;
 
+    public JumpAttack jumpAttackScript;
+
     //other aspects of the base enemy
     private Rigidbody2D enemyRigid;
     private Animator enemyAnim;
@@ -73,9 +75,13 @@ public class EnemyJumpAttack : MonoBehaviour
             }
             else if(canSeePalyer && touchingGround)
             {
-                jumpAttack();
+                jumpAttackScript.jumpAttack(jumpHeight, enemyRigid, touchingGround);
             }
-        }
+            else if(!touchingGround)
+            {
+                jumpAttackScript.jumpAttack(jumpHeight, enemyRigid, touchingGround);
+            }
+        } 
         else
         {
             if(CheckIfMeleeEnemyIsDead())
@@ -104,15 +110,18 @@ public class EnemyJumpAttack : MonoBehaviour
         enemyRigid.velocity = new Vector2(moveSpeed * direction, enemyRigid.velocity.y);
     }
 
-    private void jumpAttack()
+    /*
+    //this will be the point at which the static and dynamic binding come into play...
+    public virtual void jumpAttack(float jump)
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
 
         if(touchingGround)
         {
-            enemyRigid.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
+            enemyRigid.AddForce(new Vector2(distanceFromPlayer, jump), ForceMode2D.Impulse);
         }
     }
+    */
 
     private void flipToPlayer()
     {
