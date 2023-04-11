@@ -13,7 +13,6 @@ namespace cj {
 		}
 		
 		// Common function, most states move horizontally somehow
-		//TODOCJ this is a bit messed up rn
 		protected void moveHorizontal(float amount) {
 			Vector2 newForce = new Vector2();
 			newForce.x = player.controller.horizontal;
@@ -26,7 +25,6 @@ namespace cj {
 
 		// Function to change the player state
 		public void changeStateTo(PlayerState newState) {
-			Debug.Log("Begin changeStateTo at " + Time.frameCount + " from " + this);
 			this.onExit(newState);
 			player.playerState = newState;
 			newState.onEnter(this);

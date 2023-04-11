@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
 	[System.NonSerialized] public float jumpForce = 440.0f;
 	[System.NonSerialized] public float fallForce = -90.0f;
 
+	[System.NonSerialized] public Vector3 normalScale = new Vector3(2, 4, 1);
+	[System.NonSerialized] public Vector3 crouchScale = new Vector3(2, 2, 1);
+
 	// More niche settings
 	// The max number of seconds the player can hold space to continue to rise with a jump
 	[System.NonSerialized] public float maxJumpRiseTime = 0.75f;
@@ -58,10 +61,8 @@ public class Player : MonoBehaviour {
 	// Is the player grounded or no?
 	public bool isGrounded() {
 		if (rigidBody.velocity.y <= 0) {
-			Debug.Log(rigidBody.velocity.y);
 			Vector2 lowerPoint = new Vector2(transform.position.x, transform.position.y - (transform.localScale.y / 2.0f) - 0.1f);
 			Vector2 xDelta = new Vector2((transform.localScale.x / 2.0f) - 0.1f, 0.05f);
-			Debug.DrawLine(lowerPoint + xDelta, lowerPoint - xDelta, Color.red, 0.0f);
 			bool res = Physics2D.OverlapArea(lowerPoint + xDelta, lowerPoint - xDelta);
 			return res;
 		}

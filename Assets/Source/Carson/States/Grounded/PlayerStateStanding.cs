@@ -3,35 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace cj {
+	// This class has over time become standing/running because the two are so similar
 	class PlayerStateStanding : PlayerStateGrounded {
-		//Constructor, called before onEnter
+		// Constructor, called before onEnter
 		public PlayerStateStanding(Player plr) : base(plr) {
 		}
 
 		public override void onEnter(PlayerState oldState) {
+			player.spriteRenderer.color = Color.blue;
 		}
 		public override void onExit(PlayerState nextState) {
 		}
 
 		public override void update(float dt) {
-			moveHorizontal(1.0f);
-			player.spriteRenderer.color = Color.blue;
+			// If player holds down
+			if (player.controller.vertical == -1) {
+				// Then go to crouching state
+				changeStateTo(new PlayerStateCrouch(player));
+				return;
+			}
+			checkJumpsAndSuchUpdate();
 		}
 		public override void fixedUpdate() {
-			if (player.isGrounded()) {
-				if (player.controller.jumpNew) {
-					becauseJumped = true;
-					jumpStartTime = Time.realtimeSinceStartup;
-					player.rigidBody.AddForce(new Vector2(0, player.jumpForce));
-					return;
-				} else {
-					becauseJumped = false;
-					
-				}
-			} else { // Player is NOT grounded
-                changeStateTo(new PlayerStateAirborne(player));
-				return;
-            }
+			moveHorizontal(1.0f);
+			checkJumpsAndSuchFixed();
 		}
 	}
 }

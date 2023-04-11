@@ -17,19 +17,22 @@ namespace cj {
 				risingJump = oldGrounded.becauseJumped;
 				jumpStartTime = oldGrounded.jumpStartTime;
 			}
+			player.spriteRenderer.color = Color.red;
 		}
 		public override void onExit(PlayerState nextState) {
 		}
 
 		public override void update(float dt) {
 			moveHorizontal(1.0f);
-			player.spriteRenderer.color = Color.red;
 
 			if (!player.controller.jump) {
 				risingJump = false;
 			}
 		}
 		public override void fixedUpdate() {
+
+
+			// Handles falling and changing state to grounded
 			if (player.isFalling()) {
 				player.rigidBody.AddForce(new Vector2(0, player.fallForce));
 			} else {
@@ -45,7 +48,6 @@ namespace cj {
 			}
 
 			if (player.isGrounded()) {
-				Debug.Log("Switching to standing from airborne because we are grounded ");
 				changeStateTo(new PlayerStateStanding(player));
 				return;
 			}
