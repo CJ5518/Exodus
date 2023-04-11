@@ -4,15 +4,24 @@ using UnityEngine;
 using cj;
 
 public class Player : MonoBehaviour {
-	//Temp Movement implementation
+	// Private members
 	private Rigidbody2D m_rigidBody;
 	private PlayerController m_controller;
 	private PlayerState m_playerState;
 	private Collider2D m_collider;
+	private SpriteRenderer m_spriteRenderer;
+
+	// Basic settings
+	[System.NonSerialized] public float jumpForce = 440.0f;
+	[System.NonSerialized] public float fallForce = -90.0f;
+
+	// More niche settings
+	// The max number of seconds the player can hold space to continue to rise with a jump
+	[System.NonSerialized] public float maxJumpRiseTime = 0.75f;
 
 	// The max horizontal and vertical velocity
 	private float maxHorizontalSpeed = 10.0f;
-	private float maxVerticalSpeed = 10.0f;
+	private float maxVerticalSpeed = 20.0f;
 
 	public PlayerController controller {
 		get {
@@ -32,6 +41,7 @@ public class Player : MonoBehaviour {
 			m_playerState = value;
 		}
 	}
+	//Read-only members
 
 	public Rigidbody2D rigidBody {
 		get {
@@ -39,12 +49,23 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public SpriteRenderer spriteRenderer {
+		get {
+			return m_spriteRenderer;
+		}
+	}
+
 	// Is the player grounded or no?
 	public bool isGrounded() {
-		Vector2 lowerPoint = new Vector2(transform.position.x, transform.position.y - (transform.localScale.y / 2.0f) - 0.1f);
-		Vector2 xDelta = new Vector2((transform.localScale.x / 2.0f) - 0.1f, 0);
-		//Debug.DrawLine(lowerPoint + xDelta, lowerPoint - xDelta, Color.red, 0.1f);
-		return Physics2D.OverlapArea(lowerPoint + xDelta, lowerPoint - xDelta);
+		if (rigidBody.velocity.y <= 0) {
+			Debug.Log(rigidBody.velocity.y);
+			Vector2 lowerPoint = new Vector2(transform.position.x, transform.position.y - (transform.localScale.y / 2.0f) - 0.1f);
+			Vector2 xDelta = new Vector2((transform.localScale.x / 2.0f) - 0.1f, 0.05f);
+			Debug.DrawLine(lowerPoint + xDelta, lowerPoint - xDelta, Color.red, 0.0f);
+			bool res = Physics2D.OverlapArea(lowerPoint + xDelta, lowerPoint - xDelta);
+			return res;
+		}
+		return false;
 	}
 	// Is the player falling?
 	public bool isFalling() {
@@ -55,6 +76,7 @@ public class Player : MonoBehaviour {
 		Application.targetFrameRate = 40;
 		m_rigidBody = GetComponent<Rigidbody2D>();
 		m_collider = GetComponent<Collider2D>();
+		m_spriteRenderer = GetComponent<SpriteRenderer>();
 		// Set the controll iff it hasn't already been set externally
 		if (controller == null)
 			controller = new PlayerKeyboard();

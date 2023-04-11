@@ -8,6 +8,7 @@ namespace cj {
 			resetAllButtons();
 
 			// Button holds
+			// Tfw you find out about Input.GetAxis days too late
 			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
 				m_horizontal = -1;
 			}

@@ -26,6 +26,7 @@ namespace cj {
 
 		// Function to change the player state
 		public void changeStateTo(PlayerState newState) {
+			Debug.Log("Begin changeStateTo at " + Time.frameCount + " from " + this);
 			this.onExit(newState);
 			player.playerState = newState;
 			newState.onEnter(this);
