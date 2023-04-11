@@ -48,6 +48,7 @@ public class EnemyJumpAttack : MonoBehaviour
     //other aspects of the base enemy
     private Rigidbody2D enemyRigid;
     private Animator enemyAnim;
+    private SFXEnemies sfxEnemies;
 
     // Start is called before the first frame update
     private void Start()
@@ -57,6 +58,7 @@ public class EnemyJumpAttack : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         lightBanditPool = FindObjectOfType<LightBanditPool>();
         isDead = false;
+        sfxEnemies = FindObjectOfType<SFXEnemies>();
     }
 
     // Update is called once per frame
@@ -162,10 +164,12 @@ public class EnemyJumpAttack : MonoBehaviour
             health = health - 10;
             if(health > 0){
                 Debug.Log("Health is currently: " + health);
+                sfxEnemies.PlayBanditDeath();
             }
             else
             {
                 Debug.Log("The melee enemy is dead...");
+                sfxEnemies.PlayBanditDeath();
                 DeathWait();
             }
         }

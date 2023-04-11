@@ -38,12 +38,15 @@ public class RangedEnemy : MonoBehaviour
 
     private ObjectPool objectPool;
 
+    private SFXEnemies sfxEnemies;
+
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         player = GameObject.Find("Player").transform;
         enemyAnim = GetComponent<Animator>();
         objectPool = FindObjectOfType<ObjectPool>();
+        sfxEnemies = FindObjectOfType<SFXEnemies>();
     }
 
     private void Update()
@@ -72,6 +75,7 @@ public class RangedEnemy : MonoBehaviour
         obj.transform.rotation = Quaternion.identity;
         //obj.transform.Rotate(0f, 0f, 90f);
         //trouble with the rotation of the arrows here
+        sfxEnemies.PlayArcherShoot();
         obj.GetComponent<EnemyProjectiles>().ActivateProjectile(ReturnEnemyArcherDirection());
     }
 
@@ -139,10 +143,12 @@ public class RangedEnemy : MonoBehaviour
             health = health - 10;
             if(health > 0){
                 Debug.Log("Health is currently: " + health);
+                sfxEnemies.PlayArcherDeath();
             }
             else
             {
                 Debug.Log("The ranged enemy is dead...");
+                sfxEnemies.PlayArcherDeath();
                 Destroy(gameObject, 1);
             }
         }
