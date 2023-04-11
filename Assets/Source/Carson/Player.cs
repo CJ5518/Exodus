@@ -61,13 +61,47 @@ public class Player : MonoBehaviour {
 	// Is the player grounded or no?
 	public bool isGrounded() {
 		if (rigidBody.velocity.y <= 0) {
+			// Point at the bottom of the object
 			Vector2 lowerPoint = new Vector2(transform.position.x, transform.position.y - (transform.localScale.y / 2.0f) - 0.1f);
+			// Difference in x pos of (most) of the length of the object
 			Vector2 xDelta = new Vector2((transform.localScale.x / 2.0f) - 0.1f, 0.05f);
 			bool res = Physics2D.OverlapArea(lowerPoint + xDelta, lowerPoint - xDelta);
 			return res;
 		}
 		return false;
 	}
+
+	// Is the player touching the ceiling?
+	public bool isTouchingCeiling() {
+		// Point at the top of the object
+		Vector2 upperPoint = new Vector2(transform.position.x, transform.position.y + (transform.localScale.y / 2.0f) + 0.1f);
+		// Difference in x pos of (most) of the length of the object
+		Vector2 xDelta = new Vector2((transform.localScale.x / 2.0f) - 0.1f, 0.05f);
+		bool res = Physics2D.OverlapArea(upperPoint + xDelta, upperPoint - xDelta);
+		Debug.DrawLine(upperPoint + xDelta, upperPoint - xDelta, Color.red, 0.1f);
+		return res;
+	}
+
+	// Is the player touching a wall?
+	// Returns 1 for the right wall, -1 for the left, or 0 for not touching a wall
+	public int isTouchingWall(float distance = 0.05f) {
+		// Half of the height
+		Vector2 yDelta = new Vector2(0.0f, (transform.localScale.y / 2.0f) - 0.07f);
+		// Half of the width
+		Vector2 xDelta = new Vector2((transform.localScale.x / 2.0f) + distance, 0.0f);
+		Vector2 leftCenter = new Vector2(transform.position.x - xDelta.x, transform.position.y);
+		Vector2 rightCenter = new Vector2(transform.position.x + xDelta.x, transform.position.y);
+		// Debug.DrawLine(leftCenter + yDelta, leftCenter - yDelta, Color.red, 0.1f);
+		// Debug.DrawLine(rightCenter + yDelta, rightCenter - yDelta, Color.blue, 0.1f);
+		if (Physics2D.OverlapArea(leftCenter + yDelta, leftCenter - yDelta)) {
+			return -1;
+		}
+		if (Physics2D.OverlapArea(rightCenter + yDelta, rightCenter - yDelta)) {
+			return 1;
+		}
+		return 0;
+	}
+
 	// Is the player falling?
 	public bool isFalling() {
 		return rigidBody.velocity.y < 0;
