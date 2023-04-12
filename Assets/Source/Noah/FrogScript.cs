@@ -16,7 +16,7 @@ public class FrogScript : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        speedX = 8; //this is a good default jump speed in x direction // comment this line for stress test
+        speedX = 12; //this is a good default jump speed in x direction // comment this line for stress test
         jumpTimer = 4;
     }
 
