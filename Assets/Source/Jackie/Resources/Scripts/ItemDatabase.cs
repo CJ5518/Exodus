@@ -5,14 +5,26 @@ using UnityEngine;
 public class ItemDatabase : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
+    private static ItemDatabase _instance;
 
+    public static ItemDatabase Instance { get { return _instance; } }
 
     //Function called when the game has started to intialize the database
+    //private void Awake()
+    //{
+     //   BuildDatabase();
+    //}
+
     private void Awake()
     {
-        BuildDatabase();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        } else {
+            _instance = this;
+            BuildDatabase();
+        }
     }
-
     //Returns item using its id
     public Item GetItem(int id)
     {
