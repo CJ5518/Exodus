@@ -16,7 +16,7 @@ public class FrogScript : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        //speedX = 5; //this is a good default jump speed in x direction
+        speedX = 8; //this is a good default jump speed in x direction // comment this line for stress test
         jumpTimer = 4;
     }
 
@@ -27,7 +27,7 @@ public class FrogScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {//Debug.Log("speedX: "+speedX);
+    {Debug.Log("speedX: "+speedX);
          if(player.GetComponent<Rigidbody2D>().transform.position.x < transform.position.x) {
              GetComponent<SpriteRenderer>().flipX = false;
              direction = 0 - speedX;
@@ -40,9 +40,16 @@ public class FrogScript : MonoBehaviour
          jumpTimer += Time.deltaTime;
          if (jumpTimer >= 5.0f){
              //Debug.Log("direction: "+direction);
-             rb.velocity = new Vector2(direction, 5);
+             rb.velocity = new Vector2(direction, 8);
              jumpTimer = 0;
          }
     }
-  
+
+    void OnCollisionEnter2D(Collision2D coll){
+        if(coll.gameObject.tag == "Player"){
+            //damage the player
+            Destroy(gameObject, 0f);
+        }
+    }
+
 }

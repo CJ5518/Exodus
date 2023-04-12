@@ -14,6 +14,8 @@ TagManager:
   - snowball
   - Slot
   - NavMeshTarget
+  - SpawnLocation
+  - TargetLocation
   layers:
   - Default
   - TransparentFX

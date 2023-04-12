@@ -5,14 +5,23 @@ using UnityEngine;
 public class StandardRoom
 {
     public Vector2 gridPos;
-
-    public int type;
-
     public bool top, bottom, right, left;
 
-    public StandardRoom(Vector2 _gridPos, int _type)
+    private GameObject roomInstance;
+
+    public StandardRoom(Vector2 _gridPos)
     {
         gridPos = _gridPos;
-        type = _type;
+    }
+
+    public bool[] Doors()
+    {
+        bool[] doors = { top, bottom, right, left };
+        return doors;
+    }
+
+    public virtual void SetRoom(GameObject _roomInstance, GameObject goalObject, GameObject startObject)
+    {
+        roomInstance = _roomInstance;
     }
 }

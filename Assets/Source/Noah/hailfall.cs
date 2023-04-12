@@ -46,5 +46,9 @@ public class hailfall : MonoBehaviour
           rigidBody2D.freezeRotation = true;
           Destroy(gameObject, 1f);
         }
+        if(coll.gameObject.tag == "Player"){
+            //damage the player
+            Destroy(gameObject, 0f);
+        }
     }
 }
