@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;//
 using UnityEngine.Rendering.Universal;
 
-public class DarkEvent : MonoBehaviour
+public class DarkEvent : PlagueEvent
 {
     private GameObject globalLight;
     private int framesLeft;
@@ -48,9 +48,18 @@ public class DarkEvent : MonoBehaviour
        pLight.pointLightOuterRadius = newRadius;
        pLight.pointLightInnerRadius = newRadius/4;
 
-       if(framesLeft <= 0) DarkEndEvent();
+       //if(framesLeft <= 0) DarkEndEvent();
     }
 
+    public void EndEvent()
+    {
+        Debug.Log("OVERRIDE");
+        Light2D gLight = globalLight.GetComponent<Light2D>();
+        gLight.intensity = 1f;
+        Destroy(this);
+    }
+
+// old function before OVERRIDE EndEvent was implemented
     private void DarkEndEvent()
     {
         Light2D gLight = globalLight.GetComponent<Light2D>();
