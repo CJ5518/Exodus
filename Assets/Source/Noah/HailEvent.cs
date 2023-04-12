@@ -38,10 +38,10 @@ public class HailEvent : PlagueEvent
     // Update is called once per frame
     void Update()
     {
-       int rand = rnd.Next(-10,10);
+       int rand = rnd.Next(-12,12);
        //Debug.Log("framnum: "+framecount+ " timeleft: " +timeLeft);
        if(framesLeft>0 && framecount%(spawninterval) == 0 && (rand+8)%2 == 0) {
-          GameObject obj = Instantiate(hailstone, new Vector2(rand + cam.transform.position.x, 6+ cam.transform.position.y), Quaternion.identity, transform);
+          GameObject obj = Instantiate(hailstone, new Vector2(rand + cam.transform.position.x, 12+ cam.transform.position.y), Quaternion.identity, transform);
           obj.transform.SetParent(transform.parent);
        }
        framecount++;
