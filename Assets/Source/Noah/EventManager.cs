@@ -38,6 +38,7 @@ public class EventManager : MonoBehaviour
             Debug.Log("CallingEndEvent() from EventManager");
             s_currentEvent.GetComponent<PlagueEvent>().EndEvent();
             isEvent = 0;
+            timeElapsed = 0;
         }
    
     }
@@ -47,7 +48,7 @@ public class EventManager : MonoBehaviour
         timeElapsed = 0; 
         maxTime = time;
         Debug.Log("called eventManager startEvent() "+timeElapsed+"/"+maxTime);
-        if(currentEvent == null && time > 0){
+        if(isEvent == 0 && time > 0){
             isEvent = 1;
             switch(type){
             case 1: 
