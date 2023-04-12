@@ -45,10 +45,10 @@ public class EventManager : MonoBehaviour
 
     public void startEvent(int type, int difficulty, int time)
     {  
-        timeElapsed = 0; 
-        maxTime = time;
         Debug.Log("called eventManager startEvent() "+timeElapsed+"/"+maxTime);
         if(isEvent == 0 && time > 0){
+            timeElapsed = 0; 
+            maxTime = time;
             isEvent = 1;
             switch(type){
             case 1: 
