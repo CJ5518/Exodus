@@ -40,12 +40,13 @@ public class HailEvent : PlagueEvent
     {
        int rand = rnd.Next(-12,12);
        //Debug.Log("framnum: "+framecount+ " timeleft: " +timeLeft);
-       if(framesLeft>0 && framecount%(spawninterval) == 0 && (rand+8)%2 == 0) {
+       if(framecount%(spawninterval) == 0 && (rand+8)%2 == 0) {
           GameObject obj = Instantiate(hailstone, new Vector2(rand + cam.transform.position.x, 12+ cam.transform.position.y), Quaternion.identity, transform);
           obj.transform.SetParent(transform.parent);
        }
        framecount++;
        framesLeft--;
-       if(framesLeft <= 0){ EndEvent(); }
+       //if(framesLeft <= 0){ EndEvent(); } //now EventManager takes care of ending event
+                                            //NEED TO reflect this change it rest of this class
     }
 }
