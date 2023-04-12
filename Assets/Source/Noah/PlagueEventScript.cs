@@ -8,9 +8,9 @@ public class PlagueEvent : MonoBehaviour
     public int framesLeft;   
 
 
-    public void EndEvent()
+    public virtual void EndEvent()
     {
-        Debug.Log("EndEvent");
+        Debug.Log("EndEvent ____ PLAGUEEVENT");
         Destroy(gameObject);
     }
 
