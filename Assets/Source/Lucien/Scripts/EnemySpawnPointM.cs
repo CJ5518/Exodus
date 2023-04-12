@@ -30,7 +30,7 @@ public class EnemySpawnPointM : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(spawnPointTransform.position, playerTransform.position);
-        if(distance <= 20 && hasRun == false)
+        if(distance <= 75 && hasRun == false)
         {
             GameObject obj1 = lightBanditPool.GetObject(); 
             obj1.transform.position = new Vector3(spawnPointTransform.position.x, spawnPointTransform.position.y, spawnPointTransform.position.z);

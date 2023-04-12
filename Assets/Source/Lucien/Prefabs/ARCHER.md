@@ -15,3 +15,6 @@
 # Calling the archer prefab into the game
 ---
 ### The archer prefab can be called into the game with the "EnemySpawnPointR" - shorthand for enemy spawn point ranged - prefab which will properly instantiate the archer where the developer is attempting to call the archer prefab in to be used by the game.
+---
+
+### The archer prefab also has a added empty game object onto it called "FirePoint". This is where the archer's arrow originates from before it is fired at the player.
