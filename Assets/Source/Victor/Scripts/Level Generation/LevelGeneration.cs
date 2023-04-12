@@ -11,7 +11,7 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private Vector2 worldSize = new Vector2(4, 4);
     [SerializeField] private GameObject playerSpawn;
     [SerializeField] private GameObject exitDoor;
-    [SerializeField] private CameraMove camera;
+    [SerializeField] private CameraMove cam;
 
     [Header("Navmesh Config")]
     [SerializeField] private bool demoMode;
@@ -22,6 +22,7 @@ public class LevelGeneration : MonoBehaviour
     private StandardRoom[,] rooms;
     private List<Vector2> takenPos = new List<Vector2>();
     private int gridSizeX, gridSizeY;
+    private Vector2 startRoomPos;
 
 
     private void Start()
@@ -48,11 +49,6 @@ public class LevelGeneration : MonoBehaviour
 
     void DrawMap()
     {
-        StandardRoom startingRoom;
-        StandardRoom endingRoom;
-        Vector2 startingPos = new Vector2( (48 * worldSize.x), (-27 * worldSize.y) );
-        Vector2 endingPos = new Vector2( (-48 * worldSize.x), (27 * worldSize.y) );
-
         foreach (StandardRoom room in rooms)
         {
             if (room == null)
@@ -64,67 +60,23 @@ public class LevelGeneration : MonoBehaviour
             drawPos.x *= 48;
             drawPos.y *= 27;
 
-
-            if (startingPos.x > drawPos.x) 
-            {
-                startingPos.x = drawPos.x;
-            }
-            if (endingPos.x < drawPos.x)
-            {
-                endingPos.x = drawPos.x;
-            }
-
-            generator.GenerateRoom(drawPos, room.type, room.top, room.bottom, room.right, room.left);
+            room.SetRoom( generator.GenerateRoom(drawPos, room.Doors()), exitDoor, playerSpawn);
         }
 
-        foreach (StandardRoom room in rooms)
-        {
-            if (room == null)
-            {
-                continue;
-            }
-
-            Vector2 drawPos = room.gridPos;
-            drawPos.x *= 48;
-            drawPos.y *= 27;
-
-            if (drawPos.x == startingPos.x)
-            {
-                if (startingPos.y <= drawPos.y)
-                {
-                    startingPos.y = drawPos.y;
-                    startingRoom = room;
-                }
-            }
-
-            if (drawPos.x == endingPos.x)
-            {
-                if (endingPos.y >= drawPos.y)
-                {
-                    endingPos.y = drawPos.y;
-                    endingRoom = room;
-                }
-            }
-        }
-
-        Instantiate(exitDoor, new Vector3(endingPos.x, endingPos.y, exitDoor.transform.position.z), Quaternion.identity);
-
-        GameObject player = (GameObject)Instantiate(playerSpawn, new Vector3(startingPos.x, startingPos.y, playerSpawn.transform.position.z), Quaternion.identity);
-        player.name = playerSpawn.name;
-
-        camera.FindPlayer();
+        cam.FindPlayer();
     }
 
     void CreateRooms()
     {
         rooms = new StandardRoom[gridSizeX * 2, gridSizeY * 2];
-        rooms[gridSizeX, gridSizeY] = new StandardRoom(Vector2.zero, 1);
-        takenPos.Insert(0, Vector2.zero);
-        Vector2 checkPos = Vector2.zero;
+        Vector2Int start = new Vector2Int(0, 0);
+        rooms[start.x + gridSizeX, start.y + gridSizeY] = new StandardRoom(new Vector2(start.x, start.y));
+        takenPos.Insert(0, new Vector2(start.x, start.y));
+        Vector2 checkPos = new Vector2(start.x, start.y);
 
-        float randomCompare = 0.2f;
-        float randomCompareStart = 0.2f;
-        float randomCompareEnd = 0.01f;
+        float randomCompare = .1f;
+        float randomCompareStart = .1f;
+        float randomCompareEnd = .01f;
 
         for (int i = 0; i < numberOfRooms - 1; i++)
         {
@@ -149,9 +101,57 @@ public class LevelGeneration : MonoBehaviour
                 }
             }
 
-            rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new StandardRoom(checkPos, 0);
+            rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new StandardRoom(checkPos);
             takenPos.Insert(0, checkPos);
         }
+
+
+        int leftMost = gridSizeX;
+        int rightMost = -gridSizeX;
+        int upMost = -gridSizeY;
+        int downMost = gridSizeY;
+
+        foreach (StandardRoom room in rooms)
+        {
+            if (room == null)
+            {
+                continue;
+            }
+
+            if (room.gridPos.x < leftMost)
+            {
+                leftMost = (int)room.gridPos.x;
+            }
+            if (room.gridPos.x > rightMost)
+            {
+                rightMost = (int)room.gridPos.x;
+            }
+        }
+        foreach (StandardRoom room in rooms)
+        {
+            if (room == null)
+            {
+                continue;
+            }
+
+            if (room.gridPos.x == leftMost)
+            {
+                if (room.gridPos.y > upMost)
+                {
+                    upMost = (int)room.gridPos.y;
+                }
+            }
+            if (room.gridPos.x == rightMost)
+            {
+                if (room.gridPos.y < downMost)
+                {
+                    downMost = (int)room.gridPos.y;
+                }
+            }
+        }
+
+        rooms[leftMost + gridSizeX, upMost + gridSizeY] = new StartingRoom(new Vector2(leftMost, upMost));
+        rooms[rightMost + gridSizeX, downMost + gridSizeY] = new EndingRoom(new Vector2(rightMost, downMost));
     }
 
     Vector2 NewPos()
@@ -166,11 +166,12 @@ public class LevelGeneration : MonoBehaviour
             x = (int)takenPos[index].x;
             y = (int)takenPos[index].y;
             bool UpDown = (Random.value < 0.5f);
-            bool positive = (Random.value < 0.5f);
+            bool xpositive = (Random.value < 0.5f);
+            bool ypositive = (Random.value < 0.5f);
 
             if (UpDown)
             {
-                if (positive)
+                if (ypositive)
                 {
                     y += 1;
                 } 
@@ -181,7 +182,7 @@ public class LevelGeneration : MonoBehaviour
             } 
             else
             {
-                if (positive)
+                if (xpositive)
                 {
                     x += 1;
                 }
@@ -217,12 +218,13 @@ public class LevelGeneration : MonoBehaviour
 
             x = (int)takenPos[index].x;
             y = (int)takenPos[index].y;
-            bool UpDown = (Random.value < 0.5f);
-            bool positive = (Random.value < 0.5f);
+            bool genVertical = (Random.value < 0.5f);
+            bool genLeft = (Random.value < 0.5f);
+            bool genUp = (Random.value < 0.5f);
 
-            if (UpDown)
+            if (genVertical)
             {
-                if (positive)
+                if (genUp)
                 {
                     y += 1;
                 }
@@ -233,7 +235,7 @@ public class LevelGeneration : MonoBehaviour
             }
             else
             {
-                if (positive)
+                if (genLeft)
                 {
                     x += 1;
                 }

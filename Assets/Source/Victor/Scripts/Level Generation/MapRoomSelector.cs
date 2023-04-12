@@ -10,16 +10,16 @@ public class MapRoomSelector : MonoBehaviour
         pfUDR, pfUDL, pfURL, pfDRL,
         pfUDRL;
     private bool up, down, right, left;
-    private int type;
     private int randomRoom;
 
-    public void GenerateRoom(Vector2 drawPos, int _type, bool _up, bool _down, bool _right, bool _left)
+    private GameObject generatedRoom;
+
+    public GameObject GenerateRoom(Vector2 drawPos, bool[] doors)
     {
-        type = _type;
-        up = _up;
-        down = _down;
-        right = _right;
-        left = _left;
+        up = doors[0];
+        down = doors[1];
+        right = doors[2];
+        left = doors[3];
 
 
         if (up)
@@ -32,23 +32,23 @@ public class MapRoomSelector : MonoBehaviour
                     {
                         randomRoom = Random.Range(0, pfUDRL.Length);
 
-                        Instantiate(pfUDRL[randomRoom], drawPos, Quaternion.identity);
+                        generatedRoom = Instantiate(pfUDRL[randomRoom], drawPos, Quaternion.identity);
                     } else
                     {
                         randomRoom = Random.Range(0, pfUDR.Length);
 
-                        Instantiate(pfUDR[randomRoom], drawPos, Quaternion.identity);
+                        generatedRoom = Instantiate(pfUDR[randomRoom], drawPos, Quaternion.identity);
                     }
                 } else if (left)
                 {
                     randomRoom = Random.Range(0, pfUDL.Length);
 
-                    Instantiate(pfUDL[randomRoom], drawPos, Quaternion.identity);
+                    generatedRoom = Instantiate(pfUDL[randomRoom], drawPos, Quaternion.identity);
                 } else
                 {
                     randomRoom = Random.Range(0, pfUD.Length);
 
-                    Instantiate(pfUD[randomRoom], drawPos, Quaternion.identity);
+                    generatedRoom = Instantiate(pfUD[randomRoom], drawPos, Quaternion.identity);
                 }
             } else
             {
@@ -58,26 +58,26 @@ public class MapRoomSelector : MonoBehaviour
                     {
                         randomRoom = Random.Range(0, pfURL.Length);
 
-                        Instantiate(pfURL[randomRoom], drawPos, Quaternion.identity);
+                        generatedRoom = Instantiate(pfURL[randomRoom], drawPos, Quaternion.identity);
                     } else
                     {
                         randomRoom = Random.Range(0, pfUR.Length);
 
-                        Instantiate(pfUR[randomRoom], drawPos, Quaternion.identity);
+                        generatedRoom = Instantiate(pfUR[randomRoom], drawPos, Quaternion.identity);
                     }
                 } else if (left)
                 {
                     randomRoom = Random.Range(0, pfUL.Length);
 
-                    Instantiate(pfUL[randomRoom], drawPos, Quaternion.identity);
+                    generatedRoom = Instantiate(pfUL[randomRoom], drawPos, Quaternion.identity);
                 } else
                 {
                     randomRoom = Random.Range(0, pfU.Length);
 
-                    Instantiate(pfU[randomRoom], drawPos, Quaternion.identity);
+                    generatedRoom = Instantiate(pfU[randomRoom], drawPos, Quaternion.identity);
                 }
             }
-            return;
+            return generatedRoom;
         }
         if (down)
         {
@@ -87,25 +87,25 @@ public class MapRoomSelector : MonoBehaviour
                 {
                     randomRoom = Random.Range(0, pfDRL.Length);
 
-                    Instantiate(pfDRL[randomRoom], drawPos, Quaternion.identity);
+                    generatedRoom = Instantiate(pfDRL[randomRoom], drawPos, Quaternion.identity);
                 } else
                 {
                     randomRoom = Random.Range(0, pfDR.Length);
 
-                    Instantiate(pfDR[randomRoom], drawPos, Quaternion.identity);
+                    generatedRoom = Instantiate(pfDR[randomRoom], drawPos, Quaternion.identity);
                 }
             } else if (left)
             {
                 randomRoom = Random.Range(0, pfDL.Length);
 
-                Instantiate(pfDL[randomRoom], drawPos, Quaternion.identity);
+                generatedRoom = Instantiate(pfDL[randomRoom], drawPos, Quaternion.identity);
             } else
             {
                 randomRoom = Random.Range(0, pfD.Length);
 
-                Instantiate(pfD[randomRoom], drawPos, Quaternion.identity);
+                generatedRoom = Instantiate(pfD[randomRoom], drawPos, Quaternion.identity);
             }
-            return;
+            return generatedRoom;
         }
         if (right)
         {
@@ -113,19 +113,21 @@ public class MapRoomSelector : MonoBehaviour
             {
                 randomRoom = Random.Range(0, pfRL.Length);
 
-                Instantiate(pfRL[randomRoom], drawPos, Quaternion.identity);
+                generatedRoom = Instantiate(pfRL[randomRoom], drawPos, Quaternion.identity);
             } else
             {
                 randomRoom = Random.Range(0, pfR.Length);
 
-                Instantiate(pfR[randomRoom], drawPos, Quaternion.identity);
+                generatedRoom = Instantiate(pfR[randomRoom], drawPos, Quaternion.identity);
             }
         } else
         {
             randomRoom = Random.Range(0, pfL.Length);
 
-            Instantiate(pfL[randomRoom], drawPos, Quaternion.identity);
+            generatedRoom = Instantiate(pfL[randomRoom], drawPos, Quaternion.identity);
         }
+
+        return generatedRoom;
     }
 
 }
