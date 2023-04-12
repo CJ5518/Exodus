@@ -51,7 +51,7 @@ public class DarkEvent : PlagueEvent
        //if(framesLeft <= 0) DarkEndEvent();
     }
 
-    public void EndEvent()
+    public override void EndEvent()
     {
         Debug.Log("OVERRIDE");
         Light2D gLight = globalLight.GetComponent<Light2D>();
