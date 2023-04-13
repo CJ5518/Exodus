@@ -34,5 +34,7 @@ public class StartingRoom : StandardRoom
 
         GameObject player = GameObject.Instantiate(instObject, objPos, Quaternion.identity) as GameObject;
         player.name = instObject.name;
+        GameObject playerCam = player.transform.GetChild(0).gameObject;
+        playerCam.SetActive(false);
     }
 }
