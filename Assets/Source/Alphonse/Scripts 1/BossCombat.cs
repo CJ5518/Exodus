@@ -7,6 +7,12 @@ public class BossCombat : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public float attackRange = .5f;
+    private SFXBoss sfx;
+
+    void Start()
+    {
+        sfx = FindObjectOfType<SFXBoss>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,6 +34,7 @@ public class BossCombat : MonoBehaviour
     void Attack()
     {
         animator.SetTrigger("Attack");
+        sfx.playBossHitting();
 
         Collider2D[] objectsHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
 

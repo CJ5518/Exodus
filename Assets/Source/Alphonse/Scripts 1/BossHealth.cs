@@ -18,6 +18,13 @@ public class BossHealth : MonoBehaviour
 
     public Animator animator;
 
+    private SFXBoss sfx;
+
+    void Start()
+    {
+        sfx = FindObjectOfType<SFXBoss>();
+    }
+
     // If the Boss collides with the Player, The boss will take damage to its health.
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,6 +40,7 @@ public class BossHealth : MonoBehaviour
     {
         healthAmt = healthAmt - damage;
         animator.SetTrigger("Hurt");
+        sfx.playBossHurt();
 
         if (healthAmt <= 0)
         {
@@ -41,7 +49,7 @@ public class BossHealth : MonoBehaviour
             healthBar.fillAmount = healthAmt / 100f;
             
             dead();
-            animator.SetBool("isDead",true);
+            
         }
 
         if (healthAmt > 100)
@@ -59,8 +67,9 @@ public class BossHealth : MonoBehaviour
 
     void dead()
     {
+        animator.SetBool("isDead",true);
+        sfx.playBossDeath();
         
-
         //this.GetComponent<Renderer>().enabled = false;
         this.GetComponent<CapsuleCollider2D>().enabled = false;
         this.GetComponent<BoxCollider2D>().enabled = false;
