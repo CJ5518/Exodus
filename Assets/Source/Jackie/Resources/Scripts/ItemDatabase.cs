@@ -9,12 +9,7 @@ public class ItemDatabase : MonoBehaviour
 
     public static ItemDatabase Instance { get { return _instance; } }
 
-    //Function called when the game has started to intialize the database
-    //private void Awake()
-    //{
-     //   BuildDatabase();
-    //}
-
+    //Singleton Design Pattern
     private void Awake()
     {
         if (_instance != null && _instance != this)
