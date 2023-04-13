@@ -35,6 +35,10 @@ public class RangedEnemy : MonoBehaviour
     private Animator enemyAnim;
 
     private float health = 100;
+    
+    private float lifeTime;         //this is to tell how long the enemy has been dead for
+    private float resetTime;        //this is to tell how long the enemy should be dead for before the despawn
+    private bool isDead;
 
     private ObjectPool objectPool;
 
@@ -47,6 +51,9 @@ public class RangedEnemy : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         objectPool = FindObjectOfType<ObjectPool>();
         sfxEnemies = FindObjectOfType<SFXEnemies>();
+        lifeTime = 0;
+        resetTime = 5;
+        isDead = false;
     }
 
     private void Update()
@@ -55,7 +62,7 @@ public class RangedEnemy : MonoBehaviour
 
         //only attack when the player is in sight of the enemy
         //AnimationControl();
-        if(PlayerInSight())
+        if(PlayerInSight() && !isDead)
         {
             if(cooldownTimer >= attackCooldown)
             {
@@ -65,6 +72,15 @@ public class RangedEnemy : MonoBehaviour
             }
         }
         flipToPlayer();
+
+        if(isDead)
+        {
+            lifeTime += Time.deltaTime;
+            if(lifeTime >= resetTime)
+            {
+                Destroy(gameObject, 1);
+            }
+        }
     }
 
     private void RangedAttack()
@@ -149,7 +165,9 @@ public class RangedEnemy : MonoBehaviour
             {
                 Debug.Log("The ranged enemy is dead...");
                 sfxEnemies.PlayArcherDeath();
-                Destroy(gameObject, 1);
+                isDead = true;
+                enemyAnim.SetBool("isDead", isDead);
+                //Destroy(gameObject, 1);
             }
         }
     }

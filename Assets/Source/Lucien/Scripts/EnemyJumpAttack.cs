@@ -45,10 +45,16 @@ public class EnemyJumpAttack : MonoBehaviour
 
     public JumpAttack jumpAttackScript;
 
+    private float lifeTime;             //this is so the enemy despawns after a while when it is killed...
+    private float resetTime;            //this is so the enemy is only in the scene dead for so long...
     //other aspects of the base enemy
     private Rigidbody2D enemyRigid;
     private Animator enemyAnim;
     private SFXEnemies sfxEnemies;
+
+    private bool hasJumped;             //this will tell us if the bandt has jumped before he has swung his sword
+    private float waitForAttack;        //this will be how we let the light bandit attack again
+    private float waitForAttackAnimation; //this will let us wait for the animation to finish for the script to continue
 
     // Start is called before the first frame update
     private void Start()
@@ -59,6 +65,11 @@ public class EnemyJumpAttack : MonoBehaviour
         lightBanditPool = FindObjectOfType<LightBanditPool>();
         isDead = false;
         sfxEnemies = FindObjectOfType<SFXEnemies>();
+        lifeTime = 0;
+        resetTime = 5;
+        hasJumped = false;
+        waitForAttack = 0;      //wait one second for attack
+        waitForAttackAnimation = 0; //give 2 seconds after the npc has attacked to continue
     }
 
     // Update is called once per frame
@@ -69,6 +80,8 @@ public class EnemyJumpAttack : MonoBehaviour
         touchingGround = Physics2D.OverlapBox(JumpCheck.position, boxSize, 0, groundLayer);
         canSeePalyer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerSee);
         AnimationControl();
+        enemyAnim.SetBool("attack", hasJumped);
+
         if(health > 0)
         {
             if(!canSeePalyer && touchingGround)
@@ -78,10 +91,16 @@ public class EnemyJumpAttack : MonoBehaviour
             else if(canSeePalyer && touchingGround)
             {
                 jumpAttackScript.jumpAttack(jumpHeight, enemyRigid, touchingGround);
+                hasJumped = true;
+                enemyAnim.SetBool("attack", hasJumped);
+                swordAttack();
             }
             else if(!touchingGround && canSeePalyer)
             {
                 jumpAttackScript.jumpAttack(jumpHeight, enemyRigid, touchingGround);
+                hasJumped = true;
+                enemyAnim.SetBool("attack", hasJumped);
+                swordAttack();
             }
         } 
         else
@@ -91,6 +110,15 @@ public class EnemyJumpAttack : MonoBehaviour
                 isDead = true;
                 enemyAnim.SetBool("isDead", isDead);
                 DeathWait();
+                //lightBanditPool.ReleaseMeleeObject(gameObject);
+            }
+        }
+
+        if(isDead)
+        {
+            lifeTime += Time.deltaTime;
+            if(lifeTime >= resetTime)
+            {
                 lightBanditPool.ReleaseMeleeObject(gameObject);
             }
         }
@@ -124,6 +152,21 @@ public class EnemyJumpAttack : MonoBehaviour
         }
     }
     */
+
+    private void swordAttack()
+    {
+        if(waitForAttack > 1)
+        {
+            enemyAnim.SetBool("attack", hasJumped);
+            waitForAttackAnimation += Time.deltaTime;
+        }
+        if(waitForAttack > 1 && waitForAttackAnimation > 2.5)
+        {
+            hasJumped = false;
+            enemyAnim.SetBool("attack", hasJumped);
+        }
+        hasJumped = false;
+    }
 
     private void flipToPlayer()
     {
@@ -170,6 +213,7 @@ public class EnemyJumpAttack : MonoBehaviour
             {
                 Debug.Log("The melee enemy is dead...");
                 sfxEnemies.PlayBanditDeath();
+                enemyAnim.SetBool("isDead", isDead);
                 DeathWait();
             }
         }
@@ -177,10 +221,10 @@ public class EnemyJumpAttack : MonoBehaviour
     
     private IEnumerator DeathWait()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         enemyAnim.SetBool("isDead", isDead);
         lightBanditPool.ReleaseMeleeObject(gameObject);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
     }
 
     private void AnimationControl()
