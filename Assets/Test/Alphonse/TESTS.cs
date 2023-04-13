@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 public class TESTS
 {
-    HealthManager HM = new GameObject().AddComponent<HealthManager>();
+    BossHealth HM = new GameObject().AddComponent<BossHealth>();
 
     [Test]
     public void BoundaryTestScriptSimplePasses()

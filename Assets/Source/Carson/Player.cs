@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	private PlayerState m_playerState;
 	private Collider2D m_collider;
 	private SpriteRenderer m_spriteRenderer;
+	private AudioSource m_audioSource;
 
 	// Basic settings
 	[System.NonSerialized] public float jumpForce = 440.0f;
@@ -55,6 +56,12 @@ public class Player : MonoBehaviour {
 	public SpriteRenderer spriteRenderer {
 		get {
 			return m_spriteRenderer;
+		}
+	}
+
+	public AudioSource audioSource {
+		get {
+			return m_audioSource;
 		}
 	}
 
@@ -112,6 +119,7 @@ public class Player : MonoBehaviour {
 		m_rigidBody = GetComponent<Rigidbody2D>();
 		m_collider = GetComponent<Collider2D>();
 		m_spriteRenderer = GetComponent<SpriteRenderer>();
+		m_audioSource = GetComponent<AudioSource>();
 		// Set the controll iff it hasn't already been set externally
 		if (controller == null)
 			controller = new PlayerKeyboard();
