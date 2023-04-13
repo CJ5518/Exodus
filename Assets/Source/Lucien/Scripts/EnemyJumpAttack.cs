@@ -79,7 +79,7 @@ public class EnemyJumpAttack : MonoBehaviour
             {
                 jumpAttackScript.jumpAttack(jumpHeight, enemyRigid, touchingGround);
             }
-            else if(!touchingGround)
+            else if(!touchingGround && canSeePalyer)
             {
                 jumpAttackScript.jumpAttack(jumpHeight, enemyRigid, touchingGround);
             }

@@ -18,7 +18,7 @@ public class FixEnemyJumpAttack : JumpAttack
             
             if(!touchingGround && !hasRun)
             {
-                if(distanceFromPlayer < 3.8)
+                if(distanceFromPlayer < 5)
                 {
                     //this will give the enemy a slight bump back to reset the enemy
                     enemyRigid.AddForce(new Vector2(-20, 1), ForceMode2D.Impulse);
