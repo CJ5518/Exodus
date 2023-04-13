@@ -10,6 +10,12 @@ namespace cj {
 
 		private bool shouldJump = false;
 
+		static AudioClip jumpSound;
+
+		static PlayerStateGrounded() {
+			jumpSound = Resources.Load<AudioClip>("jumpSound");
+		}
+
 		// Constructor, initialize member variables
 		protected PlayerStateGrounded(Player plr) : base(plr) {
 			becauseJumped = false;
@@ -32,6 +38,7 @@ namespace cj {
 				if (shouldJump) {
 					becauseJumped = true;
 					jumpStartTime = Time.realtimeSinceStartup;
+					player.audioSource.PlayOneShot(jumpSound);
 					player.rigidBody.AddForce(new Vector2(0, player.jumpForce));
 				} else {
 					becauseJumped = false;
