@@ -464,6 +464,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1843656434223252629, guid: ab95c2cd8b1a625448129006b4a3e873, type: 3}
+      propertyPath: CoinPrefab
+      value: 
+      objectReference: {fileID: 5514332620788032287, guid: 25743e8c4f902f649a648e3d826d99be, type: 3}
+    - target: {fileID: 1843656434223252629, guid: ab95c2cd8b1a625448129006b4a3e873, type: 3}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 123317774}
