@@ -18,6 +18,29 @@ public class EventManager : MonoBehaviour
     [SerializeField]
     public static int maxTime;
 
+
+//Singleton class - any function can get this one instance with: EventManager em = EventManager.Instance;
+    private static EventManager instance;
+
+    public static EventManager Instance
+    {
+        get { return instance; }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {     
@@ -86,3 +109,4 @@ public class EventManager : MonoBehaviour
     }
 
 }
+
