@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     public List<Item> characterItems = new List<Item>();
     public ItemDatabase itemDatabase;
     public UIInventory inventoryUI;
+
+    public static float Maxhealth = 50;
+    public static float Curhealth = 40;
     private void Start()
     {
         GiveItem("Health Potion");
@@ -14,16 +18,27 @@ public class Inventory : MonoBehaviour
         GiveItem("Mana Potion");
         GiveItem("Regular Key");
         GiveItem("Health Pendant");
-        RemoveItemStr("Health Potion");
-        Debug.Log("empty slot: " + characterItems[0]);
         inventoryUI.gameObject.SetActive(false);
+        Debug.Log("Current Health " + Curhealth);
+        Debug.Log("Max Health " + Maxhealth);
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I)) //Open Inventory
         {
             inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
+        }
+
+        if (Input.GetKeyDown(KeyCode.H)) //Use a health potion
+        {
+            UsePot("Health Potion");
+        }
+
+        if (Input.GetKeyDown(KeyCode.U)) //Use health pendant
+        {
+            checkHealthPendant("Health Pendant");
         }
     }
     //Add item to inventory based on item name
@@ -66,6 +81,36 @@ public class Inventory : MonoBehaviour
             characterItems.Remove(itemToRemove);
             inventoryUI.RemoveItem(itemToRemove);
             Debug.Log("Item removed: " + itemToRemove.title);
+        }
+    }
+
+    public void UsePot(string itemName)
+    {
+        Item itemToRemove = CheckforItemStr(itemName);
+        if (itemToRemove != null) //Can be removed
+        {
+            characterItems.Remove(itemToRemove); //Remove potion from inventory (list object)
+            Curhealth += 10; //Add to current health
+            inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
+            Debug.Log("Item removed: " + itemToRemove.title);
+            Debug.Log("Current Health " + Curhealth);
+        }
+        else
+        {
+            Debug.Log("No health potion in inventory");
+        }
+    }
+
+    public void checkHealthPendant(string itemName)
+    {
+        Item itemToRemove = CheckforItemStr(itemName);
+        if (itemToRemove != null) //Can be removed
+        {
+            characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
+            Maxhealth += 10; //Add to current health
+            inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
+            Debug.Log("Item removed: " + itemToRemove.title);
+            Debug.Log("Max Health " + Maxhealth);
         }
     }
 }
