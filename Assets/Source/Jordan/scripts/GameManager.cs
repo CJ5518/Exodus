@@ -29,5 +29,15 @@ public class GameManager : MonoBehaviour
         goPauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
+
+    public void LoseGame()
+    {
+
+    }
+
+    public void WinGame()
+    {
+
+    }
 }
     
