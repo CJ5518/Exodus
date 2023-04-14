@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using cj;
 
 public class Player : MonoBehaviour {
@@ -11,6 +12,20 @@ public class Player : MonoBehaviour {
 	private Collider2D m_collider;
 	private SpriteRenderer m_spriteRenderer;
 	private AudioSource m_audioSource;
+	private int m_health;
+
+	// Events we invoke
+	// Player took damage
+	// NOT called when the player dies
+	UnityEvent onDamageTaken;
+
+	// Invoked when the dealDamage function is called with a negative value
+	UnityEvent onDamageRemoved;
+
+	// Player died (health reached 0)
+	UnityEvent onDeath;
+
+	
 
 	// Basic settings
 	[System.NonSerialized] public float jumpForce = 440.0f;
@@ -26,6 +41,31 @@ public class Player : MonoBehaviour {
 	// The max horizontal and vertical velocity
 	private float maxHorizontalSpeed = 10.0f;
 	private float maxVerticalSpeed = 20.0f;
+
+	// Functions other people call
+	// Negative damage is considered healing, and is totally allowed
+	public void dealDamage(int damage) {
+		m_health -= damage;
+		if (m_health <= 0) {
+			onDeath.Invoke();
+		} else { // Only invoke the damage taken one if we don't die!
+			if (damage > 0) 
+				onDamageTaken.Invoke();
+			else
+				onDamageRemoved.Invoke();
+		}
+	}
+
+	// Reset health to full
+	public void resetHealth() {
+		m_health = 100;
+	}
+
+	public int health {
+		get {
+			return m_health;
+		}
+	}
 
 	public PlayerController controller {
 		get {
@@ -120,6 +160,12 @@ public class Player : MonoBehaviour {
 		m_collider = GetComponent<Collider2D>();
 		m_spriteRenderer = GetComponent<SpriteRenderer>();
 		m_audioSource = GetComponent<AudioSource>();
+		m_health = 100;
+
+		onDamageRemoved = new UnityEvent();
+		onDamageTaken = new UnityEvent();
+		onDeath = new UnityEvent();
+
 		// Set the controll iff it hasn't already been set externally
 		if (controller == null)
 			controller = new PlayerKeyboard();

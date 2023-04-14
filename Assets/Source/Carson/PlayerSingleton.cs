@@ -6,7 +6,14 @@ using UnityEngine;
 public static class PlayerSingleton {
 	static Player m_Player;
 
-	//Public getter
+	// Create the player if they don't already exist
+	public static void tryCreatePlayer() {
+		if (Player == null) {
+			GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
+		}
+	}
+
+	// Public getter
 	public static Player Player {
 		get {
 			if (m_Player != null) {
