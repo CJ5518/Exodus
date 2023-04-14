@@ -16,8 +16,6 @@ public class Inventory : MonoBehaviour
     public GameObject CoinPrefab;
     private void Start()
     {
-        if (playerObj == null)
-             playerObj = GameObject.Find("Player");
         GiveItem("Health Potion");
         GiveItem("Gold Coin");
         GiveItem("Mana Potion");
@@ -32,6 +30,8 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
+        if (playerObj == null)
+             playerObj = GameObject.Find("Player");
         if (Input.GetKeyDown(KeyCode.I)) //Open Inventory
         {
             inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
@@ -133,7 +133,6 @@ public class Inventory : MonoBehaviour
         if (itemToRemove != null) //Can be removed
         {
             characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
-            Maxhealth += 10; //Add to current health
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Vector3 SpawnPosition = new Vector3(playerObj.transform.position.x + 3, playerObj.transform.position.y + 3, playerObj.transform.position.z + 3);
             Instantiate(CoinPrefab, SpawnPosition, Quaternion.identity);
