@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Humanoid : MonoBehaviour
+public class Humanoid : BackgroundActor 
 {
     // Start is called before the first frame update
     void Start()
