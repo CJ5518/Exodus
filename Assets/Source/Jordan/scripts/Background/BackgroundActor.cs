@@ -5,14 +5,47 @@ using UnityEngine;
 public class BackgroundActor : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    protected Animator aAnimator;
+    
+
+    protected bool bIsMoving;
+    protected float fChanceChangeState;
+    protected float fChanceChangeDir;
+    protected float fSpeed;
+
+    protected void SetupActor()
     {
-        
+        aAnimator = this.GetComponent<Animator>();
+        bIsMoving = false;
+        fSpeed = 0.01f;
+
+    }
+    public virtual void MakeDecisions()
+    {
+        if (Random.Range(0f, 10f) > 5)
+            bIsMoving = false;
+        else
+            bIsMoving = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Move()
     {
-        
+        if (bIsMoving)
+            this.transform.position = transform.position + new Vector3(fSpeed * (transform.localScale.x/Mathf.Abs(transform.localScale.x)), 0, 0);
+    }
+
+    protected virtual void ChangeDirection()
+    {
+        if (transform.position.x > 10 || transform.position.x < -10)
+        {
+            transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+            return;
+        }
+
+        if (Random.Range(0f, 10f) < fChanceChangeDir)
+        {
+            transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+        }
+
     }
 }
