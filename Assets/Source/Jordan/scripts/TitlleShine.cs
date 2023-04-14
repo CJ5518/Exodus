@@ -14,7 +14,7 @@ public class TitlleShine : MonoBehaviour
     void Update()
     {
         if (transform.localPosition.x < 1500)
-            transform.localPosition = new Vector3(transform.localPosition.x + 1, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = new Vector3(transform.localPosition.x + 4, transform.localPosition.y, transform.localPosition.z);
         else
             transform.localPosition = new Vector3(-275, transform.localPosition.y, transform.localPosition.z);
 
