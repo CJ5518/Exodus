@@ -437,10 +437,6 @@ PrefabInstance:
       propertyPath: goBackMenu
       value: 
       objectReference: {fileID: 1875988396}
-    - target: {fileID: 1684840035716004490, guid: 89e7626e5da775940bc6425008adc815, type: 3}
-      propertyPath: goSettingsMenu
-      value: 
-      objectReference: {fileID: 930538017}
     - target: {fileID: 2936546840937723042, guid: 89e7626e5da775940bc6425008adc815, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -529,23 +525,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings
       objectReference: {fileID: 0}
-    - target: {fileID: 2936546840976708833, guid: 89e7626e5da775940bc6425008adc815, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleSettings
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89e7626e5da775940bc6425008adc815, type: 3}
---- !u!1 &930538017 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2936546840937723054, guid: 89e7626e5da775940bc6425008adc815, type: 3}
-  m_PrefabInstance: {fileID: 930538016}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &930538018 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1684840035716004490, guid: 89e7626e5da775940bc6425008adc815, type: 3}
   m_PrefabInstance: {fileID: 930538016}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930538017}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c25bcde5815432241aacdfe5def3cd14, type: 3}
