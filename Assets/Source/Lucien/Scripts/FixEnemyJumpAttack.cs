@@ -18,10 +18,10 @@ public class FixEnemyJumpAttack : JumpAttack
             
             if(!touchingGround && !hasRun)
             {
-                if(distanceFromPlayer < 5)
+                if(distanceFromPlayer < 4.5)
                 {
                     //this will give the enemy a slight bump back to reset the enemy
-                    enemyRigid.AddForce(new Vector2(-20, 1), ForceMode2D.Impulse);
+                    enemyRigid.AddForce(new Vector2(-distanceFromPlayer * 4, 1), ForceMode2D.Impulse);
                     hasRun = true;
                 }
             }

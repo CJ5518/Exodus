@@ -1,3 +1,16 @@
 {
-	"name": "LucienAssRef"
+    "name": "LucienAssRef",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4cc3753d844d0a940882fe1ef0dc4bd4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

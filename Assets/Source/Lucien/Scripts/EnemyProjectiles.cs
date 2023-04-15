@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cj;
 
 //this script has the logic for how the enemy will shoot their ranged projectiles
 
@@ -13,9 +14,10 @@ public class EnemyProjectiles : EnemyDamage
 
     private float lifetime;
 
-
     private BoxCollider2D colliders;
     //private RangedEnemy rangedEnemy;
+
+    //private GameObject player;
 
     private bool hit;
     private bool direction;
@@ -24,6 +26,7 @@ public class EnemyProjectiles : EnemyDamage
     {
         colliders = GetComponent<BoxCollider2D>();
         //rangedEnemy = GameObject.Find("Archer").FindObjectOfType<RangedEnemy>();
+        //player = GameObject.Find("Player");
     }
 
     public void ActivateProjectile( bool direction)
@@ -31,7 +34,7 @@ public class EnemyProjectiles : EnemyDamage
         hit = false;
         lifetime = 0;
         colliders.enabled = true;
-        if(!direction)
+        if(!direction) 
         {
             transform.Rotate(0, 0, 90);
         }
@@ -72,6 +75,9 @@ public class EnemyProjectiles : EnemyDamage
         if(coll.tag == "Player")
         {
             gameObject.SetActive(false);
+
+            //Player player1 = player.GetComponent<Player>();
+            PlayerSingleton.Player.dealDamage(10);
         }else
         {
             coll.transform.Translate(0,0,0);
