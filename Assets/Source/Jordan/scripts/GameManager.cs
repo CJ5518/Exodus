@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public sealed class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private Player pPlayer;
@@ -18,8 +18,29 @@ public class GameManager : MonoBehaviour
     private bool bLost;
     private bool bWon;
     private float fWinTick;
+
+    private static GameManager instance = null;
+    private static readonly object padlock = new object();
+
+
+    public static GameManager Instance
+    {
+        get
+        {
+            lock (padlock)
+            {
+                if (instance == null)
+                {
+                    instance = new GameManager();
+                }
+                return instance;
+            }
+        }
+    }
+
     void Start()
     {
+
         goPauseMenu.SetActive(false);
         pPlayer = GameObject.FindAnyObjectByType<Player>();
         goHealthBar = GameObject.FindAnyObjectByType<HealthBar>();
