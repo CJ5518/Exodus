@@ -150,8 +150,8 @@ public class LevelGeneration : MonoBehaviour
             }
         }
 
-        rooms[leftMost + gridSizeX, upMost + gridSizeY] = new StartingRoom(new Vector2(leftMost, upMost));
-        rooms[rightMost + gridSizeX, downMost + gridSizeY] = new EndingRoom(new Vector2(rightMost, downMost));
+        rooms[leftMost + gridSizeX, upMost + gridSizeY] = StartingRoom.Instance(new Vector2(leftMost, upMost));
+        rooms[rightMost + gridSizeX, downMost + gridSizeY] = EndingRoom.Instance(new Vector2(rightMost, downMost));
     }
 
     Vector2 NewPos()

@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class StartingRoom : StandardRoom
 {
+    private static StartingRoom instance = null;
+
     private GameObject roomInstance;
     private GameObject instObject;
 
-    public StartingRoom(Vector2 _gridPos) : base(_gridPos)
+    protected StartingRoom(Vector2 _gridPos) : base(_gridPos)
     {
         gridPos = _gridPos;
+    }
+
+    public static StartingRoom Instance(Vector2 _gridPos) {
+        if (instance == null) {
+            instance = new StartingRoom(_gridPos);
+        }
+        instance.gridPos = _gridPos;
+
+        return instance;
     }
 
     public override void SetRoom(GameObject _roomInstance, GameObject goalObject, GameObject startObject)
