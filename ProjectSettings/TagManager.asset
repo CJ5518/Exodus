@@ -16,6 +16,7 @@ TagManager:
   - NavMeshTarget
   - SpawnLocation
   - TargetLocation
+  - Inventory
   layers:
   - Default
   - TransparentFX

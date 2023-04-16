@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     private GameObject playerObj = null;
 
     public GameObject CoinPrefab;
+    
     private void Start()
     {
         GiveItem("Health Potion");
