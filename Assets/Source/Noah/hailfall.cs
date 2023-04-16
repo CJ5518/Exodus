@@ -30,7 +30,7 @@ public class hailfall : MonoBehaviour
      
         move = Time.deltaTime * rand; 
         
-        Destroy(gameObject, 8f);  
+        Destroy(gameObject, 20f);  // make sure the hail doesn't last forever 
     }
 
     // Update is called once per frame
