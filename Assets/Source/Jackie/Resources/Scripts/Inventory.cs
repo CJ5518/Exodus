@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
         inventoryUI.gameObject.SetActive(false);
         Debug.Log("Current Health " + Curhealth);
         Debug.Log("Max Health " + Maxhealth);
-
+        DontDestroyOnLoad(inventoryUI.gameObject);
     }
 
     private void Update()
