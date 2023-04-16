@@ -10,16 +10,15 @@ public class TitleGameManager : MonoBehaviour
     public GameObject Bird;
     public GameObject Camel;
     public GameObject Frog;
-    public GameObject Humanoid;
     private List<BackgroundActor> baBackgroundActors;
     void Start()
     {
         iTick = 0;
         baBackgroundActors = new List<BackgroundActor>();
+
         for (int i = 0; i < Random.Range(2, 3); i++)
         {
             baBackgroundActors.Add(Instantiate(Camel, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Camel>());
-            print("test");
         }
         for (int i = 0; i < Random.Range(4, 6); i++)
         {
@@ -28,10 +27,6 @@ public class TitleGameManager : MonoBehaviour
         for (int i = 0; i < Random.Range(4, 6); i++)
         {
             baBackgroundActors.Add(Instantiate(Bird, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Bird>());
-        }
-        for (int i = 0; i < Random.Range(6, 10); i++)
-        {
-            baBackgroundActors.Add(Instantiate(Humanoid, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Humanoid>());
         }
     }
 

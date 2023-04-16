@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Source/Jordan/scenes/Main Menu.unity
     guid: 2b1da83597b10b6418da88a5e535bf3e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Source/Common/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Source/Alphonse/scenes/BossScene.unity
     guid: 33a0a2e888dd2224cad8e98ca6316d1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Source/Lucien/Scenes/testLevel.unity
     guid: a6f60b94303d7b14ab778ac90b1d12f4
   - enabled: 0
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Source/Alphonse/scenes/BossScene_V2.unity
     guid: 7c0f4d4bf6758e8428d0e0161ac0a400
+  - enabled: 1
+    path: Assets/Source/Jordan/scenes/GameComplete.unity
+    guid: d456192bc72f5c149aed58bfb7ee84c9
   m_configObjects: {}
