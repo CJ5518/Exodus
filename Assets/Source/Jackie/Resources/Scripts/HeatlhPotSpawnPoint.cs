@@ -9,23 +9,25 @@ public class HeatlhPotSpawnPoint : MonoBehaviour
     [SerializeField]
     private Transform spawnPointTransform;
 
+    private Transform playerTransform;
     private bool hasSpawned;
     // Start is called before the first frame update
     void Start()
     {
         potionPool = FindObjectOfType<PotionPool>();
+        playerTransform = GameObject.Find("Player").transform; 
         hasSpawned = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hasSpawned == false)
+        float distance = Vector3.Distance(spawnPointTransform.position, playerTransform.position);
+        if(hasSpawned == false & distance < 60)
         {
             GameObject obj1 = potionPool.GetObject(); 
             obj1.transform.position = new Vector3(spawnPointTransform.position.x, spawnPointTransform.position.y, spawnPointTransform.position.z);
             obj1.transform.rotation = Quaternion.identity;
-            //Instantiate(obj1, obj1.transform.position, Quaternion.identity);
             hasSpawned = true;
         }
           
