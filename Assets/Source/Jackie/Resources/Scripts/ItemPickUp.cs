@@ -8,6 +8,8 @@ public class ItemPickUp : MonoBehaviour
     Inventory inventory;
     public PotionPool potionPool;
 
+
+
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();

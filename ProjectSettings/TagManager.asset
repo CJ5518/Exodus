@@ -17,6 +17,7 @@ TagManager:
   - SpawnLocation
   - TargetLocation
   - Inventory
+  - Pickup
   layers:
   - Default
   - TransparentFX

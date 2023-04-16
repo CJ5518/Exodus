@@ -14,6 +14,10 @@ public class Inventory : MonoBehaviour
     private GameObject playerObj = null;
 
     public GameObject HealthPotPrefab;
+
+    
+    public AudioSource Drink;
+
     
     private void Start()
     {
@@ -26,7 +30,7 @@ public class Inventory : MonoBehaviour
         inventoryUI.gameObject.SetActive(false);
         Debug.Log("Current Health " + Curhealth);
         Debug.Log("Max Health " + Maxhealth);
-        DontDestroyOnLoad(inventoryUI.gameObject);
+        //DontDestroyOnLoad(inventoryUI.gameObject);
     }
 
     private void Update()
@@ -104,6 +108,7 @@ public class Inventory : MonoBehaviour
         if (itemToRemove != null) //Can be removed
         {
             characterItems.Remove(itemToRemove); //Remove potion from inventory (list object)
+            Drink.Play();
             Curhealth += 10; //Add to current health
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Debug.Log("Item removed: " + itemToRemove.title);
