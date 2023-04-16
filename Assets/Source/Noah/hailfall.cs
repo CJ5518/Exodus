@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using cj;
 
 public class hailfall : MonoBehaviour
 {
@@ -41,14 +42,16 @@ public class hailfall : MonoBehaviour
         //else transform.Translate(move * fallleft, Space.World);
     }
     void OnCollisionEnter2D(Collision2D coll){
+        if(coll.gameObject.tag == "Player"){
+            //damage the player less if its grounded
+            if(isGrounded == true) PlayerSingleton.Player.dealDamage(1);
+            else PlayerSingleton.Player.dealDamage(5);
+            Destroy(gameObject, 0f);
+        }
         if(coll.gameObject.tag != "HailStone"){
           isGrounded = true;
           rigidBody2D.freezeRotation = true;
           Destroy(gameObject, 1f);
-        }
-        if(coll.gameObject.tag == "Player"){
-            //damage the player
-            Destroy(gameObject, 0f);
         }
     }
 }
