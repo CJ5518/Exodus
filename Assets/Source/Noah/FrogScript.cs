@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-//using UnityEditor; // so that I can find correct sprite path // wont work in built game
 using cj;
 
 public class FrogScript : MonoBehaviour
@@ -15,14 +14,14 @@ public class FrogScript : MonoBehaviour
 
     private float prevYVel;
     private Rigidbody2D rb;
-    //private Sprite airSprite, groundSprite;
+    private Sprite airSprite, groundSprite;
    
     // Start is called before the first frame update
     void Start()
     {
-        //airSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Noah/prefabs/f_air_good");
-        //groundSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Noah/prefabs/f_ground_good");
-        //Debug.Log("airSPite:  "+airSprite);Debug.Log("groundSprite:  "+groundSprite);
+        airSprite = Resources.Load<Sprite>("prefabs\\Noah\\sprites\\f_air_good");
+        groundSprite = Resources.Load<Sprite>("prefabs\\Noah\\sprites\\f_ground_good");
+        Debug.Log("airSPite:  "+airSprite);Debug.Log("groundSprite:  "+groundSprite);
         rb = GetComponent<Rigidbody2D>();
         prevYVel = 1f;
         player = GameObject.FindWithTag("Player");
@@ -50,7 +49,7 @@ public class FrogScript : MonoBehaviour
          //Debug.Log("speedX: "+speedX);
          jumpTimer += Time.deltaTime;
          if (jumpTimer >= (float)nextJump){
-             //GetComponent<SpriteRenderer>().sprite = airSprite;
+             GetComponent<SpriteRenderer>().sprite = airSprite;
              //Debug.Log("direction: "+direction);
              rb.velocity = new Vector2(direction, 8);
              jumpTimer = 0;
@@ -60,7 +59,7 @@ public class FrogScript : MonoBehaviour
          // I also use this logic to change the sprite to make it look like its jumping when its in air
          if(prevYVel == 0 && rb.velocity.y == 0)
          {
-             //GetComponent<SpriteRenderer>().sprite = groundSprite;
+             GetComponent<SpriteRenderer>().sprite = groundSprite;
              rb.velocity = Vector2.zero;
          }
          prevYVel = rb.velocity.y;
@@ -76,4 +75,5 @@ public class FrogScript : MonoBehaviour
     }
 
 }
+
 
