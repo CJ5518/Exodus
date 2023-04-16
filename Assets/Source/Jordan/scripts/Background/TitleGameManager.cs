@@ -11,22 +11,16 @@ public class TitleGameManager : MonoBehaviour
     public GameObject Camel;
     public GameObject Frog;
     private List<BackgroundActor> baBackgroundActors;
+    private BackgroundActorsPool bpUnusedActors;
     void Start()
     {
         iTick = 0;
         baBackgroundActors = new List<BackgroundActor>();
+        bpUnusedActors = new BackgroundActorsPool(20);
 
-        for (int i = 0; i < Random.Range(2, 3); i++)
+        for (int i = 0; i < 19; i++)
         {
-            baBackgroundActors.Add(Instantiate(Camel, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Camel>());
-        }
-        for (int i = 0; i < Random.Range(4, 6); i++)
-        {
-            baBackgroundActors.Add(Instantiate(Frog, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Frog>());
-        }
-        for (int i = 0; i < Random.Range(4, 6); i++)
-        {
-            baBackgroundActors.Add(Instantiate(Bird, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Bird>());
+            baBackgroundActors.Add(bpUnusedActors.GetActor());
         }
     }
 
@@ -35,10 +29,13 @@ public class TitleGameManager : MonoBehaviour
     {
         foreach (BackgroundActor aActor in baBackgroundActors)
         {
-            if (iTick % 50 == 0)
-                aActor.MakeDecisions();
-            aActor.Move();
-            iTick++;
+            if (aActor)
+            {
+                if (iTick % 50 == 0)
+                    aActor.MakeDecisions();
+                aActor.Move();
+                iTick++;
+            }
         }
     }
 }
