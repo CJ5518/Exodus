@@ -18,7 +18,7 @@ public class FrogEvent : PlagueEvent
     void Start()
     {
       frog = Resources.Load<GameObject>("prefabs/Noah/Frog");
-      spawnTimer = 2;
+      spawnTimer = 1;
       count = 0;
       cam = GameObject.FindWithTag("MainCamera");
     }
@@ -36,10 +36,10 @@ public class FrogEvent : PlagueEvent
        spawnTimer += Time.deltaTime;
 
        if(spawnTimer >= 5 && count < spawncount){
-           GameObject obj1 = Instantiate(frog, new Vector2(cam.transform.position.x - 8, 0),Quaternion.identity, transform);
-           GameObject obj2 = Instantiate(frog, new Vector2(cam.transform.position.x + 8, 0),Quaternion.identity, transform);
-           obj1.transform.SetParent(transform.parent);
-           obj2.transform.SetParent(transform.parent);
+           GameObject obj1 = Instantiate(frog, new Vector2(cam.transform.position.x - 8, cam.transform.position.y),Quaternion.identity, transform);
+           GameObject obj2 = Instantiate(frog, new Vector2(cam.transform.position.x + 8, cam.transform.position.y),Quaternion.identity, transform);
+           obj1.transform.SetParent(transform.parent); // this is so if the event ends while frogs are still alive, the
+           obj2.transform.SetParent(transform.parent); // frogs will not be destroyed, because there new parent still exists
            count++;
            spawnTimer = 0;
        }
