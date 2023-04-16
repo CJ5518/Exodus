@@ -19,6 +19,8 @@ public sealed class GameManager : MonoBehaviour
     private bool bWon;
     private float fWinTick;
 
+    private float fTick;
+
     private static GameManager instance = null;
     private static readonly object padlock = new object();
 
@@ -52,6 +54,7 @@ public sealed class GameManager : MonoBehaviour
         bLost = false;
         bWon = false;
         fWinTick = 0;
+        fTick = 0;
     }
 
     // Update is called once per frame
@@ -65,7 +68,7 @@ public sealed class GameManager : MonoBehaviour
 
         goHealthBar.SetHealth(pPlayer.health);
 
-        if (pPlayer.health <= 0 && !bLost)
+        if (pPlayer.health <= 0 && !bLost && fTick > 100)
             LoseGame();
 
         if (bhBossHealth)
@@ -84,6 +87,7 @@ public sealed class GameManager : MonoBehaviour
             }
             fWinTick++;
         }
+        fTick++;
 
     }
 
