@@ -1,4 +1,17 @@
 {
-	"name": "VictorAsmblRef",
-	"references": [ "AstarPathfindingProject" ]
+    "name": "VictorAsmblRef",
+    "rootNamespace": "",
+    "references": [
+        "AstarPathfindingProject",
+        "CJMain"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

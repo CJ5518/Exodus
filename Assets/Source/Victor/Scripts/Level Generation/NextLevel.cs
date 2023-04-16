@@ -7,7 +7,6 @@ public class NextLevel : MonoBehaviour
 {
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        Debug.Log("NEXT SCENE COLLISION");
         if (collider.CompareTag("Player")) {
             NextScene();
         }
