@@ -2,7 +2,8 @@
     "name": "NoahAsmblRef",
     "rootNamespace": "",
     "references": [
-        "GUID:15fc0a57446b3144c949da3e2b9737a9"
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:4cc3753d844d0a940882fe1ef0dc4bd4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
