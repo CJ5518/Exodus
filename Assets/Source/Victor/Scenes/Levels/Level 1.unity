@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7879249804346538510, guid: 05b7fa1d7ccd4fe48ada1d9ccb856eda, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7879249804346538510, guid: 05b7fa1d7ccd4fe48ada1d9ccb856eda, type: 3}
       propertyPath: m_AnchorMax.x
@@ -256,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7879249804346538510, guid: 61ee806ea6c6f94448a3143f4d2953e9, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7879249804346538510, guid: 61ee806ea6c6f94448a3143f4d2953e9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -364,7 +364,7 @@ MonoBehaviour:
   goPauseMenu: {fileID: 1989870782}
   goBlur: {fileID: 759715865}
   goDeathMenu: {fileID: 1953152355}
-  goBoss: {fileID: 1622314934}
+  goBoss: {fileID: 0}
 --- !u!4 &1295368004
 Transform:
   m_ObjectHideFlags: 0
@@ -711,10 +711,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1879973607}
   - {fileID: 1979881676}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1524816425
 AudioSource:
@@ -812,11 +811,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1622314934 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7879249804346538498, guid: 05b7fa1d7ccd4fe48ada1d9ccb856eda, type: 3}
-  m_PrefabInstance: {fileID: 343090308}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1717436781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1067,6 +1061,10 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867465174}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 74247b43a29f02a468ab362b25275eb8, type: 3}
@@ -1169,7 +1167,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979881676}
-  - component: {fileID: 1979881677}
   m_Layer: 0
   m_Name: Zelda TP Drink Audio
   m_TagString: Untagged
@@ -1190,9 +1187,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524816424}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1979881677
+--- !u!82 &1979881677 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4382944589494517645, guid: cb48f01ed6164744e81c41e7b57021e9, type: 3}
   m_PrefabInstance: {fileID: 4382944588588443456}

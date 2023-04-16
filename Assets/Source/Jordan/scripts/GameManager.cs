@@ -12,7 +12,7 @@ public sealed class GameManager : MonoBehaviour
     private HealthBar goHealthBar;
     public Canvas goDeathMenu;
     private CanvasGroup cgDeathMenu;
-    public GameObject goBoss;
+    private GameObject goBoss;
     private BossHealth bhBossHealth;
 
     private bool bLost;
@@ -45,7 +45,7 @@ public sealed class GameManager : MonoBehaviour
         pPlayer = GameObject.FindAnyObjectByType<Player>();
         goHealthBar = GameObject.FindAnyObjectByType<HealthBar>();
         cgDeathMenu = goDeathMenu.GetComponent<CanvasGroup>();
-        bhBossHealth = goBoss.GetComponent<BossHealth>();
+        bhBossHealth = GameObject.FindObjectOfType<BossHealth>();
 
         cgDeathMenu.alpha = 0;
         bLost = false;
@@ -67,7 +67,7 @@ public sealed class GameManager : MonoBehaviour
         if (pPlayer.health <= 0 && !bLost)
             LoseGame();
 
-        if (goBoss)
+        if (bhBossHealth)
             if (bhBossHealth.healthAmt <= 0 && !bWon)
                 WinGame();
 
