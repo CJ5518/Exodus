@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 2936546840937723041}
   - component: {fileID: 2936546840937723040}
   - component: {fileID: 2936546840937723055}
-  - component: {fileID: 1684840035716004490}
+  - component: {fileID: 4835132912786954721}
   m_Layer: 5
   m_Name: Help
   m_TagString: Untagged
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1684840035716004490
+--- !u!114 &4835132912786954721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -607,12 +607,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2936546840937723054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25bcde5815432241aacdfe5def3cd14, type: 3}
+  m_Script: {fileID: 11500000, guid: bf8fa53c238468440828cc56f9196dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goBackMenu: {fileID: 0}
-  goSettingsMenu: {fileID: 2936546840937723054}
-  goFullScreenButton: {fileID: 0}
+  goHelpMenu: {fileID: 2936546840937723054}
 --- !u!1 &2936546840947858067
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,9 +871,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1684840035716004490}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: ToggleSettings
+      - m_Target: {fileID: 4835132912786954721}
+        m_TargetAssemblyTypeName: HelpManager, Assembly-CSharp
+        m_MethodName: ToggleHelp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

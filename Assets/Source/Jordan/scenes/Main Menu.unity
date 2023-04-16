@@ -371,7 +371,7 @@ PrefabInstance:
     - target: {fileID: 2936546840976708833, guid: 0aab84fef6d26a64c8efe530ecf1cafe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1151972558}
+      objectReference: {fileID: 1151972559}
     - target: {fileID: 2936546840976708833, guid: 0aab84fef6d26a64c8efe530ecf1cafe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleHelp
@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: HelpManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4835132912786954721, guid: 0aab84fef6d26a64c8efe530ecf1cafe, type: 3}
+      propertyPath: goBackMenu
+      value: 
+      objectReference: {fileID: 1875988396}
     m_RemovedComponents:
     - {fileID: 1684840035716004490, guid: 0aab84fef6d26a64c8efe530ecf1cafe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0aab84fef6d26a64c8efe530ecf1cafe, type: 3}
@@ -675,25 +679,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25bcde5815432241aacdfe5def3cd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1151972553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2936546840937723054, guid: 0aab84fef6d26a64c8efe530ecf1cafe, type: 3}
+--- !u!114 &1151972559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4835132912786954721, guid: 0aab84fef6d26a64c8efe530ecf1cafe, type: 3}
   m_PrefabInstance: {fileID: 291445203}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1151972558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151972553}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf8fa53c238468440828cc56f9196dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goBackMenu: {fileID: 1875988396}
-  goHelpMenu: {fileID: 1151972553}
 --- !u!1 &1288880253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7879249804376742466, guid: aee29d3c70686a54fb6a63e5d915219a, type: 3}
@@ -729,7 +725,7 @@ PrefabInstance:
     - target: {fileID: 3256928488359077766, guid: aee29d3c70686a54fb6a63e5d915219a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1151972558}
+      objectReference: {fileID: 1151972559}
     - target: {fileID: 3256928488359077766, guid: aee29d3c70686a54fb6a63e5d915219a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
