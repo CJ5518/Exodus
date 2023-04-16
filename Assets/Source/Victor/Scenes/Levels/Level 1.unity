@@ -364,6 +364,7 @@ MonoBehaviour:
   goPauseMenu: {fileID: 1989870782}
   goBlur: {fileID: 759715865}
   goDeathMenu: {fileID: 1953152355}
+  goBoss: {fileID: 1622314934}
 --- !u!4 &1295368004
 Transform:
   m_ObjectHideFlags: 0
@@ -811,6 +812,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1622314934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7879249804346538498, guid: 05b7fa1d7ccd4fe48ada1d9ccb856eda, type: 3}
+  m_PrefabInstance: {fileID: 343090308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1717436781
 PrefabInstance:
   m_ObjectHideFlags: 0
