@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5514332620788032257}
   - component: {fileID: 3441908853203349134}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Health Potion
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 079095f45d184864cac435f1dc6c3086, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2e882058c776c244adf87fa24d5282f, type: 3}
   m_Color: {r: 0.9528302, g: 0.92136884, b: 0.92136884, a: 1}
   m_FlipX: 0
   m_FlipY: 0

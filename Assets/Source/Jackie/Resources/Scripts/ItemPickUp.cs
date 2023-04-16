@@ -17,8 +17,7 @@ public class ItemPickUp : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            //Destroy(gameObject);\
-            inventory.GiveItem("Gold Coin");
+            inventory.GiveItem("Health Potion");
             potionPool.ReleaseObject(gameObject);
         }
     }

@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public static float Curhealth = 40;
     private GameObject playerObj = null;
 
-    public GameObject CoinPrefab;
+    public GameObject HealthPotPrefab;
     
     private void Start()
     {
@@ -31,6 +31,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
+        //go.GetComponent<UIInventory>().uIItems; 
         if (playerObj == null)
              playerObj = GameObject.Find("Player");
         if (Input.GetKeyDown(KeyCode.I)) //Open Inventory
@@ -48,9 +49,9 @@ public class Inventory : MonoBehaviour
             checkHealthPendant("Health Pendant");
         }
 
-        if (Input.GetKeyDown(KeyCode.J)) //Drop Item
+        if (Input.GetKeyDown(KeyCode.Q)) //Drop Item
         {
-            Dropitem("Gold Coin");
+            Dropitem("Health Potion");
         }
     }
     //Add item to inventory based on item name
@@ -136,7 +137,8 @@ public class Inventory : MonoBehaviour
             characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Vector3 SpawnPosition = new Vector3(playerObj.transform.position.x + 3, playerObj.transform.position.y + 3, playerObj.transform.position.z + 3);
-            Instantiate(CoinPrefab, SpawnPosition, Quaternion.identity);
+            Instantiate(HealthPotPrefab, SpawnPosition, Quaternion.identity);
         }
     }
+
 }
