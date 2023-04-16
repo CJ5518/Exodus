@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 //using UnityEditor; // so that I can find correct sprite path // wont work in built game
+using cj;
 
 public class FrogScript : MonoBehaviour
 {
@@ -68,6 +69,8 @@ public class FrogScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll){
         if(coll.gameObject.tag == "Player"){
             //damage the player
+            PlayerSingleton.Player.dealDamage(10);
+
             Destroy(gameObject, 0f);
         }
     }

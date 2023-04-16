@@ -10,7 +10,7 @@ public sealed class GameManager : MonoBehaviour
     public GameObject goPauseMenu;
     public BackgroundBlur goBlur;
     private HealthBar goHealthBar;
-    public Canvas goDeathMenu;
+    public GameObject goDeathMenu;
     private CanvasGroup cgDeathMenu;
     private GameObject goBoss;
     private BossHealth bhBossHealth;
@@ -48,6 +48,7 @@ public sealed class GameManager : MonoBehaviour
         bhBossHealth = GameObject.FindObjectOfType<BossHealth>();
 
         cgDeathMenu.alpha = 0;
+        goDeathMenu.SetActive(false);
         bLost = false;
         bWon = false;
         fWinTick = 0;
@@ -94,6 +95,7 @@ public sealed class GameManager : MonoBehaviour
 
     public void LoseGame()
     {
+        goDeathMenu.SetActive(true);
         goBlur.bBlur = true;
         bLost = true;
     }
