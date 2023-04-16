@@ -13,9 +13,7 @@ public class EventManager : MonoBehaviour
     private GameObject darkevent;
 
     private GameObject globalLight;
-    [SerializeField]
     public static float timeElapsed;
-    [SerializeField]
     public static int maxTime;
 
 
@@ -33,6 +31,9 @@ public class EventManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            globalLight = Resources.Load<GameObject>("prefabs/Noah/GlobalLight2D");
+            globalLight = Instantiate(globalLight);
+            DontDestroyOnLoad(globalLight);
         }
         else
         {
@@ -46,16 +47,13 @@ public class EventManager : MonoBehaviour
     {     
         currentEvent = null;
         timeElapsed = 0f;
-
-        globalLight = Resources.Load<GameObject>("prefabs/Noah/GlobalLight2D");
-        globalLight = Instantiate(globalLight);
-
+        maxTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {                                             
-        Debug.Log(timeElapsed+"/"+maxTime);
+        //Debug.Log(timeElapsed+"/"+maxTime);
         timeElapsed += Time.deltaTime;
         if(isEvent == 1 && timeElapsed> maxTime){
             Debug.Log("CallingEndEvent() from EventManager");
@@ -63,7 +61,12 @@ public class EventManager : MonoBehaviour
             isEvent = 0;
             timeElapsed = 0;
         }
-   
+        if(Input.GetKey("["))
+            startEvent(1, 7, 10);
+        if(Input.GetKey("]"))
+            startEvent(2, 5, 10);
+        if(Input.GetKey("\\"))
+            startEvent(3, 5, 10);   
     }
 
     public void startEvent(int type, int difficulty, int time)
@@ -109,4 +112,5 @@ public class EventManager : MonoBehaviour
     }
 
 }
+
 
