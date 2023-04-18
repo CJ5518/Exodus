@@ -47,5 +47,8 @@ MonoBehaviour:
   generator: {fileID: 4464888403937351578, guid: 47bd0f8d75715fc4cbfaa2124b574b07, type: 3}
   numberOfRooms: 10
   worldSize: {x: 6, y: 6}
-  aStarPath: {fileID: 0}
-  target: {fileID: 0}
+  playerSpawn: {fileID: 4233882994482502185, guid: 6dc2c30950f94764cbac22fa11e2e609, type: 3}
+  exitDoor: {fileID: 7629715740926861208, guid: 6dd13c29357086f4da3f702f087fdc63, type: 3}
+  cam: {fileID: 0}
+  demoMode: 1
+  aStarPath: {fileID: 4133824116125620812, guid: b83d6cdb6f5ebf04791f2d8fcced082f, type: 3}
