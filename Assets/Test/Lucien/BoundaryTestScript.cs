@@ -155,8 +155,8 @@ public class BoundaryTestScript
         Assert.IsTrue(enemy.velocity.y > 0);
     }
 
-    [Test]
-    public void JumpAttackWithTouchingGroundFalseShouldNotAddForce()
+    [UnityTest]
+    public IEnumerator JumpAttackWithTouchingGroundFalseShouldNotAddForce()
     {
         //this will test if the "jumpAttack" method is adding force to the enemy rigidbody is 
         //not touching the ground, we are testing if it is not adding force
@@ -168,6 +168,7 @@ public class BoundaryTestScript
         jumpAttack.jumpAttack(jump, enemy, touchingGround);
 
         Assert.IsTrue(enemy.velocity.y == 0);
+        yield return null;
     }
 
     [Test]

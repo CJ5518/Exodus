@@ -55,7 +55,6 @@ public class EnemyJumpAttack : MonoBehaviour
     private bool hasJumped;             //this will tell us if the bandt has jumped before he has swung his sword
     private float waitForAttack;        //this will be how we let the light bandit attack again
     private float waitForAttackAnimation; //this will let us wait for the animation to finish for the script to continue
-    private bool enemyIsAttacking;          //this allows the enemy to deal damage to the player 
 
     // Start is called before the first frame update
     private void Start()
@@ -71,7 +70,6 @@ public class EnemyJumpAttack : MonoBehaviour
         hasJumped = false;
         waitForAttack = 0;      //wait one second for attack
         waitForAttackAnimation = 0; //give 2 seconds after the npc has attacked to continue
-        enemyIsAttacking = false;
     }
 
     // Update is called once per frame
@@ -157,7 +155,7 @@ public class EnemyJumpAttack : MonoBehaviour
 
     private void swordAttack()
     {
-        enemyIsAttacking = true;
+        //enemyIsAttacking = true;
         if(waitForAttack > 1)
         {
             enemyAnim.SetBool("attack", hasJumped);
@@ -167,9 +165,18 @@ public class EnemyJumpAttack : MonoBehaviour
         {
             hasJumped = false;
             enemyAnim.SetBool("attack", hasJumped);
-            enemyIsAttacking = false;
+            //enemyIsAttacking = false;
         }
         hasJumped = false;
+    }
+
+    private void enemyDealsPlayerDamage(CapsuleCollider2D strike)
+    {
+        float distanceFromPlayer = player.position.x - transform.position.x;
+        if(distanceFromPlayer < 4)
+        {
+            PlayerSingleton.Player.dealDamage(5);
+        }
     }
 
     private void flipToPlayer()
@@ -220,10 +227,10 @@ public class EnemyJumpAttack : MonoBehaviour
                 enemyAnim.SetBool("isDead", isDead);
                 DeathWait();
             }
-            if(enemyIsAttacking == true)
-            {
-                PlayerSingleton.Player.dealDamage(10);
-            }
+            //if(enemyIsAttacking == true)
+            //{
+                //PlayerSingleton.Player.dealDamage(10);
+            //}
         }
     }
     
