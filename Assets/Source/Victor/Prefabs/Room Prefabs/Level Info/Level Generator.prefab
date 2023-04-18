@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4865925542775089543}
   - component: {fileID: 4865925542775089542}
+  - component: {fileID: -2051993762807658818}
   m_Layer: 0
   m_Name: Level Generator
   m_TagString: Untagged
@@ -44,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c5f37c45d80da40bd844650508274b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generator: {fileID: 4464888403937351578, guid: 47bd0f8d75715fc4cbfaa2124b574b07, type: 3}
+  generator: {fileID: -2051993762807658818}
   numberOfRooms: 10
   worldSize: {x: 6, y: 6}
   playerSpawn: {fileID: 4233882994482502185, guid: 6dc2c30950f94764cbac22fa11e2e609, type: 3}
@@ -52,3 +53,45 @@ MonoBehaviour:
   cam: {fileID: 0}
   demoMode: 1
   aStarPath: {fileID: 4133824116125620812, guid: b83d6cdb6f5ebf04791f2d8fcced082f, type: 3}
+--- !u!114 &-2051993762807658818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4865925542775089657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98813ad8a79b5ab45b0b48493d49546f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfU:
+  - {fileID: 7131630058587879966, guid: 8514af7915e2b754f978bfbabe8502e5, type: 3}
+  pfD:
+  - {fileID: 9204854553545705962, guid: 89bf5c373c1c6ba4b8c4a1f5ef89f227, type: 3}
+  pfR:
+  - {fileID: 8672032840018277832, guid: ac947f9a75d55e34f840b7bd4acd258d, type: 3}
+  pfL:
+  - {fileID: 8456782679910413968, guid: 52df1ffab86705142a43d847bbff2565, type: 3}
+  pfUD:
+  - {fileID: 9204854553545705962, guid: e30443a9eb1e1334db042d53bda263a8, type: 3}
+  pfRL:
+  - {fileID: 9204854553545705962, guid: 8f542abe65ce2a04fb4415e778cee846, type: 3}
+  pfUR:
+  - {fileID: 9204854553545705962, guid: 7e1f88d6651f2544b9b595e13df89a2e, type: 3}
+  pfUL:
+  - {fileID: 9204854553545705962, guid: 280dbfc6b052cda48b4cb75f2b4ba572, type: 3}
+  pfDR:
+  - {fileID: 9204854553545705962, guid: cc6158a2a5221584b8ee2f8ca8a21987, type: 3}
+  pfDL:
+  - {fileID: 9204854553545705962, guid: 48ee10519d5bb0c47a42ca95fc7cc314, type: 3}
+  pfUDR:
+  - {fileID: 9204854553545705962, guid: 1cbbd6bdd7d34bd4eb90a40d3b8dafbf, type: 3}
+  pfUDL:
+  - {fileID: 9204854553545705962, guid: 71e3b9d1a93dbab4d9158519476ecdd1, type: 3}
+  pfURL:
+  - {fileID: 9204854553545705962, guid: 3e993496c46f6c4489c6ea22939060d9, type: 3}
+  pfDRL:
+  - {fileID: 9204854553545705962, guid: 4a03ec830e3eabb4f8c82798fc5b5480, type: 3}
+  pfUDRL:
+  - {fileID: 9204854553545705962, guid: ac815f9f933b9dd498b93bf0d9a15677, type: 3}
