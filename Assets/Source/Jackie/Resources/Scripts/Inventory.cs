@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using cj;
 
 public class Inventory : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Inventory : MonoBehaviour
     public static float Curhealth = 40;
     private GameObject playerObj = null;
 
+    private GameObject player;
     public GameObject HealthPotPrefab;
 
     
@@ -27,6 +29,7 @@ public class Inventory : MonoBehaviour
         GiveItem("Regular Key");
         GiveItem("Health Pendant");
         
+        player = GameObject.FindWithTag("Player");
         inventoryUI.gameObject.SetActive(false);
         Debug.Log("Current Health " + Curhealth);
         Debug.Log("Max Health " + Maxhealth);
@@ -104,15 +107,13 @@ public class Inventory : MonoBehaviour
     //Function to Use a Potion
     public void UsePot(string itemName)
     {
-        Item itemToRemove = CheckforItemStr(itemName);
+        Item itemToRemove = CheckforItemStr(itemName); 
         if (itemToRemove != null) //Can be removed
         {
             characterItems.Remove(itemToRemove); //Remove potion from inventory (list object)
-            Drink.Play();
-            Curhealth += 10; //Add to current health
+            Drink.Play(); //Play audio
+            PlayerSingleton.Player.dealDamage(-10);
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
-            Debug.Log("Item removed: " + itemToRemove.title);
-            Debug.Log("Current Health " + Curhealth);
         }
         else
         {
