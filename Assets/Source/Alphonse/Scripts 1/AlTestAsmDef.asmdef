@@ -1,3 +1,17 @@
 {
-	"name": "AlTestAsmDef"
+    "name": "AlTestAsmDef",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4cc3753d844d0a940882fe1ef0dc4bd4",
+        "GUID:a979570f2fac67449aafdfc57febbfd8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
