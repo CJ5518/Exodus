@@ -17,6 +17,7 @@ public class ItemPickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Collected Potion");
         if(collision.tag == "Player")
         {
             inventory.GiveItem("Health Potion");

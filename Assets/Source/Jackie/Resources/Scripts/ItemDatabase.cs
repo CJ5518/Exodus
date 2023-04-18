@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemDatabase : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
+    /*
     private static ItemDatabase _instance;
 
     public static ItemDatabase Instance { get { return _instance; } }
@@ -19,6 +20,11 @@ public class ItemDatabase : MonoBehaviour
             _instance = this;
             BuildDatabase();
         }
+    }
+    */
+    private void Awake()
+    {
+        BuildDatabase();
     }
     //Returns item using its id
     public Item GetItem(int id)
