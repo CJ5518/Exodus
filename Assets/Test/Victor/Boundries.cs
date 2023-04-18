@@ -6,39 +6,29 @@ using UnityEngine.TestTools;
 
 public class Boundries
 {
-    SpawnPoint spawnPoint = new GameObject().AddComponent<SpawnPoint>();
 
-
-    // A Test behaves as an ordinary method
+    // Checks whether or not there can be more rooms generated than possible
     [Test]
-    public void BoundriesSimplePasses()
+    public void RoomsGeneratedCanFitInBoundries()
     {
-        // Use the Assert class to test conditions
+        LevelGeneration levelGeneration = new LevelGeneration();
+        int maxRooms = levelGeneration.MaxRooms();
+        Assert.LessOrEqual(levelGeneration.numberOfRooms, maxRooms);
     }
 
-
-    //
-    public void CheckNumRoomsGreaterThanFour()
-    {
-        int roomNum = spawnPoint.CountRooms();
-        Assert.Greater(roomNum, 4);
+    [Test]
+    public void AtLeastFiveRooms() {
+        LevelGeneration levelGeneration = new LevelGeneration();
+        Assert.GreaterOrEqual(levelGeneration.numberOfRooms, 5);
     }
 
-    public void CheckNumRoomsLessThanThirtyOne()
-    {
-        int roomNum = spawnPoint.CountRooms();
-        Assert.Less(roomNum, 31);
-    }
+    // [Test]
+    // public void LevelIsCompletable() {
+    //     GameObject gameObject = new GameObject();
+    //     LevelGeneration levelGeneration = gameObject.AddComponent(typeof(LevelGeneration)) as LevelGeneration;
+    //     System.Threading.Thread.Sleep(1000);
 
-
-
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator BoundriesWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
-    }
+    //     Assert.IsTrue(levelGeneration.IsCompletable());
+    // }
 }
+

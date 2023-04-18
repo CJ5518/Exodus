@@ -7,7 +7,7 @@ public class LevelGeneration : MonoBehaviour
 {
     [Header("Level Generation")]
     [SerializeField] private MapRoomSelector generator;
-    [SerializeField] private int numberOfRooms = 20;
+    [SerializeField] public int numberOfRooms = 20;
     [SerializeField] private Vector2 worldSize = new Vector2(4, 4);
     [SerializeField] private GameObject playerSpawn;
     [SerializeField] private GameObject exitDoor;
@@ -27,6 +27,9 @@ public class LevelGeneration : MonoBehaviour
 
     private void Start()
     {
+        if (numberOfRooms < 5) {
+            numberOfRooms = 5;
+        }
         if (numberOfRooms >= (worldSize.x * 2) * (worldSize.y * 2))
         {
             numberOfRooms = Mathf.RoundToInt((worldSize.x * 2) * (worldSize.y * 2));
@@ -331,4 +334,39 @@ public class LevelGeneration : MonoBehaviour
             }
         }
     }
+
+    public int MaxRooms() {
+        int maxRooms = (int)((worldSize.x * 2) * (worldSize.y * 2));
+        return maxRooms;
+    }
+
+    public bool IsCompletable() {
+
+        bool roomsMatch = true;
+
+        foreach (StandardRoom room in rooms) {
+            if (room == null) {
+                continue;
+            }
+
+            if ( !takenPos.Contains(new Vector2(room.gridPos.x - worldSize.x, room.gridPos.y - worldSize.y))) {
+                roomsMatch = false;
+            }
+        }
+
+        return roomsMatch;
+
+    }
+
+    // public StandardRoom[,] GetActualRoomPositions() {
+    //     return rooms;
+    // }
+
+    // public List<Vector2> GetRoomPositions() {
+    //     return takenPos;
+    // }
+
+    // public Vector2 GetWorldSize() {
+    //     return worldSize;
+    // }
 }
