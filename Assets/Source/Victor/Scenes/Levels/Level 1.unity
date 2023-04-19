@@ -510,6 +510,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1391458745}
     - target: {fileID: 4865925542775089542, guid: 37f95a786b72e0847bfd3a9898de2292, type: 3}
+      propertyPath: demoMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865925542775089542, guid: 37f95a786b72e0847bfd3a9898de2292, type: 3}
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 7629715740926861208, guid: 6dd13c29357086f4da3f702f087fdc63, type: 3}
