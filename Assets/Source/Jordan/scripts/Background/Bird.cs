@@ -9,7 +9,7 @@ public class Bird : BackgroundActor
     void Start()
     {
         SetupActor();
-        fChanceChangeState = 0.1f;
+        fChanceChangeState = 1f;
         fChanceChangeDir = 1f;
         fSpeed = 0.005f;
         fVerticalVelocity = 0;
@@ -21,7 +21,7 @@ public class Bird : BackgroundActor
         {
             if (bIsMoving)
             {
-                if (transform.position.x > 1)
+                if (transform.position.y > 1)
                 {
                     fVerticalVelocity = fSpeed * -1;
                 }
@@ -60,10 +60,15 @@ public class Bird : BackgroundActor
 
     }
 
-    public override void Move()
+    public override bool Move()
     {
+        iTTL++;
         if (bIsMoving)
             this.transform.position = transform.position + new Vector3(fSpeed * (transform.localScale.x / Mathf.Abs(transform.localScale.x)), fVerticalVelocity, 0);
+        
+        
+        return transform.position.x > 10 || transform.position.x < -10 ? false : true;
+
     }
 
 }

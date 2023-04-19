@@ -8,7 +8,7 @@ public class Camel : BackgroundActor
     void Start()
     {
         SetupActor();
-        fChanceChangeState = 0.1f;
+        fChanceChangeState = 0.3f;
         fChanceChangeDir = 0.3f;
         fSpeed = 0.001f;
     }

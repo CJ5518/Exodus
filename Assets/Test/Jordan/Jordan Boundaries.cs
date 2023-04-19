@@ -4,9 +4,10 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-/*public class JordanBoundaries
+public class JordanBoundaries
 {
     HealthBar goHHealthBar = new GameObject().AddComponent<HealthBar>();
+    BackgroundActor bird = GameObject.Instantiate((GameObject) Resources.Load("prefabs/Jordan/Bird", typeof(GameObject)), new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Bird>();
 
     [Test]
     public void CanSetHealth()
@@ -36,5 +37,24 @@ using UnityEngine.TestTools;
         goHHealthBar.SetMaxHealth(50);
         Assert.AreEqual(50, goHHealthBar.GetHealth());
     }
+
+    [Test]
+    public void BirdFlyOffScreen()
+    {
+
+        for (int i = 0; i < 10000; i++)
+        {
+            if (i % 50 == 0)
+                bird.MakeDecisions();
+
+
+            bird.Move();
+
+        }
+        if (bird.transform.position.x > 10 || bird.transform.position.x < -10 || bird.transform.position.y > 5 || bird.transform.position.y < -5)
+        {
+            Assert.Fail();
+        }
+        Assert.Pass();
+    }
 }
-*/

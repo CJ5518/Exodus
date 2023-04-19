@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class PlagueEvent : MonoBehaviour
 {
-    
-    public int framesLeft;   
+    // this is a relic from before EventManager took over managing the time alotted to events
+    // public int framesLeft;   
 
-
+    // This function just destroys the game object (the ongoing event)
+    // This function is virtual because the subclass dark event must do extra things to end properly
     public virtual void EndEvent()
     {
-        Debug.Log("EndEvent ____ PLAGUEEVENT");
+        Debug.Log("EndEvent() called from parent class PlagueEvent");
         Destroy(gameObject);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //timeLeft = 10000;        
+        //framseLeft = 10000;        
     }
 
     // Update is called once per frame
     void Update()
     {
-        framesLeft--;
+        //framesLeft--;
         //Debug.Log(timeLeft);
-        if(framesLeft <= 0) EndEvent();
+        //if(framesLeft <= 0) EndEvent();
     }
 }

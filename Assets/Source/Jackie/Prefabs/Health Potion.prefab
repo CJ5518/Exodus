@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potionPool: {fileID: 5409527964498463825, guid: 9baf3c168145fc843bfd852f0e96f2cd, type: 3}
-  pickupSound: {fileID: 0}
 --- !u!82 &2011160145239279574
 AudioSource:
   m_ObjectHideFlags: 0

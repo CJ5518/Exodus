@@ -4,15 +4,15 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "UIAssembly",
-        "JordanAssemblyDef"
+        "JordanAssemblyRef"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "nunit.framework.dll"
+        "nunit.framework.dll",
+        ""
     ],
     "autoReferenced": false,
     "defineConstraints": [

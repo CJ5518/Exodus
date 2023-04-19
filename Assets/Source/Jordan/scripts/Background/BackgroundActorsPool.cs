@@ -37,9 +37,9 @@ public class BackgroundActorsPool : MonoBehaviour
                 BackgroundActor tTempObject;
                 float fRandomVal = Random.Range(0, 100);
                 if (fRandomVal <= 40)
-                    tTempObject = Instantiate(Bird, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Camel>();
+                    tTempObject = Instantiate(Bird, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Bird>();
                 else if (fRandomVal > 40 && fRandomVal < 80)
-                    tTempObject = Instantiate(Frog, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Camel>();
+                    tTempObject = Instantiate(Frog, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Frog>();
                 else
                     tTempObject = Instantiate(Camel, new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f)), Quaternion.identity).GetComponent<Camel>();
 

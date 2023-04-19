@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using cj;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,14 +10,16 @@ public class Inventory : MonoBehaviour
     public ItemDatabase itemDatabase;
     public UIInventory inventoryUI;
 
-    public static float Maxhealth = 50;
-    public static float Curhealth = 40;
     private GameObject playerObj = null;
 
+    private GameObject player;
     public GameObject HealthPotPrefab;
-
+    bool inventoryOpen = false;
     
     public AudioSource Drink;
+    public AudioSource MenuOpen;
+    public AudioSource MenuClose;
+    public AudioSource EquipItem;
 
     
     private void Start()
@@ -26,11 +29,10 @@ public class Inventory : MonoBehaviour
         GiveItem("Mana Potion");
         GiveItem("Regular Key");
         GiveItem("Health Pendant");
+        GiveItem("Jump Pendant");
         
+        player = GameObject.FindWithTag("Player");
         inventoryUI.gameObject.SetActive(false);
-        Debug.Log("Current Health " + Curhealth);
-        Debug.Log("Max Health " + Maxhealth);
-        //DontDestroyOnLoad(inventoryUI.gameObject);
     }
 
     private void Update()
@@ -41,6 +43,18 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I)) //Open Inventory
         {
             inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
+            if (inventoryOpen == false)
+            {
+                Debug.Log("Invenotry is now open");
+                inventoryOpen = true;
+                MenuOpen.Play();
+            }
+            else
+            {
+                Debug.Log("Inventory is now closed");
+                inventoryOpen = false;
+                MenuClose.Play();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.H)) //Use a health potion
@@ -48,9 +62,9 @@ public class Inventory : MonoBehaviour
             UsePot("Health Potion");
         }
 
-        if (Input.GetKeyDown(KeyCode.U)) //Use health pendant
+        if (Input.GetKeyDown(KeyCode.U)) //Equip Jump pendant
         {
-            checkHealthPendant("Health Pendant");
+            checkJumpPendant("Jump Pendant");
         }
 
         if (Input.GetKeyDown(KeyCode.Q)) //Drop Item
@@ -90,29 +104,30 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void RemoveItemStr(string itemName)
+    public bool RemoveItemStr(string itemName)
     {
+        bool Removed = false;
         Item itemToRemove = CheckforItemStr(itemName);
         if (itemToRemove != null)
         {
             characterItems.Remove(itemToRemove);
             inventoryUI.RemoveItem(itemToRemove);
             Debug.Log("Item removed: " + itemToRemove.title);
+            Removed = true;
         }
+        return Removed;
     }
 
     //Function to Use a Potion
     public void UsePot(string itemName)
     {
-        Item itemToRemove = CheckforItemStr(itemName);
+        Item itemToRemove = CheckforItemStr(itemName); 
         if (itemToRemove != null) //Can be removed
         {
             characterItems.Remove(itemToRemove); //Remove potion from inventory (list object)
-            Drink.Play();
-            Curhealth += 10; //Add to current health
+            Drink.Play(); //Play audio
+            PlayerSingleton.Player.dealDamage(-10); //Heal ten health
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
-            Debug.Log("Item removed: " + itemToRemove.title);
-            Debug.Log("Current Health " + Curhealth);
         }
         else
         {
@@ -120,17 +135,24 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //Function to (Use/Equip) a Pendant
-    public void checkHealthPendant(string itemName)
+    //Function to (Use/Equip) the JumpPendant
+    //TODO: Ensure player cannot use this function until they picked up JumpPendant initially
+    public void checkJumpPendant(string itemName)
     {
         Item itemToRemove = CheckforItemStr(itemName);
         if (itemToRemove != null) //Can be removed
         {
             characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
-            Maxhealth += 10; //Add to current health
+            EquipItem.Play();
+            PlayerSingleton.Player.jumpForce = 600.0f; //Increase JumpForce of player
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Debug.Log("Item removed: " + itemToRemove.title);
-            Debug.Log("Max Health " + Maxhealth);
+        }
+        else
+        {
+            GiveItem("Jump Pendant"); 
+            EquipItem.Play();
+            PlayerSingleton.Player.jumpForce = 440.0f;
         }
     }
 
