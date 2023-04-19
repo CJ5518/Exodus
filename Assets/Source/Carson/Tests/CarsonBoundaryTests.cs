@@ -23,6 +23,35 @@ public class CarsonBoundaryTests {
 		Assert.NotNull(PlayerSingleton.Player);
 	}
 
+	//Health tests
+	[Test]
+	public void CanResetHealthTest() {
+		PlayerSingleton.Player.resetHealth();
+		Assert.AreEqual(PlayerSingleton.Player.health, 100);
+	}
+	[Test]
+	public void CanEditHealthTest() {
+		PlayerSingleton.Player.resetHealth();
+		PlayerSingleton.Player.dealDamage(20);
+		Assert.AreEqual(PlayerSingleton.Player.health, 80);
+		PlayerSingleton.Player.dealDamage(40);
+		Assert.AreEqual(PlayerSingleton.Player.health, 40);
+		PlayerSingleton.Player.dealDamage(-20);
+		Assert.AreEqual(PlayerSingleton.Player.health, 60);
+	}
+
+	private int timesInvoked = 0;
+	public void onDeath() {
+		timesInvoked++;
+	}
+	[Test]
+	public void OnDeathIsInvokedTest() {
+		PlayerSingleton.Player.resetHealth();
+		PlayerSingleton.Player.onDeath.AddListener(onDeath);
+		PlayerSingleton.Player.dealDamage(PlayerSingleton.Player.health);
+		Assert.AreEqual(timesInvoked, 1);
+	}
+
 	//Can the player move left and right properly?
 	[UnityTest]
 	public IEnumerator CanMovePlayerTest() {

@@ -17,13 +17,13 @@ public class Player : MonoBehaviour {
 	// Events we invoke
 	// Player took damage
 	// NOT called when the player dies
-	UnityEvent onDamageTaken;
+	public UnityEvent onDamageTaken;
 
 	// Invoked when the dealDamage function is called with a negative value
-	UnityEvent onDamageRemoved;
+	public UnityEvent onDamageRemoved;
 
 	// Player died (health reached 0)
-	UnityEvent onDeath;
+	public UnityEvent onDeath;
 
 	
 
