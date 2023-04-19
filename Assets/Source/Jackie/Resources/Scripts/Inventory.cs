@@ -10,15 +10,16 @@ public class Inventory : MonoBehaviour
     public ItemDatabase itemDatabase;
     public UIInventory inventoryUI;
 
-    public static float Maxhealth = 50;
-    public static float Curhealth = 40;
     private GameObject playerObj = null;
 
     private GameObject player;
     public GameObject HealthPotPrefab;
-
+    bool inventoryOpen = false;
     
     public AudioSource Drink;
+    public AudioSource MenuOpen;
+    public AudioSource MenuClose;
+    public AudioSource EquipItem;
 
     
     private void Start()
@@ -32,9 +33,6 @@ public class Inventory : MonoBehaviour
         
         player = GameObject.FindWithTag("Player");
         inventoryUI.gameObject.SetActive(false);
-        Debug.Log("Current Health " + Curhealth);
-        Debug.Log("Max Health " + Maxhealth);
-        //DontDestroyOnLoad(inventoryUI.gameObject);
     }
 
     private void Update()
@@ -45,6 +43,18 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I)) //Open Inventory
         {
             inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
+            if (inventoryOpen == false)
+            {
+                Debug.Log("Invenotry is now open");
+                inventoryOpen = true;
+                MenuOpen.Play();
+            }
+            else
+            {
+                Debug.Log("Inventory is now closed");
+                inventoryOpen = false;
+                MenuClose.Play();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.H)) //Use a health potion
@@ -125,20 +135,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //Function to (Use/Equip) a Pendant
+    //Function to (Use/Equip) the JumpPendant
+    //TODO: Ensure player cannot use this function until they picked up JumpPendant initially
     public void checkJumpPendant(string itemName)
     {
         Item itemToRemove = CheckforItemStr(itemName);
         if (itemToRemove != null) //Can be removed
         {
             characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
+            EquipItem.Play();
             PlayerSingleton.Player.jumpForce = 600.0f; //Increase JumpForce of player
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Debug.Log("Item removed: " + itemToRemove.title);
         }
         else
         {
-            GiveItem("Jump Pendant");
+            GiveItem("Jump Pendant"); 
+            EquipItem.Play();
             PlayerSingleton.Player.jumpForce = 440.0f;
         }
     }
