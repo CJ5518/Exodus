@@ -15,6 +15,9 @@ public class FrogScript : MonoBehaviour
     private int isGrounded;
     private Rigidbody2D rb;
     private Sprite airSprite, groundSprite;
+
+    private GameObject frogFightManager;
+    private FrogFight frogFight;
    
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,17 @@ public class FrogScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         jumpTimer = 4;
+
+        frogFightManager = GameObject.Find("FrogFightManager");
+        // cannot call get compoonent on a null game object, so break it up into two lines
+        if (frogFightManager != null){
+            frogFight = frogFightManager.GetComponent<FrogFight>();
+        } 
+        else 
+        {
+            //Debug.Log("NOT IN FROG SCENE");
+            frogFight = null;
+        }
     }
 
     public void receiveSpeed(int speed){
@@ -97,12 +111,19 @@ public class FrogScript : MonoBehaviour
             if(isGrounded == 0) 
                 PlayerSingleton.Player.dealDamage(10);
 
+            //if we are in the frog fight scene
+            if(frogFight != null){
+                frogFight.killedFrog();
+            }
+
+
             //despawn the frog
             Destroy(gameObject, 0f);
         }
     }
 
 }
+
 
 
 
