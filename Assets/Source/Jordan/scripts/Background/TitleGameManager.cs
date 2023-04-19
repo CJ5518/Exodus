@@ -29,7 +29,21 @@ public class TitleGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int i = 0;
+
+        for (int i = 1; i < 20 - baBackgroundActors.Count; i++)
+        {
+            BackgroundActor baTempHolder;
+            if (baTempHolder = bpUnusedActors.GetActor())
+            {
+                baBackgroundActors.Add(baTempHolder);
+                baTempHolder.transform.position = new Vector3(Random.Range(-10f, 10f), Random.Range(-4f, 1f));
+            }
+            else
+                break;
+        }
+
+
+        int j = 0;
         foreach (BackgroundActor aActor in baBackgroundActors)
         {
             if (aActor)
@@ -41,11 +55,11 @@ public class TitleGameManager : MonoBehaviour
                 if (!aActor.Move() && aActor.iTTL > 5000)
                 {
                     bpUnusedActors.Release(aActor);
-                    baBackgroundActors.RemoveAt(i);
+                    baBackgroundActors.RemoveAt(j);
                     break;
                 }
 
-                i++;
+                j++;
                 iTick++;
             }
         }

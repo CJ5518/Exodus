@@ -12,8 +12,12 @@ public class HealthBar : MonoBehaviour
     {
         fMaxHealth = 100;
         sHealthSlider = GetComponent<Slider>();
-        sHealthSlider.maxValue = fMaxHealth;
-        sHealthSlider.minValue = 0;
+        if (sHealthSlider)
+        {
+            sHealthSlider.maxValue = fMaxHealth;
+            sHealthSlider.minValue = 0;
+        }
+
         SetHealth(fMaxHealth);
     }
 
@@ -24,7 +28,8 @@ public class HealthBar : MonoBehaviour
             return false;
         }
         fCurrentHealth = fInHealth;
-        sHealthSlider.value = fInHealth;
+        if (sHealthSlider)
+            sHealthSlider.value = fInHealth;
 
         return true;
     }
@@ -32,7 +37,8 @@ public class HealthBar : MonoBehaviour
     public void SetMaxHealth(int fInMaxHealth)
     {
         fMaxHealth = fInMaxHealth;
-        sHealthSlider.maxValue = fMaxHealth;
+        if (sHealthSlider)
+            sHealthSlider.maxValue = fMaxHealth;
         if (fCurrentHealth > fMaxHealth)
         {
             fCurrentHealth = fMaxHealth;
