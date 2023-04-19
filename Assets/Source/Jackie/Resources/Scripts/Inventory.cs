@@ -93,15 +93,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void RemoveItemStr(string itemName)
+    public bool RemoveItemStr(string itemName)
     {
+        bool Removed = false;
         Item itemToRemove = CheckforItemStr(itemName);
         if (itemToRemove != null)
         {
             characterItems.Remove(itemToRemove);
             inventoryUI.RemoveItem(itemToRemove);
             Debug.Log("Item removed: " + itemToRemove.title);
+            Removed = true;
         }
+        return Removed;
     }
 
     //Function to Use a Potion
@@ -112,7 +115,7 @@ public class Inventory : MonoBehaviour
         {
             characterItems.Remove(itemToRemove); //Remove potion from inventory (list object)
             Drink.Play(); //Play audio
-            PlayerSingleton.Player.dealDamage(-10);
+            PlayerSingleton.Player.dealDamage(-10); //Heal ten health
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
         }
         else
