@@ -36,7 +36,8 @@ public class FrogFight : MonoBehaviour
         // after most frogs are killed, load the boss scene
         if(frogsKilled == 26){
             Debug.Log("You beat the last wave");
-            SceneManager.LoadScene("BossScene_V2");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene("BossScene_V2");
         }
     }
 
