@@ -38,7 +38,7 @@ public class Boundaries
         //this will check to see that the spawn rate has been set correctly according to parameter
         em.startEvent(1, 5, 5);
         HailEvent he =  GameObject.FindWithTag("HailEvent").GetComponent<HailEvent>();
-        Assert.AreEqual(he.spawninterval, 32);
+        Assert.AreEqual(he.spawnInterval, 32);
         em.endEvent();
     }
 
@@ -48,7 +48,7 @@ public class Boundaries
         //this will check to see that the spawn rate has been set correctly according to parameter
         em.startEvent(1, 10, 5);
         HailEvent he =  GameObject.FindWithTag("HailEvent").GetComponent<HailEvent>();
-        Assert.AreEqual(he.spawninterval, 1);
+        Assert.AreEqual(he.spawnInterval, 1);
         em.endEvent();
     }
 
@@ -58,7 +58,7 @@ public class Boundaries
         //this will check to see that the spawn rate has been set to the highest difficulty parameter
         em.startEvent(1, 11, 5);
         HailEvent he =  GameObject.FindWithTag("HailEvent").GetComponent<HailEvent>();
-        Assert.AreEqual(he.spawninterval, 1);
+        Assert.AreEqual(he.spawnInterval, 1);
         em.endEvent();
     }
 
