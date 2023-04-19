@@ -71,7 +71,7 @@ public class ItemDatabase : MonoBehaviour
             {
                 {"HP increase", 10 }
             }),
-            new Item(5, "Regular Key", "A regular key, may be used to open a locked door.",
+            new Item(5, "Regular Key", "A regular key, may be used to enter the boss room.",
             new Dictionary<string, int>
             {
                 {"Sell Value", 5 }

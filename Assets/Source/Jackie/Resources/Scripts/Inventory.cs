@@ -131,7 +131,7 @@ public class Inventory : MonoBehaviour
         if (itemToRemove != null) //Can be removed
         {
             characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
-            Maxhealth += 10; //Add to current health
+            PlayerSingleton.Player.jumpForce = 600.0f;
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Debug.Log("Item removed: " + itemToRemove.title);
             Debug.Log("Max Health " + Maxhealth);
