@@ -20,20 +20,32 @@ public class TitleGameManager : MonoBehaviour
 
         for (int i = 0; i < 19; i++)
         {
-            baBackgroundActors.Add(bpUnusedActors.GetActor());
+            BackgroundActor baTempHolder = bpUnusedActors.GetActor();
+            if (baTempHolder)
+                baBackgroundActors.Add(baTempHolder);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        int i = 0;
         foreach (BackgroundActor aActor in baBackgroundActors)
         {
             if (aActor)
             {
                 if (iTick % 50 == 0)
                     aActor.MakeDecisions();
-                aActor.Move();
+                
+
+                if (!aActor.Move() && aActor.iTTL > 5000)
+                {
+                    bpUnusedActors.Release(aActor);
+                    baBackgroundActors.RemoveAt(i);
+                    break;
+                }
+
+                i++;
                 iTick++;
             }
         }

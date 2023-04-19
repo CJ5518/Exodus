@@ -12,12 +12,14 @@ public class BackgroundActor : MonoBehaviour
     protected float fChanceChangeState;
     protected float fChanceChangeDir;
     protected float fSpeed;
+    public float iTTL;
 
     protected void SetupActor()
     {
         aAnimator = this.GetComponent<Animator>();
         bIsMoving = false;
         fSpeed = 0.01f;
+        iTTL = 0;
 
     }
     public virtual void MakeDecisions()
@@ -28,10 +30,13 @@ public class BackgroundActor : MonoBehaviour
             bIsMoving = true;
     }
 
-    public virtual void Move()
+    public virtual bool Move()
     {
         if (bIsMoving)
             this.transform.position = transform.position + new Vector3(fSpeed * (transform.localScale.x/Mathf.Abs(transform.localScale.x)), 0, 0);
+
+        iTTL++;
+        return transform.position.x > 10 || transform.position.x < -10 ? false : true;
     }
 
     protected virtual void ChangeDirection()

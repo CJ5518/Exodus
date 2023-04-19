@@ -8,7 +8,7 @@ public class Frog : BackgroundActor
     void Start()
     {
         SetupActor();
-        fChanceChangeState = 0.5f;
+        fChanceChangeState = 1f;
         fSpeed = 0.0005f;
     }
 
