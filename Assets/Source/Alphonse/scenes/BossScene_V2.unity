@@ -182,6 +182,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 900996219}
     - target: {fileID: 6335173402314689389, guid: 09eb1b087f9c0e64f8a752deec037338, type: 3}
+      propertyPath: MenuOpen
+      value: 
+      objectReference: {fileID: 2137743990}
+    - target: {fileID: 6335173402314689389, guid: 09eb1b087f9c0e64f8a752deec037338, type: 3}
+      propertyPath: EquipItem
+      value: 
+      objectReference: {fileID: 1143285154}
+    - target: {fileID: 6335173402314689389, guid: 09eb1b087f9c0e64f8a752deec037338, type: 3}
+      propertyPath: MenuClose
+      value: 
+      objectReference: {fileID: 1323461593}
+    - target: {fileID: 6335173402314689389, guid: 09eb1b087f9c0e64f8a752deec037338, type: 3}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 972520325}
@@ -1895,7 +1907,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fd6cdd5ef11372f44bc3ea1f497a6770, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2104,7 +2116,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e2bd65744ab057742a445b7c3d196584, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3046,7 +3058,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ebb9f6ac11795124498dcdca98d42e9a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
