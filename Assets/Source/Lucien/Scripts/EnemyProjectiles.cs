@@ -77,7 +77,14 @@ public class EnemyProjectiles : EnemyDamage
             gameObject.SetActive(false);
 
             //Player player1 = player.GetComponent<Player>();
-            PlayerSingleton.Player.dealDamage(10);
+            PlayerSingleton.Player.dealDamage(7);
+
+            //add Noah's plague event to have a 1/3 chance of causing a darkness plague if the player is hit with an arrow
+            if(UnityEngine.Random.Range(1,4) % 2 == 0)
+            {
+                EventManager eventManager = EventManager.Instance;
+                eventManager.startEvent(3, 3, 5);
+            }
         }else
         {
             coll.transform.Translate(0,0,0);
