@@ -66,7 +66,14 @@ public class EventManager : MonoBehaviour
         if(Input.GetKey("]"))
             startEvent(2, 5, 10);
         if(Input.GetKey("\\"))
-            startEvent(3, 5, 10);   
+            startEvent(3, 5, 10); 
+
+        if(Input.GetKey("1"))
+            startEvent(2, 1, 4);
+        if(Input.GetKey("2"))
+            startEvent(2, 5, 2);
+        if(Input.GetKey("3"))
+            startEvent(2, 10, 1);  
     }
 
     public void startEvent(int type, int difficulty, int time)
@@ -83,6 +90,8 @@ public class EventManager : MonoBehaviour
                  currentEvent.GetComponent<HailEvent>().ReceiveParameters(difficulty, time);
                  break;
             case 2: 
+                 //time for this event is used as an interval between difficulty spawns
+                 maxTime = time * difficulty + 1; 
                  frogevent = Resources.Load<GameObject>("prefabs/Noah/myFrogEvent");     
                  currentEvent = Instantiate(frogevent);
                  currentEvent.GetComponent<FrogEvent>().ReceiveParameters(difficulty, time);
@@ -112,5 +121,7 @@ public class EventManager : MonoBehaviour
     }
 
 }
+
+
 
 
