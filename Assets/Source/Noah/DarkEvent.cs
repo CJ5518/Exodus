@@ -37,11 +37,16 @@ public class DarkEvent : PlagueEvent
         // make it dark by changing the intensity of global Light according to difficulty
         globalLight = GameObject.FindGameObjectWithTag("GlobalLight");
         Light2D gLight = globalLight.GetComponent<Light2D>();
-        if(difficulty < 5) 
-            gLight.intensity = 4/10;
-        else
+
+        // the easier difficulties will still be able to barely see their surrounds
+        if(difficulty < 5) {
+            gLight.intensity = 0.2f;
+        }
+        else  // harder difficulties get pitch black
+        {
             gLight.intensity = 0;
-        //Debug.Log("glight intensity:  " + gLight.intensity);
+        }
+        Debug.Log("glight intensity:  " + gLight.intensity);
     }
 
     // Update is called once per frame. It expands and retracts the light centered at the player according to Time.time
@@ -75,4 +80,5 @@ public class DarkEvent : PlagueEvent
         Destroy(this);
     }
 }
+
 
