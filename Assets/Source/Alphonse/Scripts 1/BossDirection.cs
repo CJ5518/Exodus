@@ -14,7 +14,7 @@ public class BossDirection : MonoBehaviour
     void Start() 
     {
         Boss = GameObject.FindGameObjectWithTag("Boss");
-        bossCanvasFinder = GameObject.FindGameObjectWithTag("bossHealthCaanvas");
+        bossCanvasFinder = GameObject.FindGameObjectWithTag("bossHealthCanvas");
         bossHealthCanvas = bossCanvasFinder.GetComponent<RectTransform>();
     }
 
