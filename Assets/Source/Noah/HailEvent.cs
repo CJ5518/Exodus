@@ -33,7 +33,7 @@ public class HailEvent : PlagueEvent
         }
     }
 
-    public void ReceiveParameters(int difficulty, float time)
+    public override void ReceiveParameters(int difficulty, float time)
     {
         // The difficulty will determine how frequently hailStones are instantiated.
         // For every 1 difficulty level lower, the interval between spawns is doubled
