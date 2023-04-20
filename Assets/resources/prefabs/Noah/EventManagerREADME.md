@@ -7,7 +7,7 @@ EventManager is used to manage the three types of plague events in this game.
 Note that it does not get destroyed between scenes so it needs only to be instantiated once.
 
 
-This structure could be used to manage events in any other game. The number of events can be augmented by adding more cases to the start event function, to give it a broader range.
+This structure could be used to manage events in any other game project. The number of events can be augmented by adding more cases to the start event function, to give it a broader range.
 
 
 USE
