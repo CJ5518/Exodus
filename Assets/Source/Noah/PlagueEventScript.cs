@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This is an abstract class. A subclass representing a specific type of plagueevent must be instantiated
 public class PlagueEvent : MonoBehaviour
 {
     // this is a relic from before EventManager took over managing the time alotted to events
@@ -14,6 +15,11 @@ public class PlagueEvent : MonoBehaviour
         Debug.Log("EndEvent() called from parent class PlagueEvent");
         Destroy(gameObject);
     }
+    
+    
+    // This is a pure virtual function. Each subclass has a method of the same name, but they have slightly different implementations on how they
+    // deal with the difficulty and the time, hence the functions must be defined in the subclasses
+    public virtual void ReceiveParameters(int difficulty, float time) = 0;
 
     // Start is called before the first frame update
     void Start()
