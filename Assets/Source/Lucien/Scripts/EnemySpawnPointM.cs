@@ -29,7 +29,7 @@ public class EnemySpawnPointM : MonoBehaviour
     {
         //if the spawn point is within a certain distance of the player then the enemy is spawned into the scene
         float distance = Vector3.Distance(spawnPointTransform.position, playerTransform.position);
-        if(distance <= 75 && hasRun == false)
+        if(distance <= 30 && hasRun == false)
         {
             GameObject obj1 = lightBanditPool.GetObject(); 
             obj1.transform.position = new Vector3(spawnPointTransform.position.x, spawnPointTransform.position.y, spawnPointTransform.position.z);

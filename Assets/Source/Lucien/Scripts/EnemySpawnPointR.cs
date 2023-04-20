@@ -30,7 +30,7 @@ public class EnemySpawnPointR : MonoBehaviour
     {
         //if the enemy is within a certain range of the enemy spawn location then the enemy is spawned in
         float distance = Vector3.Distance(spawnPointTransform.position, playerTransform.position);
-        if(distance <= 75 && hasRun == false)
+        if(distance <= 30 && hasRun == false)
         {
             spawnLocation = new Vector3(spawnPointTransform.position.x, spawnPointTransform.position.y, spawnPointTransform.position.z);
             Instantiate(rangedEnemy, spawnLocation, Quaternion.identity);
