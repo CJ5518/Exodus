@@ -7,6 +7,9 @@ EventManager is used to manage the three types of plague events in this game.
 Note that it does not get destroyed between scenes so it needs only to be instantiated once.
 
 
+This structure could be used to manage events in any other game. The number of events can be augmented by adding more cases to the start event function, to give it a broader range.
+
+
 USE
 To use the event manager, first make sure that the event manager is loaded and instantiated. It already is in the Exodus build 
 If using event manager in a different project, instantiate the EventManager first by loading it from its path in the resources folder like such:
