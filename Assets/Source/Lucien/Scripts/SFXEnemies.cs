@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //this script will allow us to make sound effects for the enemies and their functions
+//four type of copy right - Dirivative, Educational purposes
 //All these sounds are plagarized from past video games (SEGA Golden Axe II)
 //original copyright rights - All compositions, arrangements, images, and trademarks are copyright their respective owners. Original content is copyright OverClocked ReMix, LLC.
 //this violates becasue - The original artist that owns the rights to this song has not been dead for 70 years, and OverClocked ReMix, LLC. sold the game rights to SEGA
