@@ -29,7 +29,7 @@ public class DarkEvent : PlagueEvent
         }
     }
 
-    public void ReceiveParameters(int difficulty, float time)
+    public override void ReceiveParameters(int difficulty, float time)
     {
         // The DarkEvent does not use the time parameter
     
