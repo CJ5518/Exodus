@@ -62,18 +62,18 @@ public class EventManager : MonoBehaviour
             timeElapsed = 0;
         }
         if(Input.GetKey("["))
-            startEvent(1, 7, 10);
+            startEvent(3, 2, 15);
         if(Input.GetKey("]"))
-            startEvent(2, 5, 10);
+            startEvent(3, 5, 10);
         if(Input.GetKey("\\"))
-            startEvent(3, 5, 10); 
+            startEvent(3, 9, 5); 
 
         if(Input.GetKey("1"))
-            startEvent(2, 1, 4);
+            startEvent(1, 5, 10);
         if(Input.GetKey("2"))
-            startEvent(2, 5, 2);
+            startEvent(1, 7, 5);
         if(Input.GetKey("3"))
-            startEvent(2, 10, 1);  
+            startEvent(1, 9, 5);  
     }
 
     public void startEvent(int type, int difficulty, int time)
@@ -109,7 +109,10 @@ public class EventManager : MonoBehaviour
             } 
             s_currentEvent = currentEvent;
         }
-        //else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().framesLeft);}
+        else
+        { 
+            Debug.Log("Cannot start event during event.");
+        }
     }
 
     public GameObject getCurrEvent()
