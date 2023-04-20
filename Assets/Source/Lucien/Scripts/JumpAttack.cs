@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this is the superclass for the lunge part of the melee attack.
+//if this is called instead of the override function then there will be no enemy bounce back
 public class JumpAttack : MonoBehaviour
 {
     

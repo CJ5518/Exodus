@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
+//this is the treadpool of the light bandits or the melee characters
 public class LightBanditPool : MonoBehaviour
 {
     [SerializeField]
-    private GameObject prefab;
+    private GameObject prefab;          //the asset that is being stored
     [SerializeField]
-    private int poolSize;
+    private int poolSize;               //how big is the initial pool size
     [SerializeField]
-    private bool willGrow;
+    private bool willGrow;              //can the pool grow in emergency cases?
 
-    private List<GameObject> objects;
+    private List<GameObject> objects;   //where the game objects are stored (ie how they are called and returned)
 
     private float cpuThreshHold = 65; //CPU threshhold that will be used to trigger the prefab generation based on current usage
     private float holdCurrentCpuUsage = 0; //this will hold the current amount of cpu usage that we are using...
 
-    private ProcessorUsage processorUsage;
+    private ProcessorUsage processorUsage;  //this is the script for where the processor usage is found
 
+    //start this on initialization of the main program
     void Start()
     {
         objects = new List<GameObject>();

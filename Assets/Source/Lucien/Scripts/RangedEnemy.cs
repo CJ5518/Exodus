@@ -4,7 +4,6 @@ using UnityEngine;
 
 // this is the scrip[t for the ranged enemy, it will be able to be called from the object pool for
 // implimentation
-
 public class RangedEnemy : MonoBehaviour
 {
     //this is for attack parameters
@@ -17,7 +16,7 @@ public class RangedEnemy : MonoBehaviour
 
     //ranged attack
     [SerializeField]
-    private Transform firepoint;        
+    private Transform firepoint;        //this is where the arrow is fired from 
 
     //colider parameters
     [SerializeField]
@@ -29,21 +28,22 @@ public class RangedEnemy : MonoBehaviour
     private LayerMask playerLayer;      //this is how th eenemy will know where the player is
     private float cooldownTimer = Mathf.Infinity;   //so the enemy can start to attack immidiatly
 
-    private float direction = -1;
-    private bool facingLeft = false;
-    private Transform player;
-    private Animator enemyAnim;
+    private float direction = -1;       //what is the direction of the enemy/arrow?
+    private bool facingLeft = false;    //enemy starts facing the right
+    private Transform player;           //finds the position of the player
+    private Animator enemyAnim;         //animation for the enemy
 
-    private float health = 100;
+    private float health = 100;         //health for the enemy currently
     
     private float lifeTime;         //this is to tell how long the enemy has been dead for
     private float resetTime;        //this is to tell how long the enemy should be dead for before the despawn
-    private bool isDead;
+    private bool isDead;            //is the enemy dead?
 
-    private ObjectPool objectPool;
+    private ObjectPool objectPool;  //access to the pool of arrows
 
-    private SFXEnemies sfxEnemies;
+    private SFXEnemies sfxEnemies;  //sound access
 
+    //called on inistialization of the archer in the scene
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -56,12 +56,12 @@ public class RangedEnemy : MonoBehaviour
         isDead = false;
     }
 
+    //called once a frame to get the working components of the archer
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
 
         //only attack when the player is in sight of the enemy
-        //AnimationControl();
         if(PlayerInSight() && !isDead)
         {
             if(cooldownTimer >= attackCooldown)
@@ -73,6 +73,7 @@ public class RangedEnemy : MonoBehaviour
         }
         flipToPlayer();
 
+        //checks to see if the enemy is dead, if it is it despawns the archer after a little time
         if(isDead)
         {
             lifeTime += Time.deltaTime;
@@ -83,18 +84,19 @@ public class RangedEnemy : MonoBehaviour
         }
     }
 
+    //this is where the archer sees the player and fires an arrow at the player
     private void RangedAttack()
     {
         cooldownTimer = 0;
-        GameObject obj = objectPool.GetObject();
+        GameObject obj = objectPool.GetObject();        //gets an arrow from the pool
         obj.transform.position = firepoint.position;
         obj.transform.rotation = Quaternion.identity;
-        //obj.transform.Rotate(0f, 0f, 90f);
-        //trouble with the rotation of the arrows here
         sfxEnemies.PlayArcherShoot();
+        //allows the arrow projectile script to take over
         obj.GetComponent<EnemyProjectiles>().ActivateProjectile(ReturnEnemyArcherDirection());
     }
 
+    //this makes the archer wait for the anination before firing another arrow
     private IEnumerator WaitForAnimation()
     {
         enemyAnim.SetTrigger("AttackAnimation");
@@ -104,11 +106,11 @@ public class RangedEnemy : MonoBehaviour
         {
             yield return null;
         }
-        //RangedAttack();
 
         yield return new WaitForSeconds(4f);
     }
 
+    //this checks to see if the archer can see the player component
     private bool PlayerInSight()
     {
         RaycastHit2D hit =
@@ -118,6 +120,7 @@ public class RangedEnemy : MonoBehaviour
         return hit.collider != null;
     }
 
+    //turn the archer to face the side that the player is on
     private void flipToPlayer()
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
@@ -131,6 +134,7 @@ public class RangedEnemy : MonoBehaviour
         }
     }
 
+    //this flips the archer to face the correct way
     private void flip()
     {
         direction *= -1;
@@ -138,6 +142,7 @@ public class RangedEnemy : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
+    //this tells the arrow which way it sould be facing(called in the "EnemyProjectiles" script)
     public bool ReturnEnemyArcherDirection()
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
@@ -152,10 +157,12 @@ public class RangedEnemy : MonoBehaviour
         return facingLeft;
     }
 
+    //this checks to see if the player hit the enemy, if it did then the archer will take damage
     private void OnCollisionEnter2D(Collision2D coll)
     {
         if(coll.collider.tag == "Player")
         {
+            //change the health and check if the archer is dead
             health = health - 10;
             if(health > 0){
                 Debug.Log("Health is currently: " + health);
@@ -170,10 +177,5 @@ public class RangedEnemy : MonoBehaviour
                 //Destroy(gameObject, 1);
             }
         }
-    }
-
-    private void AnimationControl()
-    {
-        //enemyAnim.SetBool("PlayerInSight", PlayerInSight());
     }
 }

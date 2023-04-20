@@ -4,7 +4,6 @@ using UnityEngine;
 using cj;
 
 //this script has the logic for how the enemy will shoot their ranged projectiles
-
 public class EnemyProjectiles : EnemyDamage
 {
     [SerializeField]
@@ -12,23 +11,20 @@ public class EnemyProjectiles : EnemyDamage
     [SerializeField]
     private float resetTime;        //length of time before the projectiles reset
 
-    private float lifetime;
+    private float lifetime;         //how long the arrows remain on the sxcene after they hit something
 
-    private BoxCollider2D colliders;
-    //private RangedEnemy rangedEnemy;
+    private BoxCollider2D colliders;//this gets the collider for the arrow
 
-    //private GameObject player;
+    private bool hit;               //did the arrow hit?
+    private bool direction;         //what direction is the arrow going to fire from?
 
-    private bool hit;
-    private bool direction;
-
+    //when the arrow is made...
     private void Awake()
     {
         colliders = GetComponent<BoxCollider2D>();
-        //rangedEnemy = GameObject.Find("Archer").FindObjectOfType<RangedEnemy>();
-        //player = GameObject.Find("Player");
     }
 
+    //this determines where the arrow is being shot to and what direction it should be facing
     public void ActivateProjectile( bool direction)
     {
         hit = false;
@@ -44,13 +40,16 @@ public class EnemyProjectiles : EnemyDamage
         }
     }
 
+    //update the arrow once per frame
     private void Update()
     {
+        //if the arrow hits anything...
         if(hit)
         {
             transform.Translate(0, 0, 0);
             return;
         }
+        //moves the arrow
         float movementSpeed = speed * Time.deltaTime;
         if(direction == true)
         {
@@ -61,6 +60,7 @@ public class EnemyProjectiles : EnemyDamage
             transform.Translate(0, movementSpeed, 0);
         }
 
+        //this starts the count for how much longer the arrow sould remain on the scene for
         lifetime += Time.deltaTime;
         if(lifetime > resetTime)
         {
@@ -68,15 +68,16 @@ public class EnemyProjectiles : EnemyDamage
         }
     }
 
+    //if the arrow hits something...
     private void OnTriggerEnter2D(Collider2D coll)
     {
         hit = true;
         base.OnTriggerEnter2D(coll);
+        //if the arrow hits the player
         if(coll.tag == "Player")
         {
             gameObject.SetActive(false);
 
-            //Player player1 = player.GetComponent<Player>();
             PlayerSingleton.Player.dealDamage(7);
 
             //add Noah's plague event to have a 1/3 chance of causing a darkness plague if the player is hit with an arrow
@@ -85,14 +86,18 @@ public class EnemyProjectiles : EnemyDamage
                 EventManager eventManager = EventManager.Instance;
                 eventManager.startEvent(3, 3, 5);
             }
-        }else
+
+        }
+        else
         {
+            //this is if the arrow hits a difrferent collider then the player
             coll.transform.Translate(0,0,0);
             StartCoroutine(Despawn());
         }
         colliders.enabled = false;
     }
 
+    //this keeps track of how long the arrow has been on the scene and if it is too long then the arrow is put back into the object pool
     private IEnumerator Despawn()
     {
         for(int i = 0; i < 10; i++)

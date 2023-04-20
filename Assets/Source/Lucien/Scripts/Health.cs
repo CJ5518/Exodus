@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// this will controll the health for all the individual enemies
-
+// this would have controlled the health of all the enemies but I was having trouble with the call to this from the object pool enemies
+//so this is not implimented
 public class Health : MonoBehaviour
 {
    [SerializeField]

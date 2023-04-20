@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this was strictly dor testing purposes and should not be used
 public class TestLevelScene : MonoBehaviour
 {
     [SerializeField]

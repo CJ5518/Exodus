@@ -2,22 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
-
-//Bug with the CPU usage being monitored in unity... Otherwise it would work...
-// https://forum.unity.com/threads/100-cpu-usage-on-all-cores-when-in-play-mode-editor-is-out-of-focus-or-minimized-2020-1-1.948604/
-
+/************************* CLASS DIAGRAM OR OBJECT POOL *******************************************************
+ *  ----------                                         ------------------                                     *
+ *  | Client | -------Asks for reusable object-------> | ObjectPool     |                                     *
+ *  ----------                                         ------------------                                     *
+ *      |                                              | +instance:array|                                     *
+ *      |                                              ------------------                                     *
+ *      |                                              |    +GetObject  |                                     *
+ *      |                                              | +ReleaseObject |                                     *
+ *      |                                              ------------------                                     *
+ *      |                                                     /\                                              *
+ *      |                                                     \/                                              *
+ *      |                                                      |                                              *
+ *      |                                                      |                   ------------------------   *
+ *      |                                                      |                   |    PoolGameObject    |   *
+ *      |                                                      |                   -----------------------    *
+ *      |                                                      |                   |+DoPoolObjectScript()|    *
+ *      |                                                      |                   -----------------------    *
+ *      |                                                       -----------------> |                     |    *
+ *      ----------------------- Uses --------------------------------------------> -----------------------    *
+ **************************************************************************************************************/
+//this is the pool where the arrows are stored and called from
 public class ObjectPool : MonoBehaviour 
 {
-    public GameObject prefab;
-    public int poolSize;
-    public bool willGrow;
+    public GameObject prefab; //the object that is being stored and called
+    public int poolSize;        //this is the amount that will be in the pool upon initialization
+    public bool willGrow;       //this is if the pool will grow in emergency cases
     private float cpuThreshHold = 65; //CPU threshhold that will be used to trigger the prefab generation based on current usage
     private float holdCurrentCpuUsage = 0; //this will hold the current amount of cpu usage that we are using...
 
-    private List<GameObject> objects;
+    private List<GameObject> objects;   //refrence lists for the objects to be called and then stored again
 
-    private ProcessorUsage processorUsage;
+    private ProcessorUsage processorUsage;  //gets the processor usage
     
+    //function is called on initialization of the function
     public void Awake()
     {
         objects = new List<GameObject>();
