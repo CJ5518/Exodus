@@ -33,7 +33,7 @@ public class FrogEvent : PlagueEvent
         }
     }
 
-    public void ReceiveParameters(int difficulty, float time)
+    public override void ReceiveParameters(int difficulty, float time)
     {
         //in this event the time parameter specifies the time between spawns of frogs
         spawnInterval = time;
