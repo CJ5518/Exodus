@@ -81,22 +81,26 @@ public class EventManager : MonoBehaviour
         Debug.Log("called eventManager startEvent() "+timeElapsed+"/"+maxTime);
         if(isEvent == 0 && time > 0){
             timeElapsed = 0; 
-            maxTime = time;
             isEvent = 1;
             switch(type){
             case 1: 
+                 Debug.Log("start hail");
+                 maxTime = time;
                  hailevent = Resources.Load<GameObject>("prefabs/Noah/myHailEvent");
                  currentEvent = Instantiate(hailevent);
                  currentEvent.GetComponent<HailEvent>().ReceiveParameters(difficulty, time);
                  break;
             case 2: 
+                 Debug.Log("start frog");
                  //time for this event is used as an interval between difficulty spawns
                  maxTime = time * difficulty + 1; 
                  frogevent = Resources.Load<GameObject>("prefabs/Noah/myFrogEvent");     
                  currentEvent = Instantiate(frogevent);
                  currentEvent.GetComponent<FrogEvent>().ReceiveParameters(difficulty, time);
                  break;
-            case 3:      
+            case 3:   
+                 Debug.Log("start dark");
+                 maxTime = time;   
                  darkevent = Resources.Load<GameObject>("prefabs/Noah/myDarkEvent");
                  currentEvent = Instantiate(darkevent);
                  currentEvent.GetComponent<DarkEvent>().ReceiveParameters(difficulty, time);
@@ -108,7 +112,7 @@ public class EventManager : MonoBehaviour
         //else{ Debug.Log("Cannot start event during event. FramesLeft: "+ currentEvent.GetComponent<PlagueEvent>().framesLeft);}
     }
 
-    private GameObject getCurrEvent()
+    public GameObject getCurrEvent()
     {
         return currentEvent;
     }
@@ -117,7 +121,8 @@ public class EventManager : MonoBehaviour
   //this function is used for the boundary tests, because DestroyImmediate is required there instead of Destroy
     public void endEvent(){
         DestroyImmediate(currentEvent);
-        currentEvent = null;
+        //currentEvent = null;
+        isEvent = 0;
     }
 
 }

@@ -12,16 +12,25 @@ public class FrogEvent : PlagueEvent
     private float spawnTimer;
 
     private GameObject cam;
+    private float camX, camY;
 
     System.Random rnd = new System.Random();
 
     // Start is called before the first frame update 
     void Start()
     {
-      frog = Resources.Load<GameObject>("prefabs/Noah/Frog");
-      spawnTimer = 1;
-      count = 0;
-      cam = GameObject.FindWithTag("MainCamera");
+        frog = Resources.Load<GameObject>("prefabs/Noah/Frog");
+        spawnTimer = 1;
+        count = 0;
+        cam = GameObject.FindWithTag("MainCamera");
+        if(cam != null){
+            camX = cam.transform.position.x;
+            camY = cam.transform.position.y;
+        }
+        else {
+            camX = 0;
+            camY = 0;
+        }
     }
 
     public void ReceiveParameters(int difficulty, float time)
@@ -41,8 +50,8 @@ public class FrogEvent : PlagueEvent
 
        if(spawnTimer >= spawnInterval && count < spawnCount){
      Debug.Log("interval:"+spawnInterval+" spawnCount: "+spawnCount);
-           GameObject obj1 = Instantiate(frog, new Vector2(cam.transform.position.x - 8, cam.transform.position.y),Quaternion.identity, transform);
-           GameObject obj2 = Instantiate(frog, new Vector2(cam.transform.position.x + 8, cam.transform.position.y),Quaternion.identity, transform);
+           GameObject obj1 = Instantiate(frog, new Vector2(camX - 8, camY),Quaternion.identity, transform);
+           GameObject obj2 = Instantiate(frog, new Vector2(camX + 8, camY),Quaternion.identity, transform);
 
            obj1.transform.SetParent(transform.parent); // this is so if the event ends while frogs are still alive, the
            obj2.transform.SetParent(transform.parent); // frogs will not be destroyed, because their new parent still exists

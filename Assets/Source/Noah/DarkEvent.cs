@@ -17,14 +17,16 @@ public class DarkEvent : PlagueEvent
 
         // find player to give light around the player
         player = GameObject.FindGameObjectWithTag("Player");
-        playerLight = player.AddComponent<Light2D>();
+        if(player != null) {
+            playerLight = player.AddComponent<Light2D>();
         
-        // can't add component that already exists, so this line will set playerLight for 2,3,4th... calls of darkEvent
-        playerLight = player.GetComponent<Light2D>(); 
+            // can't add component that already exists, so this line will set playerLight for 2,3,4th... calls of darkEvent
+            playerLight = player.GetComponent<Light2D>(); 
                                                   
-        playerLight.color = Color.white;
-        playerLight.intensity = 1f;
-        //Debug.Log("we have given the player a light.");
+            playerLight.color = Color.white;
+            playerLight.intensity = 1f;
+            //Debug.Log("we have given the player a light.");
+        }
     }
 
     public void ReceiveParameters(int difficulty, float time)
@@ -53,19 +55,21 @@ public class DarkEvent : PlagueEvent
     void Update()
     {
        float newRadius = lightRadius + 2* Mathf.Sin(Time.time);
-       playerLight.pointLightOuterRadius = newRadius;
-       playerLight.pointLightInnerRadius = newRadius/4;
-
+       if(player != null) {
+           playerLight.pointLightOuterRadius = newRadius;
+           playerLight.pointLightInnerRadius = newRadius/4;
+       }
     }
 
     // This dynamic type EndEvent() function cannot just destroy the event. It first has to reset the lights back to normal.
     public override void EndEvent()
     {
         // Debug.Log("OVERRIDE");
-        // turn down the player light, or it will remain seen. Light intensity stacks in this rendering package
-        playerLight.pointLightOuterRadius = 0;
-        playerLight.pointLightInnerRadius = 0;
-        
+        if(player != null){
+            // turn down the player light, or it will remain seen. Light intensity stacks in this rendering package
+            playerLight.pointLightOuterRadius = 0;
+            playerLight.pointLightInnerRadius = 0;
+        }
         //reset the global Light
         Light2D gLight = globalLight.GetComponent<Light2D>();
         gLight.intensity = 1f;

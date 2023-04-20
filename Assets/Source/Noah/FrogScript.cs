@@ -14,6 +14,7 @@ public class FrogScript : MonoBehaviour
     private float prevYVel;
     private int isGrounded;
     private Rigidbody2D rb;
+    private float playerX;
     private Sprite airSprite, groundSprite;
 
     private GameObject frogFightManager;
@@ -67,8 +68,14 @@ public class FrogScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
+         if(player == null){
+             playerX = 0;
+         }
+         else {
+             playerX = player.GetComponent<Rigidbody2D>().transform.position.x;
+         }
          //face the frog towards the player
-         if(player.GetComponent<Rigidbody2D>().transform.position.x < transform.position.x) {
+         if(playerX < transform.position.x) {
              GetComponent<SpriteRenderer>().flipX = false;
              if(speedX > 0) speedX = 0 - speedX;
          }

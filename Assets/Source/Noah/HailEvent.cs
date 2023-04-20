@@ -10,6 +10,7 @@ public class HailEvent : PlagueEvent
     public int spawnInterval;
 
     private GameObject cam;
+    private float camX, camY;
 
     System.Random rnd = new System.Random();
 
@@ -22,6 +23,14 @@ public class HailEvent : PlagueEvent
         
         // will use the camera position as a reference point to spawing the hailStones
         cam = GameObject.FindWithTag("MainCamera");
+        if(cam != null){
+            camX = cam.transform.position.x;
+            camY = cam.transform.position.y;
+        }
+        else {
+            camX = 0;
+            camY = 0;
+        }
     }
 
     public void ReceiveParameters(int difficulty, float time)
@@ -45,7 +54,7 @@ public class HailEvent : PlagueEvent
         // +/- 22 is the approximate width of the camera and 10 is the height above the center of the camera
         int rand = rnd.Next(-22,22);
         if(frameCount%(spawnInterval) == 0) {
-            GameObject obj = Instantiate(hailStone, new Vector2(rand + cam.transform.position.x, 10+ cam.transform.position.y), Quaternion.identity, transform);
+            GameObject obj = Instantiate(hailStone, new Vector2(rand + camX, 10+ camY), Quaternion.identity, transform);
             // set the new hailstone's parent to the EventManager so that when this event ends, the hailstones on screen are not immediately destroyed
             obj.transform.SetParent(transform.parent);
         }
