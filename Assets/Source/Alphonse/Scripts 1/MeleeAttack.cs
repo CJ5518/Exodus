@@ -63,7 +63,7 @@ public class damageBoost: MeleeAttack
     {
         get
         {
-            return 3 + attack1.Damage;
+            return 1 + attack1.Damage;
             //return 6;
         }
     }

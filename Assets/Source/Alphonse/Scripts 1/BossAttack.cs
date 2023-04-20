@@ -17,7 +17,7 @@ public class Melee: BossAttack
     public int Damage{
         get
         {
-            return 5;
+            return 3;
         }
     }
 }

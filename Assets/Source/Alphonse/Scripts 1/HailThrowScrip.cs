@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cj;
 
 public class HailThrowScrip : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class HailThrowScrip : MonoBehaviour
         {
             this.GetComponent<Renderer>().enabled = false;
             this.GetComponent<Collider2D>().enabled = false;
+            PlayerSingleton.Player.dealDamage(1);
         }
     }
 }

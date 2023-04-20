@@ -23,8 +23,6 @@ public class BossShoot : MonoBehaviour
     {
        count =  0;
        hailCount = 10;
-       //em = Resources.Load<EventManager>("prefabs/Noah/myEventManager");
-       //Instantiate(em);
     }
 
     // Update is called once per frame
@@ -34,17 +32,12 @@ public class BossShoot : MonoBehaviour
 
         while( timer > count)
         {
-            //timer = 0;
-            //hail();
             Instantiate(snowBall, snowBallPos.position, Quaternion.identity);
             count += 20f;
         }
 
         if(timer == hailCount)
         {
-            
-            //em.startEvent(1);
-            
             hailCount += 15;
         }
 

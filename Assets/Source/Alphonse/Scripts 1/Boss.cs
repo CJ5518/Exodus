@@ -14,13 +14,11 @@ public class Boss : singletonBoss<Boss>
     public GameObject boss;
     private Transform player;
 
-    //public float currentHealth;
-    //var mummyMelee = new Melee();
     BossAttack mAttack = null;
     int damage;
     
 
-    public float bossSpeed;
+    //public float bossSpeed;
 
     void Start()
     {
@@ -51,12 +49,10 @@ public class Boss : singletonBoss<Boss>
 
         if (other.collider.tag == "Player")
         {
-            if (bossHealth.healthAmt > 50)
+            if (bossHealth.healthAmt >= 25)
             {
-
                 Debug.Log("X mAttack: " + (mAttack.Damage).ToString());
                 PlayerSingleton.Player.dealDamage(damage);
-                //PlayerSingleton.Player.dealDamage(10);
 
             }
             else
