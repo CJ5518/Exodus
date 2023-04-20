@@ -65,6 +65,7 @@ public class EnemyJumpAttack : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         lightBanditPool = FindObjectOfType<LightBanditPool>();
         isDead = false;
+        health = 100;
         sfxEnemies = FindObjectOfType<SFXEnemies>();
         lifeTime = 0;
         resetTime = 5;
@@ -130,6 +131,7 @@ public class EnemyJumpAttack : MonoBehaviour
             if(lifeTime >= resetTime)
             {
                 lightBanditPool.ReleaseMeleeObject(gameObject);
+                cleanUpAfterDespawn();
             }
         }
     }
@@ -244,6 +246,7 @@ public class EnemyJumpAttack : MonoBehaviour
         yield return new WaitForSeconds(1);
         enemyAnim.SetBool("isDead", isDead);
         lightBanditPool.ReleaseMeleeObject(gameObject);
+        cleanUpAfterDespawn();
         yield return new WaitForSeconds(1);
     }
 
@@ -255,4 +258,21 @@ public class EnemyJumpAttack : MonoBehaviour
         enemyAnim.SetBool("isDead", isDead);
     }
 
+    //this will reinmitialize all the values in the script to default
+    public void cleanUpAfterDespawn()
+    {
+        enemyRigid = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player").transform;
+        enemyAnim = GetComponent<Animator>();
+        lightBanditPool = FindObjectOfType<LightBanditPool>();
+        isDead = false;
+        health = 100;
+        sfxEnemies = FindObjectOfType<SFXEnemies>();
+        lifeTime = 0;
+        resetTime = 5;
+        hasJumped = false;
+        //these will be used to the enemy isn't infinetly attacking...
+        waitForAttack = 0;      //wait one second for attack
+        waitForAttackAnimation = 0; //give 2 seconds after the npc has attacked to continue
+    }
 }
