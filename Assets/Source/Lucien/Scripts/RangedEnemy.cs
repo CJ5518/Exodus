@@ -160,7 +160,7 @@ public class RangedEnemy : MonoBehaviour
     //this checks to see if the player hit the enemy, if it did then the archer will take damage
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if(coll.collider.tag == "Player")
+        if(coll.collider.tag == "Player" || coll.collider.tag == "Weapon")
         {
             //change the health and check if the archer is dead
             health = health - 10;
