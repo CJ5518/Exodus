@@ -35,9 +35,9 @@ public class BossHealth : MonoBehaviour
     }
 
     // If the Boss collides with the Player, The boss will take damage to its health.
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag == "Weapon")
+        if (collision.tag == "Weapon")
         {
            takeDamage(damage);
            healthBar.fillAmount = healthAmt / 100f;

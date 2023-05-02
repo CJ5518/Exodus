@@ -41,6 +41,9 @@ public class Player : MonoBehaviour {
 	// The max number of seconds the player can hold space to continue to rise with a jump
 	[System.NonSerialized] public float maxJumpRiseTime = 0.75f;
 
+	//How long does the attack stay out?
+	private float attackLifespan = 0.3f;
+
 	// The max horizontal and vertical velocity
 	private float maxHorizontalSpeed = 10.0f;
 	private float maxVerticalSpeed = 20.0f;
@@ -180,14 +183,20 @@ public class Player : MonoBehaviour {
 		playerState = new PlayerStateAirborne(this);
 	}
 
+	private float attackLifespanLeft = 0.0f;
 	void Update() {
 		controller.gatherInput();
 		playerState.update(Time.deltaTime);
 
 		//Attacks
 		if (Input.GetKey(KeyCode.Return)) {
-			//GameObject.Instantiate()
+			attackObj.SetActive(true);
+			attackLifespanLeft = attackLifespan;
 		}
+		if (attackObj.activeSelf && attackLifespanLeft <= 0.0f) {
+			attackObj.SetActive(false);
+		}
+		attackLifespanLeft -= Time.deltaTime;
 	}
 
 	void FixedUpdate() {
