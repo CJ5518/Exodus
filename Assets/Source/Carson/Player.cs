@@ -59,6 +59,11 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	//Called when WE hit an enemy
+	public void onEnemyHit() {
+
+	}
+
 	// Reset health to full
 	public void resetHealth() {
 		m_health = 100;

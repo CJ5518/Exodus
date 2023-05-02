@@ -220,6 +220,7 @@ public class EnemyJumpAttack : MonoBehaviour
         if(coll.tag == "Weapon")
         {
             health = health - 100;
+            PlayerSingleton.Player.onEnemyHit();
             if(health > 0){
                 Debug.Log("Health is currently: " + health);
                 sfxEnemies.PlayBanditDeath();

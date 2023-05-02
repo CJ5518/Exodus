@@ -164,6 +164,7 @@ public class RangedEnemy : MonoBehaviour
         {
             //change the health and check if the archer is dead
             health = health - 100;
+            PlayerSingleton.Player.onEnemyHit();
             if(health > 0){
                 Debug.Log("Health is currently: " + health);
                 sfxEnemies.PlayArcherDeath();
