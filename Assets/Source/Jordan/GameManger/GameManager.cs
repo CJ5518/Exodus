@@ -45,7 +45,7 @@ public sealed class GameManager : MonoBehaviour
 
     void Start()
     {
-        bDRBCMode = false;
+        bDRBCMode = StoreBCMode.globalBCEnabled;
         goPauseMenu.SetActive(false);
         pPlayer = GameObject.FindAnyObjectByType<Player>();
         goHealthBar = GameObject.FindAnyObjectByType<HealthBar>();
@@ -85,19 +85,18 @@ public sealed class GameManager : MonoBehaviour
         if (goBlur.bBlur && bLost && cgDeathMenu.alpha < 1f)
             cgDeathMenu.alpha += 0.03f;
 
-        if (!bDRBCMode && smSettingsManager.bDrBCEnabled)
+        if (StoreBCMode.globalBCEnabled == true)
         {
-            bDRBCMode = smSettingsManager.bDrBCEnabled;
             if (apArrowPoint)
                 apArrowPoint.SetActive(true);
-        } else if (bDRBCMode && !smSettingsManager.bDrBCEnabled)
+        } else if (StoreBCMode.globalBCEnabled == false)
         {
             bDRBCMode = smSettingsManager;
             if (apArrowPoint)
                 apArrowPoint.SetActive(false);
         }
 
-        if (bDRBCMode)
+        if (StoreBCMode.globalBCEnabled == true)
         {
             pPlayer.resetHealth();
             pPlayer.jumpForce = 1500.0f;

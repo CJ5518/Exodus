@@ -39,6 +39,7 @@ public class SettingsManager : MonoBehaviour
     public void ToggleBCMode()
     {
         bDrBCEnabled = !bDrBCEnabled;
+        StoreBCMode.globalBCEnabled = bDrBCEnabled;
         iBCImage.color = new Vector4(255, 255, 255, (!bDrBCEnabled ? 1f : 0f));
 
     }
