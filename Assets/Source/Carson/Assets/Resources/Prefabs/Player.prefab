@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036797589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.769, y: 0.106, z: 0}
+  m_LocalPosition: {x: 1, y: 0.106, z: 0}
   m_LocalScale: {x: 1.0496279, y: 0.18, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -486,7 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2f527747ee4394c8674cecc6f34c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackObj: {fileID: 0}
+  attackObj: {fileID: 2036797589}
+  mosesSprite: {fileID: 886766949}
   onDamageTaken:
     m_PersistentCalls:
       m_Calls: []

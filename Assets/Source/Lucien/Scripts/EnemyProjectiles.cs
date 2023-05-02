@@ -74,7 +74,7 @@ public class EnemyProjectiles : EnemyDamage
         hit = true;
         base.OnTriggerEnter2D(coll);
         //if the arrow hits the player
-        if(coll.tag == "Player")
+        if(coll.tag == "Player" || coll.tag == "Weapon")
         {
             gameObject.SetActive(false);
 

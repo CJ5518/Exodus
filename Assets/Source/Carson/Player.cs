@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 
 	//Attack object
 	public GameObject attackObj;
+	//Moses sprite
+	public SpriteRenderer mosesSprite;
 
 	// Events we invoke
 	// Player took damage
@@ -55,6 +57,11 @@ public class Player : MonoBehaviour {
 			else
 				onDamageRemoved.Invoke();
 		}
+	}
+
+	//Called when WE hit an enemy
+	public void onEnemyHit() {
+
 	}
 
 	// Reset health to full
