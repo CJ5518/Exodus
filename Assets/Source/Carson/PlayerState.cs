@@ -14,9 +14,27 @@ namespace cj {
 		
 		// Common function, most states move horizontally somehow
 		protected void moveHorizontal(float amount) {
+			Debug.Log(player.attackObj.transform.position.x);
 			Vector2 newForce = new Vector2();
 			newForce.x = player.controller.horizontal;
 			player.rigidBody.AddForce(newForce * 200 * amount);
+			if (player.controller.horizontal == 1) {
+				player.mosesSprite.flipX = true;
+				//Switch to go to the right
+				if (player.attackObj.transform.localPosition.x < 0) {
+					player.attackObj.transform.localPosition = new Vector3(
+						-player.attackObj.transform.localPosition.x, player.attackObj.transform.localPosition.y, player.attackObj.transform.localPosition.z
+					);
+				}
+			} else if (player.controller.horizontal == -1) {
+				player.mosesSprite.flipX = false;
+				//Switch to go to the right
+				if (player.attackObj.transform.localPosition.x > 0) {
+					player.attackObj.transform.localPosition = new Vector3(
+						-player.attackObj.transform.localPosition.x, player.attackObj.transform.localPosition.y, player.attackObj.transform.localPosition.z
+					);
+				}
+			}
 		}
 
 		// Functions called when a state is formally entered/exited

@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 
 	//Attack object
 	public GameObject attackObj;
+	//Moses sprite
+	public SpriteRenderer mosesSprite;
 
 	// Events we invoke
 	// Player took damage
