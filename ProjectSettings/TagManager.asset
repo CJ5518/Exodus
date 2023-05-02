@@ -20,6 +20,7 @@ TagManager:
   - Pickup
   - GlobalLight
   - bossHealthCanvas
+  - Weapon
   layers:
   - Default
   - TransparentFX

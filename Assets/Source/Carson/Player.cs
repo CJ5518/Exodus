@@ -14,6 +14,9 @@ public class Player : MonoBehaviour {
 	private AudioSource m_audioSource;
 	private int m_health;
 
+	//Attack object
+	public GameObject attackObj;
+
 	// Events we invoke
 	// Player took damage
 	// NOT called when the player dies
@@ -24,8 +27,6 @@ public class Player : MonoBehaviour {
 
 	// Player died (health reached 0)
 	public UnityEvent onDeath;
-
-	
 
 	// Basic settings
 	[System.NonSerialized] public float jumpForce = 440.0f;
@@ -175,6 +176,11 @@ public class Player : MonoBehaviour {
 	void Update() {
 		controller.gatherInput();
 		playerState.update(Time.deltaTime);
+
+		//Attacks
+		if (Input.GetKey(KeyCode.Return)) {
+			//GameObject.Instantiate()
+		}
 	}
 
 	void FixedUpdate() {

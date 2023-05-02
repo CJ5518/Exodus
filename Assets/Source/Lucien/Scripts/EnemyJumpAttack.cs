@@ -219,9 +219,9 @@ public class EnemyJumpAttack : MonoBehaviour
     //this is how the enemy takes damage form the player and eventually dies
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if(coll.collider.tag == "Player" || coll.collider.tag == "Weapon")
+        if(coll.collider.tag == "Weapon")
         {
-            health = health - 10;
+            health = health - 100;
             if(health > 0){
                 Debug.Log("Health is currently: " + health);
                 sfxEnemies.PlayBanditDeath();
