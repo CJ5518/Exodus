@@ -427,7 +427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The boss is damaged by running into him.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcc184f3de2a6734d91a47fef6149249, type: 2}
   m_sharedMaterial: {fileID: -1862668163679245003, guid: bcc184f3de2a6734d91a47fef6149249, type: 2}
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can attack enemies with left click.
+  m_text: You can attack enemies with the enter (return) key.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcc184f3de2a6734d91a47fef6149249, type: 2}
   m_sharedMaterial: {fileID: -1862668163679245003, guid: bcc184f3de2a6734d91a47fef6149249, type: 2}

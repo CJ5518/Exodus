@@ -100,7 +100,13 @@ public sealed class GameManager : MonoBehaviour
         if (bDRBCMode)
         {
             pPlayer.resetHealth();
+            pPlayer.jumpForce = 1500.0f;
             Debug.Log("DRBC");
+        } else { 
+            //Reset the player jump force if not in bc mode
+            if (pPlayer.jumpForce > 1400.0f) {
+                 pPlayer.jumpForce = 440.0f;
+            }
         }
 
         if (bWon)
