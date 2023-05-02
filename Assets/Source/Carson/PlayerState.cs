@@ -14,7 +14,6 @@ namespace cj {
 		
 		// Common function, most states move horizontally somehow
 		protected void moveHorizontal(float amount) {
-			Debug.Log(player.attackObj.transform.position.x);
 			Vector2 newForce = new Vector2();
 			newForce.x = player.controller.horizontal;
 			player.rigidBody.AddForce(newForce * 200 * amount);
