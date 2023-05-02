@@ -826,6 +826,9 @@ MonoBehaviour:
     Enemy
     Design - Lucien
 
+
+    Player Character - Carson
+
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcc184f3de2a6734d91a47fef6149249, type: 2}
