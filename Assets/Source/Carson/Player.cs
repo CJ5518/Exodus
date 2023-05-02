@@ -17,7 +17,24 @@ public class Player : MonoBehaviour {
 	//Attack object
 	public GameObject attackObj;
 	//Moses sprite
-	public SpriteRenderer mosesSprite;
+	public SpriteRenderer _mosesSprite;
+	public SpriteRenderer attackSprite;
+
+	public SpriteRenderer mosesSprite {
+		get {
+			if (attackLifespanLeft >= 0.0f) {
+				return attackSprite;
+			} else {
+				return _mosesSprite;
+			}
+		}
+		set {
+			attackSprite.flipX = mosesSprite.flipX;
+			_mosesSprite.flipX = mosesSprite.flipX;
+			attackSprite.gameObject.SetActive(value == attackSprite);
+			_mosesSprite.gameObject.SetActive(value == _mosesSprite);
+		}
+	}
 
 	// Events we invoke
 	// Player took damage
@@ -63,6 +80,7 @@ public class Player : MonoBehaviour {
 	}
 
 	//Called when WE hit an enemy
+	//Just in case it ever became useful
 	public void onEnemyHit() {
 
 	}
@@ -189,14 +207,28 @@ public class Player : MonoBehaviour {
 		playerState.update(Time.deltaTime);
 
 		//Attacks
-		if (Input.GetKey(KeyCode.Return)) {
+		if (Input.GetKeyDown(KeyCode.Return) && attackLifespanLeft <= 0.0f) {
 			attackObj.SetActive(true);
+			mosesSprite = attackSprite;
 			attackLifespanLeft = attackLifespan;
 		}
 		if (attackObj.activeSelf && attackLifespanLeft <= 0.0f) {
 			attackObj.SetActive(false);
+			mosesSprite = _mosesSprite;
 		}
 		attackLifespanLeft -= Time.deltaTime;
+
+
+		if (mosesSprite.flipX) {
+			//Switch to go to the right
+			attackObj.transform.localPosition = new Vector3(
+				1.0f, attackObj.transform.localPosition.y, attackObj.transform.localPosition.z
+			);
+		} else {
+			attackObj.transform.localPosition = new Vector3(
+				-1.0f, attackObj.transform.localPosition.y, attackObj.transform.localPosition.z
+			);
+		}
 	}
 
 	void FixedUpdate() {

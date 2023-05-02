@@ -19,20 +19,8 @@ namespace cj {
 			player.rigidBody.AddForce(newForce * 200 * amount);
 			if (player.controller.horizontal == 1) {
 				player.mosesSprite.flipX = true;
-				//Switch to go to the right
-				if (player.attackObj.transform.localPosition.x < 0) {
-					player.attackObj.transform.localPosition = new Vector3(
-						-player.attackObj.transform.localPosition.x, player.attackObj.transform.localPosition.y, player.attackObj.transform.localPosition.z
-					);
-				}
 			} else if (player.controller.horizontal == -1) {
 				player.mosesSprite.flipX = false;
-				//Switch to go to the right
-				if (player.attackObj.transform.localPosition.x > 0) {
-					player.attackObj.transform.localPosition = new Vector3(
-						-player.attackObj.transform.localPosition.x, player.attackObj.transform.localPosition.y, player.attackObj.transform.localPosition.z
-					);
-				}
 			}
 		}
 
