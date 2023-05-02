@@ -9,18 +9,20 @@ public class SettingsManager : MonoBehaviour
     public GameObject goBackMenu;
     public GameObject goSettingsMenu;
     public GameObject goFullScreenButton;
+    public GameObject goBCButton;
     private Image iFullScreenImage;
+    private Image iBCImage;
+
+    public bool bDrBCEnabled;
     void Start()
     {
         goSettingsMenu.SetActive(false);
+        bDrBCEnabled = false;
         iFullScreenImage = goFullScreenButton.GetComponent<Image>();
+        iBCImage = goBCButton.GetComponent<Image>();
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ToggleSettings()
     {
@@ -32,5 +34,12 @@ public class SettingsManager : MonoBehaviour
     {
         Screen.fullScreen = !Screen.fullScreen;
         iFullScreenImage.color = new Vector4(255, 255, 255, (!Screen.fullScreen ? 0f : 1f));
+    }
+
+    public void ToggleBCMode()
+    {
+        bDrBCEnabled = !bDrBCEnabled;
+        iBCImage.color = new Vector4(255, 255, 255, (!bDrBCEnabled ? 1f : 0f));
+
     }
 }

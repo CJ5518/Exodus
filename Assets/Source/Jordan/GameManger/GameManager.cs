@@ -14,10 +14,13 @@ public sealed class GameManager : MonoBehaviour
     private CanvasGroup cgDeathMenu;
     private GameObject goBoss;
     private BossHealth bhBossHealth;
+    private SettingsManager smSettingsManager;
+    public GameObject apArrowPoint;
 
     private bool bLost;
     private bool bWon;
     private float fWinTick;
+    private bool bDRBCMode;
 
     private float fTick;
 
@@ -42,12 +45,15 @@ public sealed class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        bDRBCMode = false;
         goPauseMenu.SetActive(false);
         pPlayer = GameObject.FindAnyObjectByType<Player>();
         goHealthBar = GameObject.FindAnyObjectByType<HealthBar>();
         cgDeathMenu = goDeathMenu.GetComponent<CanvasGroup>();
         bhBossHealth = GameObject.FindObjectOfType<BossHealth>();
+        smSettingsManager = GameObject.FindObjectOfType<SettingsManager>();
+        if (apArrowPoint)
+            apArrowPoint.SetActive(false);
 
         cgDeathMenu.alpha = 0;
         goDeathMenu.SetActive(false);
@@ -78,6 +84,24 @@ public sealed class GameManager : MonoBehaviour
 
         if (goBlur.bBlur && bLost && cgDeathMenu.alpha < 1f)
             cgDeathMenu.alpha += 0.03f;
+
+        if (!bDRBCMode && smSettingsManager.bDrBCEnabled)
+        {
+            bDRBCMode = smSettingsManager.bDrBCEnabled;
+            if (apArrowPoint)
+                apArrowPoint.SetActive(true);
+        } else if (bDRBCMode && !smSettingsManager.bDrBCEnabled)
+        {
+            bDRBCMode = smSettingsManager;
+            if (apArrowPoint)
+                apArrowPoint.SetActive(false);
+        }
+
+        if (bDRBCMode)
+        {
+            pPlayer.resetHealth();
+            Debug.Log("DRBC");
+        }
 
         if (bWon)
         {

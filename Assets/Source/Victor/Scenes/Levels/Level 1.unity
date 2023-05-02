@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &162152177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4461063880058619106, guid: 457018f94fb61a748909c8639a668c12, type: 3}
+  m_PrefabInstance: {fileID: 2005561608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &343090308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -744,6 +749,7 @@ MonoBehaviour:
   goPauseMenu: {fileID: 1989870782}
   goBlur: {fileID: 759715865}
   goDeathMenu: {fileID: 1292265802}
+  apArrowPoint: {fileID: 162152177}
 --- !u!4 &1295368004
 Transform:
   m_ObjectHideFlags: 0
