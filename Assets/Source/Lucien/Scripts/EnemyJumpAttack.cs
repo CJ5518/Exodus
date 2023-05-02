@@ -216,10 +216,8 @@ public class EnemyJumpAttack : MonoBehaviour
         }
     }
 
-    //this is how the enemy takes damage form the player and eventually dies
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-        if(coll.collider.tag == "Weapon")
+    private void OnTriggerEnter2D(Collider2D coll) {
+        if(coll.tag == "Weapon")
         {
             health = health - 100;
             if(health > 0){

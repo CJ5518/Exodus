@@ -158,12 +158,12 @@ public class RangedEnemy : MonoBehaviour
     }
 
     //this checks to see if the player hit the enemy, if it did then the archer will take damage
-    private void OnCollisionEnter2D(Collision2D coll)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.collider.tag == "Weapon")
+        if(coll.tag == "Weapon")
         {
             //change the health and check if the archer is dead
-            health = health - 10;
+            health = health - 100;
             if(health > 0){
                 Debug.Log("Health is currently: " + health);
                 sfxEnemies.PlayArcherDeath();
