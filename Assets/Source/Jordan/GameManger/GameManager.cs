@@ -18,7 +18,6 @@ public sealed class GameManager : MonoBehaviour
     public GameObject apArrowPoint;
 
     private bool bLost;
-    private bool bWon;
     private float fWinTick;
     private bool bDRBCMode;
 
@@ -58,7 +57,6 @@ public sealed class GameManager : MonoBehaviour
         cgDeathMenu.alpha = 0;
         goDeathMenu.SetActive(false);
         bLost = false;
-        bWon = false;
         fWinTick = 0;
         fTick = 0;
     }
@@ -76,9 +74,8 @@ public sealed class GameManager : MonoBehaviour
         if (pPlayer.health <= 0 && !bLost && fTick > 100)
             LoseGame();
 
-        if (bhBossHealth)
-            if (bhBossHealth.healthAmt <= 0 && !bWon)
-                WinGame();
+        if (BossSave.boss1Beat == true && BossSave.boss2Beat == true)
+            WinGame();
 
 
         if (goBlur.bBlur && bLost && cgDeathMenu.alpha < 1f)
@@ -107,7 +104,7 @@ public sealed class GameManager : MonoBehaviour
             }
         }
 
-        if (bWon)
+        if (BossSave.boss1Beat == true && BossSave.boss2Beat)
         {
             if (fWinTick > 100)
             {
@@ -135,7 +132,6 @@ public sealed class GameManager : MonoBehaviour
     public void WinGame()
     {
         goBlur.bBlur = true;
-        bWon = true;
     }
 }
     
