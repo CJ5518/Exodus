@@ -28,6 +28,9 @@ public class DemoModeAI : MonoBehaviour
     private bool isOnRightWall = false;
     private Seeker seeker;
     private Rigidbody2D rb;
+    private ExitDemo exitDemo;
+    private Vector3 lastPos;
+    private float demoModeTimeOut;
 
     private void Start()
     {
@@ -36,10 +39,29 @@ public class DemoModeAI : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("NavMeshTarget").transform;
         }
 
+        exitDemo = GameObject.FindObjectOfType<ExitDemo>(); 
+
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
+        lastPos = transform.position;
+
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+    }
+
+    private void Update() {
+        float distanceMoved = Vector3.Distance(transform.position, lastPos);
+
+        if (distanceMoved > .1f) {
+            demoModeTimeOut = 0f;
+        } 
+        else {
+            demoModeTimeOut += Time.deltaTime;
+
+            if (demoModeTimeOut > 7f) {
+                exitDemo.ExitDemoMode();
+            }
+        }
     }
 
     private void FixedUpdate()
