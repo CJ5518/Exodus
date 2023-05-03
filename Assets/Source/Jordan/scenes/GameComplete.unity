@@ -680,6 +680,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3669812097413214864, guid: 5ce9e12e1fcf4944cb6002c7dd553483, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 660.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669812097413214870, guid: 5ce9e12e1fcf4944cb6002c7dd553483, type: 3}
+      propertyPath: m_text
+      value: You Beat The Pharaoh!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce9e12e1fcf4944cb6002c7dd553483, type: 3}
 --- !u!1 &817859040
