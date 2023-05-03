@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "AstarPathfindingProject",
-        "CJMain"
+        "CJMain",
+        "JordanAssemblyRef"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

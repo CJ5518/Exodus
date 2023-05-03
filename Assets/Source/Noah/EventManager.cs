@@ -37,7 +37,8 @@ public class EventManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            if(gameObject != null)
+                Destroy(gameObject);
         }
     }
 

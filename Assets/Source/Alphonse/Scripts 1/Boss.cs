@@ -40,7 +40,7 @@ public class Boss : singletonBoss<Boss>
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(mAttack != null){
+        if(mAttack == null){
             mAttack = new runMeleeAttack(mAttack);
             damage = mAttack.Damage;
         }
@@ -57,7 +57,7 @@ public class Boss : singletonBoss<Boss>
             }
             else
             {
-                mAttack = new damageBoost(mAttack);
+                //mAttack = new damageBoost(mAttack);
                 Debug.Log("Y mAttack: " + (mAttack.getDamage()));
 
                 PlayerSingleton.Player.dealDamage(mAttack.getDamage());
