@@ -474,6 +474,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7879249803921250697, guid: 696222578727b464d89d6d4faf276a67, type: 3}
+      propertyPath: m_text
+      value: You Beat The Pharaoh!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879249803921250703, guid: 696222578727b464d89d6d4faf276a67, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 694.36
+      objectReference: {fileID: 0}
     - target: {fileID: 7879249804346538498, guid: 696222578727b464d89d6d4faf276a67, type: 3}
       propertyPath: m_Name
       value: WinScreen
