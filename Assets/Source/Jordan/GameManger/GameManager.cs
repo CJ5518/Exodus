@@ -71,9 +71,6 @@ public sealed class GameManager : MonoBehaviour
             goPauseMenu.SetActive(true);
             Time.timeScale = 0;
         }
-        if (goHealthBar == null) {
-            Debug.Log("IT TOOK WAY TOO LONG TO FIGURE THIS OUT");
-        }
         goHealthBar.SetHealth(pPlayer.health);
 
         if (pPlayer.health <= 0 && !bLost && fTick > 100)
