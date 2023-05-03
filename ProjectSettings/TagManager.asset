@@ -21,6 +21,7 @@ TagManager:
   - GlobalLight
   - bossHealthCanvas
   - Weapon
+  - Merchant
   layers:
   - Default
   - TransparentFX
