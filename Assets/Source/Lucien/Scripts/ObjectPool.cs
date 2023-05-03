@@ -53,7 +53,6 @@ public class ObjectPool : MonoBehaviour
     {
         //check the CPU usage    
         holdCurrentCpuUsage = processorUsage.GetCurrentValue();
-        UnityEngine.Debug.Log(holdCurrentCpuUsage);    
         if(holdCurrentCpuUsage < cpuThreshHold)
         {
             //create 10 new prefabs in down time...

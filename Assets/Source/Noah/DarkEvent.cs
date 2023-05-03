@@ -48,7 +48,6 @@ public class DarkEvent : PlagueEvent
         {
             gLight.intensity = 0;
         }
-        Debug.Log("glight intensity:  " + gLight.intensity);
     }
 
     // Update is called once per frame. It expands and retracts the light centered at the player according to Time.time

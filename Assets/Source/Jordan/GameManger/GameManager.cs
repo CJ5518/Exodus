@@ -47,7 +47,7 @@ public sealed class GameManager : MonoBehaviour
     {
         bDRBCMode = StoreBCMode.globalBCEnabled;
         goPauseMenu.SetActive(false);
-        pPlayer = GameObject.FindAnyObjectByType<Player>();
+        pPlayer = PlayerSingleton.Player;
         goHealthBar = GameObject.FindAnyObjectByType<HealthBar>();
         cgDeathMenu = goDeathMenu.GetComponent<CanvasGroup>();
         bhBossHealth = GameObject.FindObjectOfType<BossHealth>();
@@ -66,12 +66,14 @@ public sealed class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("tab"))
+        if (Input.GetKeyDown("tab") || Input.GetKeyDown(KeyCode.Escape))
         {
             goPauseMenu.SetActive(true);
             Time.timeScale = 0;
         }
-
+        if (goHealthBar == null) {
+            Debug.Log("IT TOOK WAY TOO LONG TO FIGURE THIS OUT");
+        }
         goHealthBar.SetHealth(pPlayer.health);
 
         if (pPlayer.health <= 0 && !bLost && fTick > 100)
