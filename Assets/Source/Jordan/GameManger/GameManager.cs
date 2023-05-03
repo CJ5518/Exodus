@@ -26,7 +26,6 @@ public sealed class GameManager : MonoBehaviour
     private static GameManager instance = null;
     private static readonly object padlock = new object();
 
-
     public static GameManager Instance
     {
         get
@@ -104,10 +103,12 @@ public sealed class GameManager : MonoBehaviour
             }
         }
 
-        if (BossSave.boss1Beat == true && BossSave.boss2Beat)
+        if (BossSave.boss1Beat == true && BossSave.boss2Beat == true)
         {
             if (fWinTick > 100)
             {
+                BossSave.boss1Beat = false;
+                BossSave.boss2Beat = false;
                 SceneManager.LoadScene("GameComplete");
             }
             fWinTick++;
