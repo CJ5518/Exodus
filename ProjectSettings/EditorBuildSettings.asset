@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Source/Jordan/scenes/GameComplete.unity
     guid: d456192bc72f5c149aed58bfb7ee84c9
+  - enabled: 1
+    path: Assets/Source/Victor/Scenes/Levels/Demo Mode.unity
+    guid: b8d57976ffef8e54d8b202e3fbe808e8
   m_configObjects: {}

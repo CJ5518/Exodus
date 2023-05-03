@@ -21,7 +21,12 @@ public class NextLevel : MonoBehaviour
     }
 
     private void NextScene() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Scene current = SceneManager.GetActiveScene();
+        if (current.name == "Demo Mode") {
+            SceneManager.LoadScene("Main Menu");
+        } else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void NextNextScene()
