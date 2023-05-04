@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
         GiveItem("Mana Potion");
         GiveItem("Regular Key");
         GiveItem("Health Pendant");
+        GiveItem("Speed Pendant");
         //GiveItem("Jump Pendant");
         
         player = GameObject.FindWithTag("Player");
@@ -65,6 +66,17 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U)) //Equip Jump pendant
         {
             checkJumpPendant("Jump Pendant");
+        }
+
+        if (Input.GetKeyDown(KeyCode.O)) //Equip Jump pendant
+        {
+            checkHealthPendant("Health Pendant");
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.P)) //Equip Jump pendant
+        {
+            checkSpeedPendant("Speed Pendant");
         }
 
         if (Input.GetKeyDown(KeyCode.Q)) //Drop Item
@@ -153,6 +165,44 @@ public class Inventory : MonoBehaviour
             GiveItem("Jump Pendant"); 
             EquipItem.Play();
             PlayerSingleton.Player.jumpForce = 440.0f;
+        }
+    }
+
+    public void checkHealthPendant(string itemName)
+    {
+        Item itemToRemove = CheckforItemStr(itemName);
+        if (itemToRemove != null) //Can be removed
+        {
+            characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
+            EquipItem.Play();
+            PlayerSingleton.Player.IncreaseMaxHealth(50); //Increase JumpForce of player
+            inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
+            Debug.Log("Item removed: " + itemToRemove.title);
+        }
+        else
+        {
+            GiveItem("Health Pendant"); 
+            EquipItem.Play();
+            PlayerSingleton.Player.IncreaseMaxHealth(-50);
+        }
+    }
+
+    public void checkSpeedPendant(string itemName)
+    {
+        Item itemToRemove = CheckforItemStr(itemName);
+        if (itemToRemove != null) //Can be removed
+        {
+            characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
+            EquipItem.Play();
+            PlayerSingleton.Player.IncreaseMaxSpeed(15.0f); //Increase JumpForce of player
+            inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
+            Debug.Log("Item removed: " + itemToRemove.title);
+        }
+        else
+        {
+            GiveItem("Speed Pendant"); 
+            EquipItem.Play();
+            PlayerSingleton.Player.IncreaseMaxSpeed(-15.0f);
         }
     }
 
