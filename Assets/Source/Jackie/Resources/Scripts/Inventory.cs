@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
         GiveItem("Mana Potion");
         GiveItem("Regular Key");
         GiveItem("Health Pendant");
-        GiveItem("Jump Pendant");
+        //GiveItem("Jump Pendant");
         
         player = GameObject.FindWithTag("Player");
         inventoryUI.gameObject.SetActive(false);

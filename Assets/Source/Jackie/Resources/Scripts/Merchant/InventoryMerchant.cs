@@ -9,7 +9,7 @@ public class InventoryMerchant : MonoBehaviour
     public ItemDatabaseMerchant itemDatabaseMerchant;
 
     public UIInventoryMerchant inventoryUIMerchant;
-    
+    Inventory inventory;
     bool inventoryOpen = false;
 
     private void Start()
@@ -17,6 +17,7 @@ public class InventoryMerchant : MonoBehaviour
         GiveItem("Jump Pendant");
         GiveItem("Health Potion");
         GiveItem("Speed Pendant");
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         inventoryUIMerchant.gameObject.SetActive(false);
     }
 
@@ -34,6 +35,19 @@ public class InventoryMerchant : MonoBehaviour
             {
                 Debug.Log("Merchant is now closed");
                 inventoryOpen = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.J)) //Buy First Item
+        {
+            if (inventory.RemoveItemStr("Gold Coin") == true)
+            {
+                inventory.GiveItem("Jump Pendant");
+                RemoveItemStr("Jump Pendant");
+            }
+            else
+            {
+                Debug.Log("No coin in inventory");
             }
         }
     }
