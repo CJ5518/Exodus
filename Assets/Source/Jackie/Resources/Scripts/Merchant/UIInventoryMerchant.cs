@@ -7,7 +7,7 @@ public class UIInventoryMerchant : MonoBehaviour
     public List<UIItemMerchant> uIItemsMerchant = new List<UIItemMerchant>();
     public GameObject slotPrefab;
     public Transform slotPanel;
-    public int numberOfSlots = 3; //Needed 
+    public int numberOfSlots = 4; //Needed 
     // Start is called before the first frame update
 
     private void Awake()

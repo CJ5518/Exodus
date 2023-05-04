@@ -223,7 +223,7 @@ MonoBehaviour:
   uIItemsMerchant: []
   slotPrefab: {fileID: 4455372638297964690, guid: c53a2862587fdbe49852f014cdc0dd17, type: 3}
   slotPanel: {fileID: 410192760}
-  numberOfSlots: 3
+  numberOfSlots: 4
 --- !u!1001 &343090308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 50, y: 50}
+  m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
