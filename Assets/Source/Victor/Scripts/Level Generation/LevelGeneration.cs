@@ -11,6 +11,7 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private Vector2 worldSize = new Vector2(4, 4);
     [SerializeField] private GameObject playerSpawn;
     [SerializeField] private GameObject exitDoor;
+    [SerializeField] private GameObject merchant;
     [SerializeField] private CameraMove cam;
 
     [Header("Navmesh Config")]
@@ -63,7 +64,7 @@ public class LevelGeneration : MonoBehaviour
             drawPos.x *= 48;
             drawPos.y *= 27;
 
-            room.SetRoom( generator.GenerateRoom(drawPos, room.Doors()), exitDoor, playerSpawn);
+            room.SetRoom( generator.GenerateRoom(drawPos, room.Doors()), exitDoor, playerSpawn, merchant);
         }
 
         cam.FindPlayer();
@@ -110,8 +111,10 @@ public class LevelGeneration : MonoBehaviour
 
 
         int leftMost = gridSizeX;
+        int midMost = 0;
         int rightMost = -gridSizeX;
         int upMost = -gridSizeY;
+        int midUpMost = -gridSizeY;
         int downMost = gridSizeY;
 
         foreach (StandardRoom room in rooms)
@@ -130,6 +133,7 @@ public class LevelGeneration : MonoBehaviour
                 rightMost = (int)room.gridPos.x;
             }
         }
+        midMost = (leftMost + rightMost) / 2;
         foreach (StandardRoom room in rooms)
         {
             if (room == null)
@@ -144,6 +148,11 @@ public class LevelGeneration : MonoBehaviour
                     upMost = (int)room.gridPos.y;
                 }
             }
+            if (room.gridPos.x == midMost) {
+                if (room.gridPos.y > midUpMost) {
+                    midUpMost = (int)room.gridPos.y;
+                }
+            }
             if (room.gridPos.x == rightMost)
             {
                 if (room.gridPos.y < downMost)
@@ -154,6 +163,7 @@ public class LevelGeneration : MonoBehaviour
         }
 
         rooms[leftMost + gridSizeX, upMost + gridSizeY] = StartingRoom.Instance(new Vector2(leftMost, upMost));
+        rooms[midMost + gridSizeX, midUpMost + gridSizeY] = MerchantRoom.Instance(new Vector2(midMost, midUpMost));
         rooms[rightMost + gridSizeX, downMost + gridSizeY] = EndingRoom.Instance(new Vector2(rightMost, downMost));
     }
 

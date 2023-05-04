@@ -20,7 +20,7 @@ public class StandardRoom
         return doors;
     }
 
-    public virtual void SetRoom(GameObject _roomInstance, GameObject goalObject, GameObject startObject)
+    public virtual void SetRoom(GameObject _roomInstance, GameObject targetObject, GameObject startObject, GameObject merchantObject)
     {
         roomInstance = _roomInstance;
     }

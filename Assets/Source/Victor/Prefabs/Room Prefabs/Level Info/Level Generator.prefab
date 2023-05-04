@@ -50,6 +50,7 @@ MonoBehaviour:
   worldSize: {x: 6, y: 6}
   playerSpawn: {fileID: 4233882994482502185, guid: 6dc2c30950f94764cbac22fa11e2e609, type: 3}
   exitDoor: {fileID: 7629715740926861208, guid: 6dd13c29357086f4da3f702f087fdc63, type: 3}
+  merchant: {fileID: 1000013261649242, guid: 7d908ba845b1044e6829ed5fb7c4be10, type: 3}
   cam: {fileID: 0}
   demoMode: 1
   aStarPath: {fileID: 4133824116125620812, guid: b83d6cdb6f5ebf04791f2d8fcced082f, type: 3}
