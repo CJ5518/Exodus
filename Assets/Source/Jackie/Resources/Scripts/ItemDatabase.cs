@@ -81,7 +81,7 @@ public class ItemDatabase : MonoBehaviour
             {
                 {"Speed Increase", 5 }
             }),
-            new Item(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability [1] to equip",
+            new Item(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability [4] to equip",
             new Dictionary<string, int>
             {
                 {"Jump Increase", 160 }

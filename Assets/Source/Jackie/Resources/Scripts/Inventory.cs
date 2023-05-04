@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
             UsePot("Health Potion");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) //Equip Jump pendant
+        if (Input.GetKeyDown(KeyCode.Alpha4)) //Equip Jump pendant
         {
             checkJumpPendant("Jump Pendant");
         }
@@ -180,7 +180,7 @@ public class Inventory : MonoBehaviour
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Debug.Log("Item removed: " + itemToRemove.title);
         }
-        else if(PlayerSingleton.Player.health >= 100)
+        else if(PlayerSingleton.Player.health >= 101)
         {
             GiveItem("Health Pendant"); 
             EquipItem.Play();
