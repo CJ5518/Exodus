@@ -16,8 +16,8 @@ public class UIItemMerchant : MonoBehaviour, IPointerClickHandler , IPointerEnte
     {
         spriteImage = GetComponent<Image>();
         UpdateItem(null);
-        selectedItemM = GameObject.Find("SelectedItem").GetComponent<UIItemMerchant>();
-        tooltipM = GameObject.Find("Tooltip").GetComponent<ToolTipMerchant>();
+        selectedItemM = GameObject.Find("SelectedItemM").GetComponent<UIItemMerchant>();
+        tooltipM = GameObject.Find("TooltipM").GetComponent<ToolTipMerchant>();
     }
 
     public void UpdateItem(ItemMerchant item)
