@@ -69,7 +69,7 @@ public class ItemDatabaseMerchant : MonoBehaviour
             new ItemMerchant(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability. [F] to purchase",
             new Dictionary<string, int>
             {
-                {"Sell Value", 160 }
+                {"Jump Increase", 160 }
             })
         };
     }

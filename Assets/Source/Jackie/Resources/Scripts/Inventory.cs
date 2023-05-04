@@ -65,13 +65,13 @@ public class Inventory : MonoBehaviour
             checkJumpPendant("Jump Pendant");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) //Equip Health pendant
+        if (Input.GetKeyDown(KeyCode.Alpha6)) //Equip Health pendant
         {
             checkHealthPendant("Health Pendant");
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) //Equip Speed pendant
+        if (Input.GetKeyDown(KeyCode.Alpha5)) //Equip Speed pendant
         {
             checkSpeedPendant("Speed Pendant");
         }

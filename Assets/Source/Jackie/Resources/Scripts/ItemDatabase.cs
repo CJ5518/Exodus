@@ -66,7 +66,7 @@ public class ItemDatabase : MonoBehaviour
             {
                 {"Sell Value", 50 }
             }),
-            new Item(4, "Health Pendant", "An accessory that will slightly increase your max hp [2] to equip.",
+            new Item(4, "Health Pendant", "An accessory that will slightly increase your max hp [6] to equip.",
             new Dictionary<string, int>
             {
                 {"HP increase", 50 }
@@ -76,7 +76,7 @@ public class ItemDatabase : MonoBehaviour
             {
                 {"Sell Value", 5 }
             }),
-            new Item(6, "Speed Pendant", "An accessory that will slightly increase your movement speed [3] to equip",
+            new Item(6, "Speed Pendant", "An accessory that will slightly increase your movement speed [5] to equip",
             new Dictionary<string, int>
             {
                 {"Speed Increase", 5 }
