@@ -17,13 +17,14 @@ public class InventoryMerchant : MonoBehaviour
         GiveItem("Jump Pendant");
         GiveItem("Health Potion");
         GiveItem("Speed Pendant");
+        GiveItem("Regular Key");
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         inventoryUIMerchant.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M)) //Open Inventory
+        if (Input.GetKeyDown(KeyCode.M)) //Open Merchant Inventory (Should not be used in final implementatiobn)
         {
             inventoryUIMerchant.gameObject.SetActive(!inventoryUIMerchant.gameObject.activeSelf);
             if (inventoryOpen == false)
@@ -38,12 +39,54 @@ public class InventoryMerchant : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.J)) //Buy First Item
+        if (Input.GetKeyDown(KeyCode.F) & inventoryOpen == true) //Buy First Item
         {
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
                 inventory.GiveItem("Jump Pendant");
                 RemoveItemStr("Jump Pendant");
+            }
+            else
+            {
+                Debug.Log("No coin in inventory");
+            }
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.G) & inventoryOpen == true) //Buy Second Item
+        {
+            if (inventory.RemoveItemStr("Gold Coin") == true)
+            {
+                inventory.GiveItem("Health Potion"); //Give player
+                RemoveItemStr("Health Potion"); //Remove from merchant
+            }
+            else
+            {
+                Debug.Log("No coin in inventory");
+            }
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.V) & inventoryOpen == true) //Buy Third Item
+        {
+            if (inventory.RemoveItemStr("Gold Coin") == true)
+            {
+                inventory.GiveItem("Speed Pendant");
+                RemoveItemStr("Speed Pendant");
+            }
+            else
+            {
+                Debug.Log("No coin in inventory");
+            }
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.B) & inventoryOpen == true) //Buy Fourth Item
+        {
+            if (inventory.RemoveItemStr("Gold Coin") == true)
+            {
+                inventory.GiveItem("Regular Key");
+                RemoveItemStr("Regular Key");
             }
             else
             {
