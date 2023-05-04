@@ -51,10 +51,10 @@ public class ItemDatabaseMerchant : MonoBehaviour
             {
                 {"Sell Value", 50 }
             }),
-            new ItemMerchant(4, "Health Pendant", "An accessory that will slightly increase your max hp.",
+            new ItemMerchant(4, "Health Pendant", "An accessory that will slightly increase your max hp [B] to purchase.",
             new Dictionary<string, int>
             {
-                {"HP increase", 10 }
+                {"HP increase", 50 }
             }),
             new ItemMerchant(5, "Regular Key", "A regular key, may be used to enter the boss room. [B] to purchase",
             new Dictionary<string, int>
@@ -64,12 +64,12 @@ public class ItemDatabaseMerchant : MonoBehaviour
             new ItemMerchant(6, "Speed Pendant", "An accessory that will slightly increase your movement speed. [V] to purchase",
             new Dictionary<string, int>
             {
-                {"Sell Value", 10 }
+                {"Speed Increase", 5 }
             }),
             new ItemMerchant(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability. [F] to purchase",
             new Dictionary<string, int>
             {
-                {"Sell Value", 10 }
+                {"Sell Value", 160 }
             })
         };
     }

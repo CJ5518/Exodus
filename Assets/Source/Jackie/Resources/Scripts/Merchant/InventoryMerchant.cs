@@ -17,7 +17,7 @@ public class InventoryMerchant : MonoBehaviour
         GiveItem("Jump Pendant");
         GiveItem("Health Potion");
         GiveItem("Speed Pendant");
-        GiveItem("Regular Key");
+        GiveItem("Health Pendant");
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         inventoryUIMerchant.gameObject.SetActive(true);
     }

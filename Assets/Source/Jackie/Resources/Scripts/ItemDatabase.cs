@@ -51,7 +51,7 @@ public class ItemDatabase : MonoBehaviour
                 {"Power", 15 },
                 {"Defence", 10}
             }),
-            new Item(1, "Health Potion", "A potion to restore HP slightly.",
+            new Item(1, "Health Potion", "A potion to restore HP slightly. [H] to use",
             new Dictionary<string, int>
             {
                 {"HP Restored", 10 }
@@ -61,30 +61,30 @@ public class ItemDatabase : MonoBehaviour
             {
                 {"Mana Restored", 10 }
             }),
-            new Item(3, "Gold Coin", "No personal value, perhaps can be sold for a high price.",
+            new Item(3, "Gold Coin", "No personal value, perhaps can be exchanged for an item with the merchant.",
             new Dictionary<string, int>
             {
                 {"Sell Value", 50 }
             }),
-            new Item(4, "Health Pendant", "An accessory that will slightly increase your max hp.",
+            new Item(4, "Health Pendant", "An accessory that will slightly increase your max hp [2] to equip.",
             new Dictionary<string, int>
             {
-                {"HP increase", 10 }
+                {"HP increase", 50 }
             }),
             new Item(5, "Regular Key", "A regular key, may be used to enter the boss room.",
             new Dictionary<string, int>
             {
                 {"Sell Value", 5 }
             }),
-            new Item(6, "Speed Pendant", "An accessory that will slightly increase your movement speed",
+            new Item(6, "Speed Pendant", "An accessory that will slightly increase your movement speed [3] to equip",
             new Dictionary<string, int>
             {
-                {"Sell Value", 10 }
+                {"Speed Increase", 5 }
             }),
-            new Item(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability",
+            new Item(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability [1] to equip",
             new Dictionary<string, int>
             {
-                {"Sell Value", 10 }
+                {"Jump Increase", 160 }
             })
         };
     }

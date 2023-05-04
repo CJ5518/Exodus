@@ -21,16 +21,13 @@ public class Inventory : MonoBehaviour
     public AudioSource MenuClose;
     public AudioSource EquipItem;
 
+    bool speedPendantEquipped = false;
+
     
     private void Start()
     {
         GiveItem("Health Potion");
         GiveItem("Gold Coin");
-        GiveItem("Mana Potion");
-        GiveItem("Regular Key");
-        GiveItem("Health Pendant");
-        GiveItem("Speed Pendant");
-        //GiveItem("Jump Pendant");
         
         player = GameObject.FindWithTag("Player");
         inventoryUI.gameObject.SetActive(false);
@@ -63,18 +60,18 @@ public class Inventory : MonoBehaviour
             UsePot("Health Potion");
         }
 
-        if (Input.GetKeyDown(KeyCode.U)) //Equip Jump pendant
+        if (Input.GetKeyDown(KeyCode.Alpha1)) //Equip Jump pendant
         {
             checkJumpPendant("Jump Pendant");
         }
 
-        if (Input.GetKeyDown(KeyCode.O)) //Equip Jump pendant
+        if (Input.GetKeyDown(KeyCode.Alpha2)) //Equip Health pendant
         {
             checkHealthPendant("Health Pendant");
         }
 
 
-        if (Input.GetKeyDown(KeyCode.P)) //Equip Jump pendant
+        if (Input.GetKeyDown(KeyCode.Alpha3)) //Equip Speed pendant
         {
             checkSpeedPendant("Speed Pendant");
         }
@@ -160,11 +157,15 @@ public class Inventory : MonoBehaviour
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Debug.Log("Item removed: " + itemToRemove.title);
         }
-        else
+        else if(PlayerSingleton.Player.jumpForce == 600.0f)
         {
             GiveItem("Jump Pendant"); 
             EquipItem.Play();
             PlayerSingleton.Player.jumpForce = 440.0f;
+        }
+        else
+        {
+            Debug.Log("No pendant in inventory");
         }
     }
 
@@ -179,11 +180,15 @@ public class Inventory : MonoBehaviour
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             Debug.Log("Item removed: " + itemToRemove.title);
         }
-        else
+        else if(PlayerSingleton.Player.health >= 100)
         {
             GiveItem("Health Pendant"); 
             EquipItem.Play();
             PlayerSingleton.Player.IncreaseMaxHealth(-50);
+        }
+        else
+        {
+            Debug.Log("No pendant in inventory");
         }
     }
 
@@ -196,14 +201,21 @@ public class Inventory : MonoBehaviour
             EquipItem.Play();
             PlayerSingleton.Player.IncreaseMaxSpeed(15.0f); //Increase JumpForce of player
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
+            speedPendantEquipped = true;
             Debug.Log("Item removed: " + itemToRemove.title);
         }
-        else
+        else if (speedPendantEquipped == true) //Unequip
         {
             GiveItem("Speed Pendant"); 
             EquipItem.Play();
             PlayerSingleton.Player.IncreaseMaxSpeed(-15.0f);
+            speedPendantEquipped = false;
         }
+        else
+        {
+            Debug.Log("No speed pendant in inventory");
+        }
+
     }
 
     public void Dropitem(string itemName)
