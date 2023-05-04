@@ -33,7 +33,7 @@ public class EntitySpawner : MonoBehaviour
     // Update is called once per frame
     private void SpawnEntity()
     {
-        if (numSpawns < 3) {
+        if (numSpawns < 1) {
             spawnPosition = transform.position;
             Vector3 randomOffset = Random.insideUnitSphere;
             Vector3 randomPosition = spawnPosition + randomOffset;

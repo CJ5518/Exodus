@@ -10,7 +10,7 @@ public class InventoryMerchant : MonoBehaviour
 
     public UIInventoryMerchant inventoryUIMerchant;
     Inventory inventory;
-    bool inventoryOpen = false;
+    bool inventoryOpen = true;
 
     private void Start()
     {
@@ -19,25 +19,25 @@ public class InventoryMerchant : MonoBehaviour
         GiveItem("Speed Pendant");
         GiveItem("Regular Key");
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-        inventoryUIMerchant.gameObject.SetActive(false);
+        inventoryUIMerchant.gameObject.SetActive(true);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M)) //Open Merchant Inventory (Should not be used in final implementatiobn)
-        {
-            inventoryUIMerchant.gameObject.SetActive(!inventoryUIMerchant.gameObject.activeSelf);
-            if (inventoryOpen == false)
-            {
-                Debug.Log("Merchant is now open");
-                inventoryOpen = true;
-            }
-            else
-            {
-                Debug.Log("Merchant is now closed");
-                inventoryOpen = false;
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.M)) //Open Merchant Inventory (Should not be used in final implementatiobn)
+        // {
+        //     inventoryUIMerchant.gameObject.SetActive(!inventoryUIMerchant.gameObject.activeSelf);
+        //     if (inventoryOpen == false)
+        //     {
+        //         Debug.Log("Merchant is now open");
+        //         inventoryOpen = true;
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("Merchant is now closed");
+        //         inventoryOpen = false;
+        //     }
+        // }
 
         if (Input.GetKeyDown(KeyCode.F) & inventoryOpen == true) //Buy First Item
         {

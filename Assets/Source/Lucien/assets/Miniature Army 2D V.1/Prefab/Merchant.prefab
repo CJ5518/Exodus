@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 4000010300450076}
   - component: {fileID: 95000012115735308}
   - component: {fileID: 451330774287456756}
+  - component: {fileID: 5353096626312516750}
   - component: {fileID: 499141703203774871}
   m_Layer: 0
   m_Name: Merchant
@@ -507,6 +508,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 1.8033326}
   m_EdgeRadius: 0
+--- !u!50 &5353096626312516750
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013261649242}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
 --- !u!114 &499141703203774871
 MonoBehaviour:
   m_ObjectHideFlags: 0
