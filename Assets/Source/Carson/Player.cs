@@ -96,6 +96,15 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void IncreaseMaxHealth(int AddedHealth)
+	{
+		m_health += AddedHealth;
+	}
+
+	public void IncreaseMaxSpeed(float AddedSpeed)
+	{
+		maxHorizontalSpeed += AddedSpeed;
+	}
 	public PlayerController controller {
 		get {
 			return m_controller;
