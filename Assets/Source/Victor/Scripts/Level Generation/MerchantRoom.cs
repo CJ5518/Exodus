@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartingRoom : StandardRoom
+public class MerchantRoom : StandardRoom
 {
-    private static StartingRoom instance = null;
+    private static MerchantRoom instance = null;
 
     private GameObject roomInstance;
     private GameObject instObject;
 
-    protected StartingRoom(Vector2 _gridPos) : base(_gridPos)
+    protected MerchantRoom(Vector2 _gridPos) : base(_gridPos)
     {
         gridPos = _gridPos;
     }
 
-    public static StartingRoom Instance(Vector2 _gridPos) {
+    public static MerchantRoom Instance(Vector2 _gridPos) {
         if (instance == null) {
-            instance = new StartingRoom(_gridPos);
+            instance = new MerchantRoom(_gridPos);
         }
         instance.gridPos = _gridPos;
 
@@ -27,23 +27,20 @@ public class StartingRoom : StandardRoom
     {
         roomInstance = _roomInstance;
 
-        instObject = startObject;
+        instObject = merchantObject;
 
-        Vector3 objPos = Vector3.zero;
+        Vector3 objPos = Vector2.zero;
 
 
         for (int i = 0; i < roomInstance.transform.childCount; i++)
         {
-            if (roomInstance.transform.GetChild(i).CompareTag("SpawnLocation"))
+            if (roomInstance.transform.GetChild(i).CompareTag("MerchantSpawn"))
             {
                 objPos = roomInstance.transform.GetChild(i).position;
             }
         }
 
 
-        GameObject player = GameObject.Instantiate(instObject, objPos, Quaternion.identity) as GameObject;
-        player.name = instObject.name;
-        GameObject playerCam = player.transform.GetChild(0).gameObject;
-        playerCam.SetActive(false);
+        GameObject.Instantiate(instObject, objPos, Quaternion.identity);
     }
 }

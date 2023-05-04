@@ -23,7 +23,7 @@ public class EndingRoom : StandardRoom
         return instance;
     }
 
-    public override void SetRoom(GameObject _roomInstance, GameObject targetObject, GameObject startObject)
+    public override void SetRoom(GameObject _roomInstance, GameObject targetObject, GameObject startObject, GameObject merchantObject)
     {
         roomInstance = _roomInstance;
 
