@@ -22,6 +22,7 @@ TagManager:
   - bossHealthCanvas
   - Weapon
   - Merchant
+  - MerchantSpawn
   layers:
   - Default
   - TransparentFX
