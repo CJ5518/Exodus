@@ -21,21 +21,26 @@ public class EntitySpawner : MonoBehaviour
     
     
     private Vector3 spawnPosition;
+    private int numSpawns;
 
     // Start is called before the first frame update
     void Start()
     {
+        numSpawns = 0;
         InvokeRepeating("SpawnEntity", 1.0f, spawnInterval);
     }
 
     // Update is called once per frame
     private void SpawnEntity()
     {
-        spawnPosition = transform.position;
-        Vector3 randomOffset = Random.insideUnitSphere;
-        Vector3 randomPosition = spawnPosition + randomOffset;
-        randomPosition.z = spawnPosition.z;
+        if (numSpawns < 3) {
+            spawnPosition = transform.position;
+            Vector3 randomOffset = Random.insideUnitSphere;
+            Vector3 randomPosition = spawnPosition + randomOffset;
+            randomPosition.z = spawnPosition.z;
 
-        Instantiate(entity, randomPosition, Quaternion.identity);
+            Instantiate(entity, randomPosition, Quaternion.identity);
+        }
+        numSpawns++;
     }
 }
