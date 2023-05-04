@@ -36,7 +36,7 @@ public class ItemDatabaseMerchant : MonoBehaviour
                 {"Power", 15 },
                 {"Defence", 10}
             }),
-            new ItemMerchant(1, "Health Potion", "A potion to restore HP slightly.",
+            new ItemMerchant(1, "Health Potion", "A potion to restore HP slightly. [F] to purchase",
             new Dictionary<string, int>
             {
                 {"HP Restored", 10 }
@@ -56,17 +56,17 @@ public class ItemDatabaseMerchant : MonoBehaviour
             {
                 {"HP increase", 10 }
             }),
-            new ItemMerchant(5, "Regular Key", "A regular key, may be used to enter the boss room.",
+            new ItemMerchant(5, "Regular Key", "A regular key, may be used to enter the boss room. [B] to purchase",
             new Dictionary<string, int>
             {
                 {"Sell Value", 5 }
             }),
-            new ItemMerchant(6, "Speed Pendant", "An accessory that will slightly increase your movement speed",
+            new ItemMerchant(6, "Speed Pendant", "An accessory that will slightly increase your movement speed. [V] to purchase",
             new Dictionary<string, int>
             {
                 {"Sell Value", 10 }
             }),
-            new ItemMerchant(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability",
+            new ItemMerchant(7, "Jump Pendant", "An accessory that will slightly increase your Jump ability. [F] to purchase",
             new Dictionary<string, int>
             {
                 {"Sell Value", 10 }
