@@ -43,8 +43,8 @@ public class InventoryMerchant : MonoBehaviour
         {
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
-                inventory.GiveItem("Jump Pendant");
                 RemoveItemStr("Jump Pendant");
+                inventory.GiveItem("Jump Pendant");
             }
             else
             {
@@ -58,7 +58,7 @@ public class InventoryMerchant : MonoBehaviour
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
                 inventory.GiveItem("Health Potion"); //Give player
-                RemoveItemStr("Health Potion"); //Remove from merchant
+                //RemoveItemStr("Health Potion"); //Remove from merchant
             }
             else
             {
@@ -71,8 +71,8 @@ public class InventoryMerchant : MonoBehaviour
         {
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
-                inventory.GiveItem("Speed Pendant");
                 RemoveItemStr("Speed Pendant");
+                inventory.GiveItem("Speed Pendant");
             }
             else
             {
@@ -85,8 +85,8 @@ public class InventoryMerchant : MonoBehaviour
         {
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
-                inventory.GiveItem("Regular Key");
-                RemoveItemStr("Regular Key");
+                RemoveItemStr("Health Pendant");
+                inventory.GiveItem("Health Pendant");
             }
             else
             {

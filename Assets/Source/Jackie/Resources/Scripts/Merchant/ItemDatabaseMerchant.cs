@@ -36,7 +36,7 @@ public class ItemDatabaseMerchant : MonoBehaviour
                 {"Power", 15 },
                 {"Defence", 10}
             }),
-            new ItemMerchant(1, "Health Potion", "A potion to restore HP slightly. [F] to purchase",
+            new ItemMerchant(1, "Health Potion", "A potion to restore HP slightly. [G] to purchase",
             new Dictionary<string, int>
             {
                 {"HP Restored", 10 }
