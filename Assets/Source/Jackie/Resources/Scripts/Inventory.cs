@@ -199,7 +199,7 @@ public class Inventory : MonoBehaviour
         {
             characterItems.Remove(itemToRemove); //Remove pendant from inventory (list object)
             EquipItem.Play();
-            PlayerSingleton.Player.IncreaseMaxSpeed(15.0f); //Increase JumpForce of player
+            PlayerSingleton.Player.IncreaseMaxSpeed(25.0f); //Increase Speed of player
             inventoryUI.RemoveItem(itemToRemove); //Remove potion from inventory (UI, when player presses I)
             speedPendantEquipped = true;
             Debug.Log("Item removed: " + itemToRemove.title);
@@ -208,7 +208,7 @@ public class Inventory : MonoBehaviour
         {
             GiveItem("Speed Pendant"); 
             EquipItem.Play();
-            PlayerSingleton.Player.IncreaseMaxSpeed(-15.0f);
+            PlayerSingleton.Player.IncreaseMaxSpeed(10.0f);
             speedPendantEquipped = false;
         }
         else
