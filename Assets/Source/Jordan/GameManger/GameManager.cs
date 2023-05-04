@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public sealed class GameManager : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public sealed class GameManager : MonoBehaviour
     private BossHealth bhBossHealth;
     private SettingsManager smSettingsManager;
     public GameObject apArrowPoint;
+    public int currentCoins = 0;
+    public Text coinText;
+
+    int cost;
 
     private bool bLost;
     private float fWinTick;
@@ -133,6 +138,17 @@ public sealed class GameManager : MonoBehaviour
     public void WinGame()
     {
         goBlur.bBlur = true;
+    }
+
+    public void CoinCollected()
+    {
+        currentCoins++;
+        coinText.text = currentCoins.ToString();
+    }
+
+    public void useCoins(int cost)
+    {
+        currentCoins = currentCoins - cost;
     }
 }
     

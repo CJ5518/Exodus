@@ -19,28 +19,18 @@ public abstract class MeleeAttack: BossAttack //decorartor design pattern
             return this.attack1.Damage;
         }
     }
+    public virtual float objectSpeed
+    {
+        get
+        { 
+            return this.attack1.objectSpeed;
+        }
+    }
 }
-/*
-public class baseMelee: MeleeAttack
-{
-    public baseMelee()
-    {
-        Debug.Log("Entered, baseMelee");
-    }
-
-    public override int Damage
-    {
-       get
-       {return 10;}
-    }
-}*/
 
 public class runMeleeAttack: MeleeAttack
 {
-    public runMeleeAttack(BossAttack attack1): base(attack1)
-    {
-
-    }
+    public runMeleeAttack(BossAttack attack1): base(attack1){}
 
     public override int Damage
     {
@@ -54,17 +44,13 @@ public class runMeleeAttack: MeleeAttack
 
 public class damageBoost: MeleeAttack
 {
-    public damageBoost(BossAttack attackBoost): base(attackBoost)
-    {
-
-    }
+    public damageBoost(BossAttack attackBoost): base(attackBoost){}
 
     public override int Damage
     {
         get
         {
             return 1 + attack1.Damage;
-            //return 6;
         }
     }
 }

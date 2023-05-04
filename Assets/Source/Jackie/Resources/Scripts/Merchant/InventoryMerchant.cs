@@ -12,6 +12,8 @@ public class InventoryMerchant : MonoBehaviour
     Inventory inventory;
     bool inventoryOpen = true;
 
+    CoinCollect ScoreManager;
+
     private void Start()
     {
         GiveItem("Jump Pendant");
@@ -20,6 +22,8 @@ public class InventoryMerchant : MonoBehaviour
         GiveItem("Health Pendant");
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         inventoryUIMerchant.gameObject.SetActive(true);
+
+        ScoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<CoinCollect>();
     }
 
     private void Update()
@@ -45,6 +49,7 @@ public class InventoryMerchant : MonoBehaviour
             {
                 RemoveItemStr("Jump Pendant");
                 inventory.GiveItem("Jump Pendant");
+                ScoreManager.useCoin();
             }
             else
             {
@@ -58,7 +63,8 @@ public class InventoryMerchant : MonoBehaviour
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
                 inventory.GiveItem("Health Potion"); //Give player
-                //RemoveItemStr("Health Potion"); //Remove from merchant
+                RemoveItemStr("Health Potion"); //Remove from merchant
+                ScoreManager.useCoin();
             }
             else
             {
@@ -71,8 +77,9 @@ public class InventoryMerchant : MonoBehaviour
         {
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
-                RemoveItemStr("Speed Pendant");
                 inventory.GiveItem("Speed Pendant");
+                RemoveItemStr("Speed Pendant");
+                ScoreManager.useCoin();
             }
             else
             {
@@ -85,8 +92,9 @@ public class InventoryMerchant : MonoBehaviour
         {
             if (inventory.RemoveItemStr("Gold Coin") == true)
             {
-                RemoveItemStr("Health Pendant");
                 inventory.GiveItem("Health Pendant");
+                RemoveItemStr("Health Pendant");
+                ScoreManager.useCoin();
             }
             else
             {

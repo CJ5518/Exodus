@@ -12,12 +12,7 @@ public class BossShoot : MonoBehaviour
     private float timer, count, hailCount;
     private int snowballTracker;
     public Text sbCountText;
-
-
-
-    //public EventManager em;
-    
-    
+       
     // Start is called before the first frame update
     void Start()
     {
